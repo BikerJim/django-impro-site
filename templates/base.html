@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title%}easylaughs: Amsterdam improvised comedy{% endblock title %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" />
+  </head>
+  <body>
+	  <img id="logo" src="{% static 'gfx/el-logo.png' %}"/>
+<div id="header">
+{% block header %}	
+    {% if messages %}
+      <strong>Messages:</strong>
+      <ul>
+	{% for message in messages %}
+	<li>{{message}}</li>
+	{% endfor %}
+      </ul>
+    {% endif %}
+{% endblock header %}
+</div>
+	  <div id="sidebar">
+{% block sidebar %}
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li>Shows</li>
+			<li>Courses</li>
+			<li>Workshops</li>
+			<li>Corporate</li>
+			<li>Press</li>
+			<li>Resources</li>
+			<li>About Us</li>
+		</ul>
+		<ul>
+	{% if user.is_authenticated %}
+	<li><a href="{% url 'account_email' %}">Change E-mail</a></li>
+	<li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+	{% else %}
+	<li><a href="{% url 'account_login' %}">Sign In</a></li>
+	<li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+	{% endif %}
+	</ul>
+{% endblock sidebar %}
+	  </div>
+	  <div id="content">
+		{% block content %}{% endblock content %}
+	  </div>
+  </body>
+</html>
