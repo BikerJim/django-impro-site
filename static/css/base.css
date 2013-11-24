@@ -33,8 +33,6 @@ font-weight:bold;
 letter-spacing:0.02em;
 list-style-type:none;
 padding-bottom:20px;
-border-bottom-style:dotted;
-border-color:white;
 }
 
 #sidebar li a:link,a:visited
@@ -45,7 +43,7 @@ text-decoration:none;
 
 #sidebar li a:hover
 {
-font-size:1.1em;
+color:#500;
 }
 
 #content

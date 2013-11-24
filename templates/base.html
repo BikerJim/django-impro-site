@@ -19,6 +19,7 @@
 	{% endfor %}
       </ul>
     {% endif %}
+	
 {% endblock header %}
 </div>
 	  <div id="sidebar">
@@ -37,6 +38,8 @@
 	{% if user.is_authenticated %}
 	<li><a href="{% url 'account_email' %}">Change E-mail</a></li>
 	<li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+	<li>&nbsp;</li>
+    <li><img width="50px" src="{{ user.socialaccount_set.all.0.get_avatar_url }}"/></li>
 	{% else %}
 	<li><a href="{% url 'account_login' %}">Sign In</a></li>
 	<li><a href="{% url 'account_signup' %}">Sign Up</a></li>

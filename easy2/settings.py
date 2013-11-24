@@ -67,6 +67,8 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
     # allauth providers
     'allauth.socialaccount.providers.facebook',
+    'south',
+    'events',
 #    'allauth.socialaccount.providers.google',
 #    'allauth.socialaccount.providers.twitter',
 )
