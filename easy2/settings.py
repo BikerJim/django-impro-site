@@ -30,12 +30,21 @@ ALLOWED_HOSTS = []
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 # Additions for all_auth
 TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.request',
+    'django.contrib.auth.context_processors.auth',
     'allauth.account.context_processors.account',
     'allauth.socialaccount.context_processors.socialaccount',
 )
 # Authentication
+LOGIN_REDIRECT_URL = '/'
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_PROVIDERS = {
+'facebook': {
+    'SCOPE':['email','publish_stream'],
+    'METHOD':'js_sdk'
+    }
+}
+
 AUTH_PROFILE_MODULE = 'easy2.models.UserProfile'
 AUTHENTICATION_BACKENDS = (
 #    # Needed to login by username in Django Admin
