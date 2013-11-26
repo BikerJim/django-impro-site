@@ -15,7 +15,7 @@ from . import signals
 from .utils import random_token, user_email
 from .managers import EmailAddressManager, EmailConfirmationManager
 from .adapter import get_adapter
-
+"""
 @python_2_unicode_compatible
 class Profile(models.Model):
     user = models.OneToOneField(allauth_app_settings.USER_MODEL, verbose_name=_('user'), related_name='profiles')
@@ -25,7 +25,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return u"%s (%s)" % (self.first_name, self.about_me)
-
+"""
 @python_2_unicode_compatible
 class EmailAddress(models.Model):
 
