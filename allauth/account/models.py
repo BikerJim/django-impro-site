@@ -15,17 +15,44 @@ from . import signals
 from .utils import random_token, user_email
 from .managers import EmailAddressManager, EmailConfirmationManager
 from .adapter import get_adapter
-"""
-@python_2_unicode_compatible
-class Profile(models.Model):
-    user = models.OneToOneField(allauth_app_settings.USER_MODEL, verbose_name=_('user'), related_name='profiles')
-    first_name = models.CharField(_("First Name"), max_length=150)
-    last_name = models.CharField(_("Last Name"), max_length=150)
-    about_me = models.CharField(_("About you"), max_length=500)
 
-    def __str__(self):
-        return u"%s (%s)" % (self.first_name, self.about_me)
-"""
+from django.contrib.auth.models import User
+#from allauth.account.models import EmailAddress
+from events.models import image_file_name
+from events.storage import OverwriteStorage
+
+#@python_2_unicode_compatible
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, related_name='profile')
+    about_me = models.TextField(max_length="500")
+    image_folder = "profiles"
+    mugshot = models.ImageField(max_length=1024,storage=OverwriteStorage(), upload_to=image_file_name)
+ 
+    def __unicode__(self):
+        return "{}'s profile".format(self.user.username)
+ 
+    class Meta:
+        db_table = 'user_profile'
+ 
+    def account_verified(self):
+        if self.user.is_authenticated:
+            result = EmailAddress.objects.filter(email=self.user.email)
+            if len(result):
+                return result[0].verified
+        return False
+ 
+User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
+
+#    user = models.OneToOneField(allauth_app_settings.USER_MODEL, verbose_name=_('user'), related_name='profiles')
+#    first_name = models.CharField(_("First Name"), max_length=150)
+#    last_name = models.CharField(_("Last Name"), max_length=150)
+#    about_me = models.CharField(_("About you"), max_length=500)
+#
+#    def __str__(self):
+#        return u"%s (%s)" % (self.first_name, self.about_me)
+
+#User.profile = property(lambda u: Profile.objects.get_or_create(user=u)[0])
+
 @python_2_unicode_compatible
 class EmailAddress(models.Model):
 

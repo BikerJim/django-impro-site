@@ -6,7 +6,8 @@
 {% block head_title %}{% trans "Account" %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "E-mail Addresses" %}</h1>
+    <div class="inset-wide">
+    <h2>{% trans "E-mail Addresses" %}</h2>
 {% if user.emailaddress_set.all %}
 <p>{% trans 'The following e-mail addresses are associated with your account:' %}</p>
     
@@ -32,9 +33,9 @@
   {% endfor %}
 
 <div class="buttonHolder">
-      <button class="secondaryAction" type="submit" name="action_primary" >{% trans 'Make Primary' %}</button>
-      <button class="secondaryAction" type="submit" name="action_send" >{% trans 'Re-send Verification' %}</button>
-      <button class="primaryAction" type="submit" name="action_remove" >{% trans 'Remove' %}</button>
+      <button class="btn" type="submit" name="action_primary" >{% trans 'Make Primary' %}</button>
+      <button class="btn" type="submit" name="action_send" >{% trans 'Re-send Verification' %}</button>
+      <button class="btn" type="submit" name="action_remove" >{% trans 'Remove' %}</button>
 </div>
 
 </fieldset>
@@ -46,14 +47,14 @@
 {% endif %}
 
 
-    <h2>{% trans "Add E-mail Address" %}</h2>
+    <h3>{% trans "Add E-mail Address" %}</h3>
     
     <form method="post" action="" class="add_email uniForm">
         {% csrf_token %}
         {{ form.as_p}}
         <button name="action_add" type="submit">{% trans "Add E-mail" %}</button>
     </form>
-    
+</div>
 {% endblock %}
 
 

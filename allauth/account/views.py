@@ -30,6 +30,10 @@ from .adapter import get_adapter
 
 User = get_user_model()
 
+def show_profile(request):
+		if request.user.is_authenticated():
+			return HttpResponseRedirect('/profile/')
+			
 
 class RedirectAuthenticatedUserMixin(object):
     def dispatch(self, request, *args, **kwargs):

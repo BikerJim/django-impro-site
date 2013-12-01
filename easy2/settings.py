@@ -45,13 +45,17 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-AUTH_PROFILE_MODULE = 'easy2.models.UserProfile'
+AUTH_PROFILE_MODULE = 'allauth.Profile'
+
 AUTHENTICATION_BACKENDS = (
 #    # Needed to login by username in Django Admin
     "django.contrib.auth.backends.ModelBackend",
 #    # Allauth specific auth methods, like login by email
     "allauth.account.auth_backends.AuthenticationBackend",
 )
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 SITE_ID = 1
 
 INSTALLED_APPS = (
@@ -69,6 +73,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.facebook',
     'south',
     'events',
+    'home',
 #    'allauth.socialaccount.providers.google',
 #    'allauth.socialaccount.providers.twitter',
 )

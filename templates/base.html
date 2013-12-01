@@ -5,24 +5,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>{% block title%}easylaughs: Amsterdam improvised comedy{% endblock title %}</title>
     {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
   </head>
   <body>
-	  <img id="logo" src="{% static 'gfx/el-logo.png' %}"/>
-<div id="header">
-{% block header %}	
-    {% if messages %}
-      <strong>Messages:</strong>
-      <ul>
-	{% for message in messages %}
-	<li>{{message}}</li>
-	{% endfor %}
-      </ul>
-    {% endif %}
-	
-{% endblock header %}
-</div>
-	  <div id="sidebar">
+
+<div id="sidebar">
 {% block sidebar %}
 		<ul>
 			<li><a href="/">Home</a></li>
@@ -35,20 +22,44 @@
 			<li>About Us</li>
 		</ul>
 		<ul>
+<div class="lesser">
 	{% if user.is_authenticated %}
+	<li><a href="">Profile</a></li>
 	<li><a href="{% url 'account_email' %}">Change E-mail</a></li>
 	<li><a href="{% url 'account_logout' %}">Sign Out</a></li>
 	<li>&nbsp;</li>
     <li><img width="50px" src="{{ user.socialaccount_set.all.0.get_avatar_url }}"/></li>
+    {% if request.user.first_name or request.user.last_name %}
+        {{ request.user.first_name }} {{ request.user.last_name }}
+    {% else %}
+        {{ request.user.username }}
+    {% endif %}
+		<br/>
+		{% if request.user.profile.account_verified %} (verified) {% else %} (unverified) {% endif %}
 	{% else %}
 	<li><a href="{% url 'account_login' %}">Sign In</a></li>
 	<li><a href="{% url 'account_signup' %}">Sign Up</a></li>
 	{% endif %}
+</div>
 	</ul>
 {% endblock sidebar %}
-	  </div>
-	  <div id="content">
+</div>  <!-- end sidebar div -->
+<img id="logo" src="{% static 'gfx/el-logo.png' %}"/>
+
+    {% if messages %}
+<div id="footnote">
+      <strong>Messages:</strong>
+      <ul>
+	{% for message in messages %}
+	<li>{{message}}</li>
+	{% endfor %}
+      </ul>
+</div> <!-- end messages div -->
+    {% endif %}
+
+<div id="content">
 		{% block content %}{% endblock content %}
-	  </div>
+</div>  <!-- end content div -->
+
   </body>
 </html>

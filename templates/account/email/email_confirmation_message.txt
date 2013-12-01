@@ -1,4 +1,12 @@
-{% load account %}{% user_display user as user_display %}{% load i18n %}{% autoescape off %}{% blocktrans with current_site.name as site_name %}User {{ user_display }} at {{ site_name }} has given this as an email address.
+{% load account %}{% user_display user as user_display %}{% load i18n %}
 
-To confirm this is correct, go to {{ activate_url }}
+{% autoescape off %}{% blocktrans with current_site.name as site_name %}
+Hi {{ user_display }}, 
+
+We're excited to have you as part of the easylaughs family, and 
+thanks for joining the you to {{ site_name }}, but to make sure you are
+really human and not a one eyed mutant cyborg, we need you to verify that
+the email we have for you is a real one.
+
+To activate your account, go here: {{ activate_url }}
 {% endblocktrans %}{% endautoescape %}
