@@ -24,7 +24,7 @@
 		<ul>
 <div class="lesser">
 	{% if user.is_authenticated %}
-	<li><a href="">Profile</a></li>
+	<li><a href="accounts/profile/">Profile</a></li>
 	<li><a href="{% url 'account_email' %}">Change E-mail</a></li>
 	<li><a href="{% url 'account_logout' %}">Sign Out</a></li>
 	<li>&nbsp;</li>

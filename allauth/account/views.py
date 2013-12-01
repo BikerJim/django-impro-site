@@ -1,7 +1,7 @@
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.contrib.sites.models import Site
-from django.http import HttpResponseRedirect, Http404
-from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect, Http404, HttpResponse
+from django.shortcuts import get_object_or_404, render_to_response
 from django.utils.http import base36_to_int
 from django.views.generic.base import TemplateResponseMixin, View, TemplateView
 from django.views.generic.edit import FormView
@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.tokens import default_token_generator
 from django.shortcuts import redirect
+from django.template import RequestContext
 
 from ..exceptions import ImmediateHttpResponse
 from ..utils import get_user_model
@@ -31,8 +32,12 @@ from .adapter import get_adapter
 User = get_user_model()
 
 def show_profile(request):
-		if request.user.is_authenticated():
-			return HttpResponseRedirect('/profile/')
+	context = RequestContext(request)
+	context_dict = {'profile':request.user.get_profile()}
+	if request.user.is_authenticated():
+		return render_to_response('account/profile.html',context_dict,context)
+	else:
+		return HttpResponseRedirect(LoginView)
 			
 
 class RedirectAuthenticatedUserMixin(object):
