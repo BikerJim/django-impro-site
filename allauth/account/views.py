@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.utils.http import base36_to_int
 from django.views.generic.base import TemplateResponseMixin, View, TemplateView
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import FormView
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -21,6 +22,7 @@ from .utils import (get_next_redirect_url, complete_signup,
 from .forms import AddEmailForm, ChangePasswordForm
 from .forms import LoginForm, ResetPasswordKeyForm
 from .forms import ResetPasswordForm, SetPasswordForm, SignupForm
+from .forms import UserProfileForm
 from .utils import sync_user_email_addresses
 from .models import EmailAddress, EmailConfirmation
 
@@ -29,17 +31,14 @@ from . import app_settings
 
 from .adapter import get_adapter
 
+from allauth.account.models import UserProfile
+
 User = get_user_model()
 
-def show_profile(request):
-	context = RequestContext(request)
-	context_dict = {'profile':request.user.get_profile()}
-	if request.user.is_authenticated():
-		return render_to_response('account/profile.html',context_dict,context)
-	else:
-		return HttpResponseRedirect(LoginView)
-			
-
+class DisplayProfileView(DetailView):
+	template_name = "account/profile.html"
+	model = UserProfile
+	
 class RedirectAuthenticatedUserMixin(object):
     def dispatch(self, request, *args, **kwargs):
         # WORKAROUND: https://code.djangoproject.com/ticket/19316

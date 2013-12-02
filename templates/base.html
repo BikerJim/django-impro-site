@@ -1,10 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
   <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>{% block title%}easylaughs: Amsterdam improvised comedy{% endblock title %}</title>
-    {% load staticfiles %}
+    {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
   </head>
   <body>
@@ -24,11 +23,11 @@
 		<ul>
 <div class="lesser">
 	{% if user.is_authenticated %}
-	<li><a href="accounts/profile/">Profile</a></li>
+	<li><a href="{% url 'profile_detail' pk=user.profile.id %}">Profile</a></li>
 	<li><a href="{% url 'account_email' %}">Change E-mail</a></li>
 	<li><a href="{% url 'account_logout' %}">Sign Out</a></li>
 	<li>&nbsp;</li>
-    <li><img width="50px" src="{{ user.socialaccount_set.all.0.get_avatar_url }}"/></li>
+    <li><img width="110px" src="{{ user.socialaccount_set.all.0.get_avatar_url }}"/></li>
     {% if request.user.first_name or request.user.last_name %}
         {{ request.user.first_name }} {{ request.user.last_name }}
     {% else %}

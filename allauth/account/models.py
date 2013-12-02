@@ -24,10 +24,11 @@ from events.storage import OverwriteStorage
 #@python_2_unicode_compatible
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
+    title = models.CharField(max_length="10")
     about_me = models.TextField(max_length="500")
     image_folder = "profiles"
     mugshot = models.ImageField(max_length=1024,storage=OverwriteStorage(), upload_to=image_file_name)
- 
+
     def __unicode__(self):
         return "{}'s profile".format(self.user.username)
  

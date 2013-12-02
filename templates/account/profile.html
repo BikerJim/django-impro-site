@@ -1,7 +1,16 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-<h1>Profile</h1>
+<h1>{{ user.first_name }} {{ user.last_name }}</h1>
+<p>
+	Username: {{ object.user }}<br />
+	email: {{ user.email }}
 
-<p>{{ profile }}</p>
+</p>
+<p>
+
+<img class="mugshot" height="100px" src="/media/{{ object.mugshot }}"/>
+{{ object.about_me }}
+
+</p>
 {% endblock %}

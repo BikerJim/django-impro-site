@@ -1,10 +1,13 @@
 from django.contrib import admin
 
-from .models import EmailConfirmation, EmailAddress
+from .models import EmailConfirmation, EmailAddress, UserProfile
 from . import app_settings
 from ..utils import get_user_model
 
 User = get_user_model()
+
+class UserProfileAdmin(admin.ModelAdmin):
+	list_display = ('user','mugshot', 'about_me')
 
 class EmailAddressAdmin(admin.ModelAdmin):
     list_display = ('email', 'user', 'primary', 'verified')
@@ -24,3 +27,4 @@ class EmailConfirmationAdmin(admin.ModelAdmin):
 
 admin.site.register(EmailConfirmation, EmailConfirmationAdmin)
 admin.site.register(EmailAddress, EmailAddressAdmin)
+admin.site.register(UserProfile, UserProfileAdmin)
