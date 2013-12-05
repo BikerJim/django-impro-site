@@ -1,0 +1,12 @@
+#profile_mugshot {
+	float : left;
+	margin-right : 10px;
+	border-radius: 7px;
+}
+
+#about_me {
+	color : #222;
+	font-size : 1em;
+
+}
+

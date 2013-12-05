@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}
+Edit your Profile
+{% endblock title %}
+{% block content %}
+<h1>{{ user }}</h1>
+{{ user.first_name }} {{ user.last_name }}
+{{ profile }}
+
+{% endblock %}
