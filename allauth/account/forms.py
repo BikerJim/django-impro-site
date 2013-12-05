@@ -27,7 +27,7 @@ User = get_user_model()
 class UserProfileForm(ModelForm):
 	class Meta:
 		model = UserProfile
-		fields = ('about_me','mugshot')
+		fields = ['about_me','mugshot']
 		widgets = {
 			'about_me': forms.Textarea(attrs={'cols':18, 'rows': 7, 'style': "width: 300px;"}),
 		}

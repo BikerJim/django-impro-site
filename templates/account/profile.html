@@ -1,16 +1,23 @@
 {% extends "base.html" %}
 {% load static %}
+{% block header %}
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title%}Your easylaughs profile{% endblock title %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
+{% endblock %}
 {% block content %}
 <h1>{{ user.first_name }} {{ user.last_name }}</h1>
-<p>
-	Username: {{ object.user }}<br />
-	email: {{ user.email }}
 
-</p>
-<p>
 
-<img class="mugshot" height="100px" src="/media/{{ object.mugshot }}"/>
+<img id="profile_mugshot" height="100px" src="/media/{{ object.mugshot }}"/>
+
+<p id="about_me">
 {{ object.about_me }}
-
 </p>
+<p>
+<a class="btn" href="{% url 'update_profile' object.pk %}">edit profile</a>
+</p>
+
 {% endblock %}

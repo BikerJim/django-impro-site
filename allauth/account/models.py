@@ -27,7 +27,10 @@ class UserProfile(models.Model):
     title = models.CharField(max_length="10")
     about_me = models.TextField(max_length="500")
     image_folder = "profiles"
-    mugshot = models.ImageField(max_length=1024,storage=OverwriteStorage(), upload_to=image_file_name)
+    mugshot = models.ImageField(max_length=1024,storage=OverwriteStorage(), upload_to=image_file_name, default = "images/profiles/anon.user.png")
+    
+    def get_absolute_url(self):
+            return u'/accounts/profile/%d' % self.id
 
     def __unicode__(self):
         return "{}'s profile".format(self.user.username)

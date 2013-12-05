@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.utils.http import base36_to_int
 from django.views.generic.base import TemplateResponseMixin, View, TemplateView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, UpdateView
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout as auth_logout
@@ -38,7 +38,12 @@ User = get_user_model()
 class DisplayProfileView(DetailView):
 	template_name = "account/profile.html"
 	model = UserProfile
-	
+
+class ProfileUpdate(UpdateView):
+	model = UserProfile
+	fields = ['mugshot', 'about_me']
+	template_name_suffix = '_update_form'
+
 class RedirectAuthenticatedUserMixin(object):
     def dispatch(self, request, *args, **kwargs):
         # WORKAROUND: https://code.djangoproject.com/ticket/19316
