@@ -18,13 +18,24 @@ from .adapter import get_adapter
 
 from django.contrib.auth.models import User
 #from allauth.account.models import EmailAddress
-from events.models import image_file_name
+#from events.models import image_file_name
 from events.storage import OverwriteStorage
+import os
+def image_file_name(instance, filename):
+	"""
+	This function takes an uploaded filename, takes the extension.
+	Then it rebuilds the entire path from the MEDIA_ROOT up, by
+	renaming the file to the title of the instance that called it, after stripping
+	out the spaces, and putting the extension back on, then
+	puts it into the specified folder 
+	"""
+	ext = filename[-4:]
+	new_filename = os.path.join('images',str(instance.image_folder),str(instance.user).replace(" ","").lower()+ext)
+	return new_filename
 
 #@python_2_unicode_compatible
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
-    title = models.CharField(max_length="10")
     about_me = models.TextField(max_length="500")
     image_folder = "profiles"
     mugshot = models.ImageField(max_length=1024,storage=OverwriteStorage(), upload_to=image_file_name, default = "images/profiles/anon.user.png")

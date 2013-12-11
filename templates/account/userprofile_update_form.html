@@ -5,6 +5,9 @@ Edit your Profile
 {% endblock title %}
 {% block content %}
 
+{% if userprofile.mugshot %}
+   <img height="200px" src="{{ userprofile.mugshot.url }}" title="Mugshot" />
+{% endif %}   
 <form enctype="multipart/form-data" action="" method="post">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Update" />

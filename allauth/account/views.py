@@ -13,6 +13,8 @@ from django.contrib.auth.tokens import default_token_generator
 from django.shortcuts import redirect
 from django.template import RequestContext
 
+from django import forms
+
 from ..exceptions import ImmediateHttpResponse
 from ..utils import get_user_model
 
@@ -22,7 +24,6 @@ from .utils import (get_next_redirect_url, complete_signup,
 from .forms import AddEmailForm, ChangePasswordForm
 from .forms import LoginForm, ResetPasswordKeyForm
 from .forms import ResetPasswordForm, SetPasswordForm, SignupForm
-from .forms import UserProfileForm
 from .utils import sync_user_email_addresses
 from .models import EmailAddress, EmailConfirmation
 
@@ -40,10 +41,10 @@ class DisplayProfileView(DetailView):
 	model = UserProfile
 
 class ProfileUpdate(UpdateView):
-	model = UserProfile
-	fields = ['mugshot', 'about_me']
-	template_name_suffix = '_update_form'
-
+    model = UserProfile
+    fields = ['mugshot', 'about_me']
+    template_name_suffix = '_update_form'
+    
 class RedirectAuthenticatedUserMixin(object):
     def dispatch(self, request, *args, **kwargs):
         # WORKAROUND: https://code.djangoproject.com/ticket/19316

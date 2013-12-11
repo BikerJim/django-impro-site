@@ -24,14 +24,6 @@ from .adapter import get_adapter
 
 User = get_user_model()
 
-class UserProfileForm(ModelForm):
-	class Meta:
-		model = UserProfile
-		fields = ['about_me','mugshot']
-		widgets = {
-			'about_me': forms.Textarea(attrs={'cols':18, 'rows': 7, 'style': "width: 300px;"}),
-		}
-
 class PasswordField(forms.CharField):
 
     def __init__(self, *args, **kwargs):
