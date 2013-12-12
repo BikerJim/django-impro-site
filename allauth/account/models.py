@@ -36,7 +36,7 @@ def image_file_name(instance, filename):
 #@python_2_unicode_compatible
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
-    about_me = models.TextField(max_length="500")
+    about_me = models.TextField(max_length="200")
     image_folder = "profiles"
     mugshot = models.ImageField(max_length=1024,storage=OverwriteStorage(), upload_to=image_file_name, default = "images/profiles/anon.user.png")
     
@@ -44,7 +44,10 @@ class UserProfile(models.Model):
             return u'/accounts/profile/%d' % self.id
 
     def __unicode__(self):
-        return "{}'s profile".format(self.user.username)
+		if self.user.first_name:
+			return "{}'s profile".format(self.user.first_name+" "+self.user.last_name)
+		else:
+			return "{}'s profile".format(self.user.username)
  
     class Meta:
         db_table = 'user_profile'

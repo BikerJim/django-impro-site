@@ -1,3 +1,7 @@
+.top {
+	vertical-align: top;
+}
+
 #profile_mugshot {
 	float : left;
 	margin-right : 10px;

@@ -8,6 +8,11 @@ body {
 a {
     text-decoration: none;
 }
+
+h1 {
+	margin: 0,0,0,0;
+}
+
 input[type='password'],
 input[type='text'],
 input[type='email'] {

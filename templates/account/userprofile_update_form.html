@@ -1,15 +1,37 @@
 {% extends "base.html" %}
-
-{% block title %}
-Edit your Profile
-{% endblock title %}
-{% block content %}
-
-{% if userprofile.mugshot %}
-   <img height="200px" src="{{ userprofile.mugshot.url }}" title="Mugshot" />
-{% endif %}   
+{% load static %}
+{% block header %}
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title%}Edit your Profile{% endblock title %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
+{% endblock %}
+{% block content %} 
 <form enctype="multipart/form-data" action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Update" />
+    
+    
+    
+
+<table>
+	<thead>
+		<tr>
+			<td colspan="2"><h1>{{ object }}</h1></td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td width="8%"><img id="profile_mugshot" height="100px" src="{{ userprofile.mugshot.url }}"/>{{ form.mugshot }}</td>
+			<td id="about_me">{{ form.about_me }}</td>
+		</tr>
+		<tr height="60px">
+			<td align="right" colspan="2">
+				<input type="submit" value="Update Profile" />
+			</td>
+		</tr>
+	</tbody>
+</table>
+
 </form>
+
 {% endblock content %}

@@ -36,7 +36,7 @@ from allauth.account.models import UserProfile
 
 User = get_user_model()
 
-class DisplayProfileView(DetailView):
+class DisplayProfile(DetailView):
 	template_name = "account/profile.html"
 	model = UserProfile
 
@@ -44,6 +44,12 @@ class ProfileUpdate(UpdateView):
     model = UserProfile
     fields = ['mugshot', 'about_me']
     template_name_suffix = '_update_form'
+    class Meta:
+		widgets = {'mugshot' : forms.FileInput(),
+		}
+#    mugshot = forms.ImageField(label=_('Mugshot'),required=False, error_messages = {
+#		'invalid':_("Image files only")
+#		}, widget=forms.FileInput)
     
 class RedirectAuthenticatedUserMixin(object):
     def dispatch(self, request, *args, **kwargs):
