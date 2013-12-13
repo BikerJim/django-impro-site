@@ -12,7 +12,41 @@ a {
 h1 {
 	margin: 0,0,0,0;
 }
+#sidebar
+{
+box-shadow: 2px 2px 8px rgba(0,0,0,.7);
+width: 150px;
+vertical-align:top;
+background:#e00;
+float:left;
+padding-right:30px;
+padding-top:50px;
+padding-bottom:250px;
+}
 
+#sidebar ul
+{
+text-decoration:none;
+font-family:"Arial", sans-serif;
+text-align:left;
+color:white;
+font-size:1.2em;
+font-weight:bold;
+letter-spacing:0.02em;
+list-style-type:none;
+padding-bottom:20px;
+}
+
+#sidebar li a:link,a:visited
+{
+color:white;
+text-decoration:none;
+}
+
+#sidebar li a:hover
+{
+color:#500;
+}
 input[type='password'],
 input[type='text'],
 input[type='email'] {
@@ -78,6 +112,7 @@ input[type='email'] {
     font-size: 10px;
 }
 .forgot {
+	color: red;
     float: right;
     margin-top: 2px;
 }
@@ -89,7 +124,8 @@ input[type='email'] {
     font-size: 10px;
 }
 .footnote a {
-	color: #000;
+	color: black;
+	font-weight: bold;
 }
 .banner-img-logged-out,
 .banner-img {
@@ -134,41 +170,7 @@ ul.errorlist li {
     color: red;
     font-size: 12px;
 }
-#sidebar
-{
-box-shadow: 2px 2px 8px rgba(0,0,0,.7);
-width: 150px;
-vertical-align:top;
-background:#e00;
-float:left;
-padding-right:30px;
-padding-top:50px;
-padding-bottom:250px;
-}
 
-#sidebar ul
-{
-text-decoration:none;
-font-family:"Arial", sans-serif;
-text-align:left;
-color:white;
-font-size:1.2em;
-font-weight:bold;
-letter-spacing:0.02em;
-list-style-type:none;
-padding-bottom:20px;
-}
-
-#sidebar li a:link,a:visited
-{
-color:white;
-text-decoration:none;
-}
-
-#sidebar li a:hover
-{
-color:#500;
-}
 
 .lesser
 {
