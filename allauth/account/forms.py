@@ -24,6 +24,14 @@ from .adapter import get_adapter
 
 User = get_user_model()
 
+
+class UserProfileEditForm(forms.ModelForm):
+	mugshot = forms.ImageField(required=False, widget=forms.FileInput)
+	
+	class Meta:
+		fields = ['mugshot','about_me']
+		model = UserProfile
+
 class PasswordField(forms.CharField):
 
     def __init__(self, *args, **kwargs):

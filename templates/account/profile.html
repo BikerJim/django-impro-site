@@ -14,7 +14,7 @@
 			{{ object.about_me|striptags|urlize|linebreaks }}
 </p>
 <p>
-<a class="btn" href="{% url 'update_profile' object.pk %}">edit profile</a>
+<a class="btn" href="{% url 'update_profile' %}">edit profile</a>
 </p>
 
 {% endblock %}

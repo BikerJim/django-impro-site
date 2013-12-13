@@ -3,8 +3,9 @@ from django.contrib.sites.models import Site
 from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.utils.http import base36_to_int
+from django.utils.decorators import method_decorator
 from django.views.generic.base import TemplateResponseMixin, View, TemplateView
-from django.views.generic.detail import DetailView
+from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.views.generic.edit import FormView, UpdateView
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -24,6 +25,7 @@ from .utils import (get_next_redirect_url, complete_signup,
 from .forms import AddEmailForm, ChangePasswordForm
 from .forms import LoginForm, ResetPasswordKeyForm
 from .forms import ResetPasswordForm, SetPasswordForm, SignupForm
+from .forms import UserProfileEditForm
 from .utils import sync_user_email_addresses
 from .models import EmailAddress, EmailConfirmation
 
@@ -32,24 +34,43 @@ from . import app_settings
 
 from .adapter import get_adapter
 
-from allauth.account.models import UserProfile
+from .models import UserProfile
 
 User = get_user_model()
 
-class DisplayProfile(DetailView):
-	template_name = "account/profile.html"
-	model = UserProfile
+class DisplayProfile(DetailView, SingleObjectMixin):
+    template_name = "account/profile.html"
+    model = UserProfile
+    def get_object(self):
+		"""
+		Returns the current user's profile
+		"""
+		try:
+			return self.request.user.get_profile()
+		except UserProfile.DoesNotExist:
+			raise NotImplemented("This user doesn't have a profile")
+    @method_decorator(login_required)
+    def dispatch(self,request, *args, **kwargs):
+        return super(DisplayProfile, self).dispatch(request, *args, **kwargs)
+    
 
 class ProfileUpdate(UpdateView):
+    form_class = UserProfileEditForm
     model = UserProfile
-    fields = ['mugshot', 'about_me']
     template_name_suffix = '_update_form'
-    class Meta:
-		widgets = {'mugshot' : forms.FileInput(),
-		}
-#    mugshot = forms.ImageField(label=_('Mugshot'),required=False, error_messages = {
-#		'invalid':_("Image files only")
-#		}, widget=forms.FileInput)
+    success_url = '/accounts/profile/'
+    
+    def get_object(self):
+		"""
+		Returns the current user's profile
+		"""
+		try:
+			return self.request.user.get_profile()
+		except UserProfile.DoesNotExist:
+			raise NotImplemented("This user doesn't have a profile")
+    @method_decorator(login_required)
+    def dispatch(self,request, *args, **kwargs):
+        return super(ProfileUpdate, self).dispatch(request, *args, **kwargs)
     
 class RedirectAuthenticatedUserMixin(object):
     def dispatch(self, request, *args, **kwargs):
