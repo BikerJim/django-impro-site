@@ -61,16 +61,6 @@ class UserProfile(models.Model):
  
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
 
-#    user = models.OneToOneField(allauth_app_settings.USER_MODEL, verbose_name=_('user'), related_name='profiles')
-#    first_name = models.CharField(_("First Name"), max_length=150)
-#    last_name = models.CharField(_("Last Name"), max_length=150)
-#    about_me = models.CharField(_("About you"), max_length=500)
-#
-#    def __str__(self):
-#        return u"%s (%s)" % (self.first_name, self.about_me)
-
-#User.profile = property(lambda u: Profile.objects.get_or_create(user=u)[0])
-
 @python_2_unicode_compatible
 class EmailAddress(models.Model):
 

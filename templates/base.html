@@ -27,7 +27,6 @@
 <div class="lesser">
 	{% if user.is_authenticated %}
 	<li><a href="{% url 'profile_detail' %}">My profile</a></li>
-	<li><a href="{% url 'account_email' %}">Change, add, or verify email</a></li>
 	<li><a href="{% url 'account_logout' %}">Sign Out</a></li>
 	<li>&nbsp;</li>
     <li><img width="110px" src="{{ user.socialaccount_set.all.0.get_avatar_url }}"/></li>
