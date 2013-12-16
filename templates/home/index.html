@@ -5,8 +5,24 @@
 {% block content %} 
 
 {% if user.is_authenticated %}
-Hello {{ user.first_name }}
+<h2>Hello {{ user.first_name }}</h2>
+
+<p>
+While this is, or at least will be, the easylaughs main entry page after login. 
+Perhaps, and who knows at this stage, it will also be database driven in 
+true CMS stylee. Or a flat HTML Page.
+</p>
+<p>
+Anyway, whatever happens, this is what you see when you're<br/><strong>logged in</strong>.
+</p>
 {% else %}
-Hiya.
+<h2>Welcome</h2>
+<p>
+Hiya, this is, or at least will be, the easylaughs main entry page. Perhaps, and who knows at this stage, it will also
+be database driven in true CMS stylee. Or a flat HTML Page.
+</p>
+<p>
+Anyway, whatever happens, this is what you see when you're<br/><strong> not logged in</strong>.
+</p>
 {% endif %}
 {% endblock %}

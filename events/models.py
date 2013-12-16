@@ -40,10 +40,21 @@ class Format(models.Model):
 	"""
 	image_folder = "formats"
 	title = models.CharField(max_length=15)
-	description = models.TextField(max_length=250)
+	short_desc = models.TextField(max_length=150)
+	long_desc = models.TextField(max_length=500, blank=True)
 	icon = models.ImageField(max_length=1024,storage=OverwriteStorage(), upload_to=image_file_name)
 	min_actors = models.PositiveIntegerField()
 	max_actors = models.PositiveIntegerField()
 	
 	def __unicode__(self):
 		return self.title
+
+class Show(models.Model):
+	"""
+	A model to hold the shows, taking a format on an event_date
+	"""
+	show = models.OneToOneField(Format, related_name='showtitle')
+	date = models.OneToOneField(Event_date, related_name='showdate')
+	
+	def __unicode__(self):
+		return self.show.title

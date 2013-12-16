@@ -27,16 +27,18 @@
 <div class="lesser">
 	{% if user.is_authenticated %}
 	<li><a href="{% url 'profile_detail' %}">My profile</a></li>
-	<li><a href="{% url 'account_logout' %}">Sign Out</a></li>
-	<li>&nbsp;</li>
-    <li><img width="110px" src="{{ user.socialaccount_set.all.0.get_avatar_url }}"/></li>
+	<li><img width="110px" src="{{ user.socialaccount_set.all.0.get_avatar_url }}"/></li>
+	    <li>
     {% if request.user.first_name or request.user.last_name %}
         {{ request.user.first_name }} {{ request.user.last_name }}
     {% else %}
         {{ request.user.username }}
     {% endif %}
 		<br/>
-		{% if request.user.profile.account_verified %} (verified) {% else %} (unverified) {% endif %}
+		{% if request.user.profile.account_verified %} (verified) {% else %} (<a href="{% url 'account_email' %}">unverified</a>) {% endif %}
+	</li>
+	<li>&nbsp;</li>
+	<li><a href="{% url 'account_logout' %}">Sign Out</a></li>
 	{% else %}
 	<li><a href="{% url 'account_login' %}">Sign In</a></li>
 	<li><a href="{% url 'account_signup' %}">Sign Up</a></li>

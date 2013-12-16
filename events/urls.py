@@ -1,6 +1,8 @@
 from django.conf.urls import patterns,url
 
-from events import views
+from .views import index, ShowListView
 
 urlpatterns = patterns('',
-	url(r'^$',views.index,name='index'))
+	url(r'^$',index,name='index'),
+	url(r'^shows/$',ShowListView.as_view(),name='show_list'),
+	)

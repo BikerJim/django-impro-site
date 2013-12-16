@@ -17,6 +17,10 @@
 	</thead>
 	<tbody>
 		<tr>
+			<td>First name: {{ form.first_name }}</td>
+			<td>Last name: {{ form.last_name }}</td>
+		</tr>
+		<tr>
 			<td width="8%"><img id="profile_mugshot" height="100px" src="{{ userprofile.mugshot.url }}"/>{{ form.mugshot }}</td>
 			<td id="about_me">{{ form.about_me }}</td>
 		</tr>

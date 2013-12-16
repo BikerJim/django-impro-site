@@ -27,10 +27,32 @@ User = get_user_model()
 
 class UserProfileEditForm(ModelForm):
     mugshot = forms.ImageField(required=False, widget=forms.FileInput)
+    first_name = forms.CharField(max_length=30)
+    last_name = forms.CharField(max_length=30)
+
+    def __init__(self, *args, **kwargs):
+        super(UserProfileEditForm, self).__init__(*args, **kwargs)
+        self.fields['first_name'].initial = self.instance.user.first_name
+        self.fields['last_name'].initial = self.instance.user.last_name
+
+        self.fields.keyOrder = [
+            'first_name',
+            'last_name',
+            'about_me',
+            'mugshot',
+            ]
+
+    def save(self, *args, **kwargs):
+        super(UserProfileEditForm, self).save(*args, **kwargs)
+        user = self.instance.user
+        user.first_name = self.cleaned_data.get('first_name')
+        user.last_name = self.cleaned_data.get('last_name')
+        user.save()
+        return user
 
     class Meta:
         model = UserProfile
-        fields = ('mugshot','about_me')
+        fields = ('mugshot','about_me','first_name','last_name')
 
 class PasswordField(forms.CharField):
 
