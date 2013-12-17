@@ -7,9 +7,6 @@ from django.views.generic.list import ListView
 
 from .models import Show
 
-def index(request):
-	return HttpResponse("Yo fuckah")
-	
 class ShowListView(ListView):
 	model = Show
 	def get_context_data(self, **kwargs):

@@ -1,4 +1,5 @@
 import datetime
+from PIL import Image
 
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -20,6 +21,7 @@ from django.contrib.auth.models import User
 #from allauth.account.models import EmailAddress
 #from events.models import image_file_name
 from events.storage import OverwriteStorage
+
 import os
 def image_file_name(instance, filename):
 	"""
@@ -58,6 +60,21 @@ class UserProfile(models.Model):
             if len(result):
                 return result[0].verified
         return False
+    def save(self):
+        if not self.id and not self.mugshot:
+            return
+        super(UserProfile, self).save()
+        image = Image.open(self.mugshot)
+        (width,height) = image.size
+        
+        if (150 / width < 150 / height):
+            factor = 150.00/height
+        else:
+            factor = 150.00/width
+		
+        size= (int(width*factor),int(height*factor))
+        image = image.resize(size, Image.ANTIALIAS)
+        image.save(self.mugshot.path)
  
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
 

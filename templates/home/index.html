@@ -25,4 +25,11 @@ be database driven in true CMS stylee. Or a flat HTML Page.
 Anyway, whatever happens, this is what you see when you're<br/><strong> not logged in</strong>.
 </p>
 {% endif %}
+
+<h3>Next Show!</h3>
+<p>{{ greeting }}</p>
+{% for show in index %}
+{{ show.date }} {{ show.show.title }}<br/>
+{% endfor %}
+
 {% endblock %}

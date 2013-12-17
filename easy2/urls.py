@@ -3,12 +3,12 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from . import settings
 
-from home.views import homepage
+from home.views import Index
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', homepage),
+    url(r'^$', Index.as_view(), name='index'),
     url(r'^admin/', include(admin.site.urls)),
     (r'^accounts/logout/$','django.contrib.auth.views.logout', {'next_page': '/'}),
     url(r'^accounts/',include('allauth.urls')),
