@@ -8,6 +8,8 @@ from .models import Show
 from datetime import date, time, datetime
 from .forms import AddShowForm, EditShowForm
 
+from django.contrib.auth.decorators import permission_required
+
 class ShowListView(ListView):
 	model = Show
 	try:
