@@ -15,10 +15,10 @@ class Event_date(models.Model):
 		(4, "Corporate"),
 		(5, "Promotion"))
 	event_type = models.IntegerField(choices=EVENT_TYPES)
-	date = models.DateField()
+	date = models.DateField() 
 	
 	def __unicode__(self):
-		return str(self.date.strftime("%B %d, %Y"))
+		return str(self.date.strftime("%B %d, %Y"))+", "+str(self.EVENT_TYPES[self.event_type-1][1])
 
 def image_file_name(instance, filename):
 	"""
@@ -39,9 +39,8 @@ class Format(models.Model):
 	max actors. 
 	"""
 	image_folder = "formats"
-	title = models.CharField(max_length=15)
+	title = models.CharField(max_length=50)
 	short_desc = models.TextField(max_length=150)
-	long_desc = models.TextField(max_length=500, blank=True)
 	icon = models.ImageField(max_length=1024,storage=OverwriteStorage(), upload_to=image_file_name)
 	min_actors = models.PositiveIntegerField()
 	max_actors = models.PositiveIntegerField()
@@ -53,8 +52,9 @@ class Show(models.Model):
 	"""
 	A model to hold the shows, taking a format on an event_date
 	"""
-	show = models.OneToOneField(Format, related_name='showtitle')
+	show = models.ForeignKey(Format, related_name='showtitle')
 	date = models.OneToOneField(Event_date, related_name='showdate')
-	
+	long_desc = models.TextField(max_length=500, blank=True)
+			
 	def __unicode__(self):
 		return self.show.title

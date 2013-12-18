@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
-
-{% block title %}This is my index page{% endblock %}
-
+{% load static %}
+{% block header %}
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title %}This is my index page{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
+{% endblock %}
 {% block content %} 
 
 {% if user.is_authenticated %}
@@ -25,11 +30,20 @@ be database driven in true CMS stylee. Or a flat HTML Page.
 Anyway, whatever happens, this is what you see when you're<br/><strong> not logged in</strong>.
 </p>
 {% endif %}
-
+{% if early or late %}
 <h3>Next Show!</h3>
-<p>{{ greeting }}</p>
-{% for show in index %}
-{{ show.date }} {{ show.show.title }}<br/>
-{% endfor %}
-
+{% endif %}
+{% if early %}
+<img id="profile_mugshot" width="60px" src="/media/{{ early.show.icon }}"/>
+<h3 class="top">{{ early.show }}</h3>
+<p><em>{{ early.date }}, 8pm</em></p>
+<p>&nbsp;</p>
+{% endif %}
+{% if late %}
+<img id="profile_mugshot" width="60px" src="/media/{{ late.show.icon }}"/>
+<h2 class="top">{{ late.show }}</h2>
+<p><em>{{ late.date }}, 9pm</em></p>
+{% else %}
+<p>&nbsp;</p>
+{% endif %}
 {% endblock %}

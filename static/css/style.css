@@ -47,6 +47,15 @@ text-decoration:none;
 {
 color:#500;
 }
+
+#bottom-border td, #bottom-border th {
+	border-bottom: 1px sold black;
+}
+
+#show_list a {
+	color: red;
+}
+
 input[type='password'],
 input[type='text'],
 input[type='email'] {
@@ -197,6 +206,7 @@ color:black;
 padding-left:20px;
 margin-left:180px;
 }
+
 a.small_link {
 	font-size:0.6em;
 	color:black;
