@@ -20,7 +20,10 @@ class Index(ListView):
 	try:
 		next_late_show = Show.objects.all().filter(date__date__gte=now).filter(date__event_type=2)[:1].get()
 	except Show.DoesNotExist:
-		next_late_show = {}		
+		next_late_show = {}
+		
+	if next_early_show.date > next_late_show.date:
+		next_early_show = {}
 	
 	def get_context_data(self,**kwargs):
 		context = super(Index, self).get_context_data(**kwargs)
