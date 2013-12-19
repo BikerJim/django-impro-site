@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title%}Shows{% endblock title %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
+{% endblock %}
+{% block content %} 
+<div id="show_list">
+<h1>Coming shows 
+{% if 'events.add_show' in perms %}
+<a href="{% url 'show_create' %}">(Add show)</a>
+{% endif %}
+</h1>
+
+<table>
+	{% for show in show_list %}
+	<tr id="bottom-border">
+		<td><img id="profile_mugshot" width="80px" src="/media/{{ show.show.icon }}"/>
+		{% if 'events.change_show' in perms %}<p><em><a href="{% url 'show_edit' pk=show.id %}">Edit Show</a></em></p>{% endif %}
+		{% if 'events.delete_show' in perms %}<p><em><a href="{% url 'show_delete' pk=show.id %}">Cancel Show</a></em></p>{% endif %}</td>
+		<td>
+			<h2>{{ show.show.title }}</h2>
+			<p><em>{{ show.date }}, {% if show.date.event_type == 1 %}8pm{% else %}9pm{% endif %}</em></p>
+			<p>{{ show.show.short_desc }}</p>
+			<p>{{ show.long_desc }}</p>
+		</td>
+	</tr>
+	{% empty %}
+	<tr>
+		<td>&nbsp;</td>
+		<td>There aint none.</td>
+	</tr>
+	{% endfor %}
+</table>
+</div>
+{% endblock content %}
