@@ -13,24 +13,12 @@
 <h2>Hello {{ user.first_name }}</h2>
 
 <p>
-While this is, or at least will be, the easylaughs main entry page after login. 
-Perhaps, and who knows at this stage, it will also be database driven in 
-true CMS stylee. Or a flat HTML Page.
-</p>
-<p>
-Anyway, whatever happens, this is what you see when you're<br/><strong>logged in</strong>.
-</p>
-{% else %}
-<h2>Welcome</h2>
-<p>
-Hiya, this is, or at least will be, the easylaughs main entry page. Perhaps, and who knows at this stage, it will also
-be database driven in true CMS stylee. Or a flat HTML Page.
-</p>
-<p>
-Anyway, whatever happens, this is what you see when you're<br/><strong> not logged in</strong>.
+We're looking forward to seeing you at a show or a workshop soon. Look at what's coming up!
 </p>
 {% endif %}
+
 {% if early or late %}
+<div id="next_show">
 <h3>Next Show!</h3>
 {% endif %}
 {% if early %}
@@ -43,7 +31,16 @@ Anyway, whatever happens, this is what you see when you're<br/><strong> not logg
 <img id="profile_mugshot" width="60px" src="/media/{{ late.show.icon }}"/>
 <h2 class="top">{{ late.show }}</h2>
 <p><em>{{ late.date }}, 9pm</em></p>
-{% else %}
-<p>&nbsp;</p>
+</div>
 {% endif %}
+
+{% if workshop %}
+<div id="next_workshop">
+<h3>Next Workshop!</h3>
+<h3>{{ workshop.title }}</h3>
+<p><em>{{ workshop.date }} with {{workshop.actor.first_name}}</em></p>
+<p>{{ workshop.desc }}</p>
+</div>
+{% endif %}
+
 {% endblock %}

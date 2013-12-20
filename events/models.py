@@ -1,6 +1,7 @@
 from django.db import models
 import os
 from events.storage import OverwriteStorage
+from django.contrib.auth.models import User
 
 class Event_date(models.Model):
 	"""
@@ -9,8 +10,8 @@ class Event_date(models.Model):
 	a drop down for the other models
 	"""
 	EVENT_TYPES = (
-		(1, "Early show"),
-		(2, "Late show"),
+		(1, "8 o'clock show"),
+		(2, "9 o'clock show"),
 		(3, "Workshop"),
 		(4, "Corporate"),
 		(5, "Promotion"))
@@ -58,3 +59,16 @@ class Show(models.Model):
 			
 	def __unicode__(self):
 		return self.show.title
+		
+class Workshop(models.Model):
+	"""
+	A model to hold the workshops, taking a title, description
+	and an event_date
+	"""
+	title = models.CharField(max_length=50)
+	date = models.OneToOneField(Event_date, related_name='workshopdate')
+	desc = models.TextField(max_length=500, blank=True)
+	actor = models.ForeignKey(User, limit_choices_to={'groups__name':'actor'})
+			
+	def __unicode__(self):
+		return self.title

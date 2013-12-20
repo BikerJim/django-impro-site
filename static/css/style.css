@@ -48,12 +48,32 @@ text-decoration:none;
 color:#500;
 }
 
-#bottom-border td, #bottom-border th {
-	border-bottom: 1px sold black;
+.info {
+	border: 1px solid red;
+	border-radius:8px;
+	padding: 0px 10px 10px 20px;
+	margin: 0px 0px 10px 0px;
 }
 
-#show_list a {
-	color: red;
+.bottom-border {
+	border-bottom: 1px solid grey;
+}
+
+#show_list li {
+	list-style-type:none;
+}
+
+#next_show {
+	border: 1px solid black;
+	border-radius:8px;
+	padding: 0px 0px 10px 20px;
+	margin: 0px 0px 10px 0px;
+}
+
+#next_workshop {
+	border: 1px solid black;
+	border-radius:8px;
+	padding: 0px 0px 10px 20px;
 }
 
 input[type='password'],
