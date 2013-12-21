@@ -13,7 +13,7 @@
 <a class='btn' href="{% url 'show_create' %}">Add show</a>
 {% endif %}
 
-<h1>Coming shows</h1>
+
 <div class='info'>
 <p>easylaughs improvised comedy shows are on every Friday night at the CREA Cafe.</p>
 <p>Prices:</p>
@@ -23,6 +23,7 @@
 	<li>&euro;4 for students for both shows.</li>
 </ul>
 </div>
+<h1>Coming shows</h1>
 {% regroup show_list by date.date as grouped_show_list %}
 <ul id='show_list'>
 	{% for show in grouped_show_list %}

@@ -35,10 +35,9 @@ def image_file_name(instance, filename):
 	new_filename = os.path.join('images',str(instance.image_folder),str(instance.user).replace(" ","").lower()+ext)
 	return new_filename
 
-#@python_2_unicode_compatible
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
-    about_me = models.TextField(max_length="200")
+    about_me = models.TextField(max_length="500", null=False)
     image_folder = "profiles"
     mugshot = models.ImageField(max_length=1024,storage=OverwriteStorage(), upload_to=image_file_name, default = "images/profiles/anon.user.png")
     
@@ -46,13 +45,12 @@ class UserProfile(models.Model):
             return u'/accounts/profile/%d' % self.id
 
     def __unicode__(self):
-		if self.user.first_name:
-			return "{}'s profile".format(self.user.first_name+" "+self.user.last_name)
+		if self.user.first_name and self.user.last_name:
+			return self.user.first_name+" "+self.user.last_name
+		elif self.user.first_name and not self.user.last_name:
+			return self.user.first_name
 		else:
-			return "{}'s profile".format(self.user.username)
- 
-    class Meta:
-        db_table = 'user_profile'
+			return self.user.username
  
     def account_verified(self):
         if self.user.is_authenticated:
@@ -60,10 +58,11 @@ class UserProfile(models.Model):
             if len(result):
                 return result[0].verified
         return False
-    def save(self):
+        
+    def save(self, *args, **kwargs):
         if not self.id and not self.mugshot:
             return
-        super(UserProfile, self).save()
+        super(UserProfile, self).save(*args, **kwargs)
         image = Image.open(self.mugshot)
         (width,height) = image.size
         
@@ -75,6 +74,9 @@ class UserProfile(models.Model):
         size= (int(width*factor),int(height*factor))
         image = image.resize(size, Image.ANTIALIAS)
         image.save(self.mugshot.path)
+ 
+    class Meta:
+        db_table = 'user_profile'
  
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
 

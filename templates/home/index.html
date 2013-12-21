@@ -10,7 +10,13 @@
 {% block content %} 
 
 {% if user.is_authenticated %}
-<h2>Hello {{ user.first_name }}</h2>
+<h2>Hello 
+{% if user.first_name %}
+{{ user.first_name }}
+{% else %}
+{{ user }}
+{% endif %}
+ </h2>
 
 <p>
 We're looking forward to seeing you at a show or a workshop soon. Look at what's coming up!

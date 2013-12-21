@@ -9,9 +9,13 @@
 {% endblock %}
 {% block content %}
 <p>
-<img id="profile_mugshot" width="100px" src="/media/{{ object.mugshot }}"/>
-			<h1 class="top">{{ object}}</h1>
-			{{ object.about_me|striptags|urlize|linebreaks }}
+<img id="profile_mugshot" width="100px" src="/media/{{ user.profile.mugshot }}"/>
+
+</p>
+
+			<h1 class="top">{{ user.profile }}</h1>
+<p>
+			{{ user.profile.about_me|striptags|urlize|linebreaks }}
 </p>
 <p>
 <a class="btn" href="{% url 'update_profile' %}">edit profile</a> <a class="btn" href="{% url 'account_email' %}">Change, add, or verify email</a>

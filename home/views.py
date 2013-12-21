@@ -5,6 +5,8 @@ from django.views.generic.list import ListView
 
 from events.models import Show, Workshop
 
+from allauth.account.models import UserProfile
+
 from datetime import date, time, datetime
 
 
@@ -36,4 +38,9 @@ class Index(ListView):
 		context['late'] = self.next_late_show
 		context['workshop'] = self.next_workshop
 		return context
+	
+class AboutUs(ListView):
+	model = UserProfile
+	template_name = 'home/about_us.html'
+	queryset = UserProfile.objects.filter(user__groups=2)
 	

@@ -46,7 +46,7 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-AUTH_PROFILE_MODULE = 'account.UserProfile'
+#AUTH_PROFILE_MODULE = 'account.UserProfile'
 
 AUTHENTICATION_BACKENDS = (
 #    # Needed to login by username in Django Admin

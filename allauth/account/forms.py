@@ -28,7 +28,8 @@ User = get_user_model()
 class UserProfileEditForm(ModelForm):
     mugshot = forms.ImageField(required=False, widget=forms.FileInput)
     first_name = forms.CharField(max_length=30)
-    last_name = forms.CharField(max_length=30)
+    last_name = forms.CharField(required=False,max_length=30)
+    about_me = forms.CharField(required=False,max_length=500, widget = forms.Textarea)
 
     def __init__(self, *args, **kwargs):
         super(UserProfileEditForm, self).__init__(*args, **kwargs)

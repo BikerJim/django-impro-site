@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
 	<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
 {% endblock %}
-{% block content %} 
+{% block content %}
 <form enctype="multipart/form-data" action="" method="post">{% csrf_token %}
 <table>
 	<thead>
@@ -22,7 +22,7 @@
 		</tr>
 		<tr>
 			<td width="8%"><img id="profile_mugshot" height="100px" src="{{ userprofile.mugshot.url }}"/>{{ form.mugshot }}</td>
-			<td id="about_me">{{ form.about_me }}</td>
+			<td id="about_me">A bit about me: {{ form.about_me }}</td>
 		</tr>
 		<tr height="60px">
 			<td align="right" colspan="2">
@@ -31,7 +31,17 @@
 		</tr>
 	</tbody>
 </table>
-
 </form>
+{% if form.errors %}
+<h3>Oops:</h3>
+{% for field in form.visible_fields %}
+
+
+    {% for err in field.errors %}
+        <p>{{ field.label_tag }} : {{ err }}</p>
+    {% endfor %}
+
+{% endfor %}
+{% endif %}
 
 {% endblock content %}

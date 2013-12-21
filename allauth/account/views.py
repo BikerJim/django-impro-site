@@ -33,22 +33,17 @@ from . import signals
 from . import app_settings
 
 from .adapter import get_adapter
-
 from .models import UserProfile
 
 User = get_user_model()
 
-class DisplayProfile(DetailView, SingleObjectMixin):
+class DisplayProfile(DetailView):
     template_name = "account/profile.html"
     model = UserProfile
+    
     def get_object(self):
-		"""
-		Returns the current user's profile
-		"""
-		try:
-			return self.request.user.get_profile()
-		except UserProfile.DoesNotExist:
-			raise NotImplemented("This user doesn't have a profile")
+        return UserProfile.objects.get_or_create(user=self.request.user)
+			
     @method_decorator(login_required)
     def dispatch(self,request, *args, **kwargs):
         return super(DisplayProfile, self).dispatch(request, *args, **kwargs)
@@ -59,17 +54,12 @@ class ProfileUpdate(UpdateView):
     model = UserProfile
     template_name_suffix = '_update_form'
     success_url = '/accounts/profile/'
-    
+
     def get_object(self):
-		"""
-		Returns the current user's profile
-		"""
-		try:
-			return self.request.user.get_profile()
-		except UserProfile.DoesNotExist:
-			raise NotImplemented("This user doesn't have a profile")
+        return UserProfile.objects.get(user=self.request.user)
+
     @method_decorator(login_required)
-    def dispatch(self,request, *args, **kwargs):
+    def dispatch(self, request, *args, **kwargs):
         return super(ProfileUpdate, self).dispatch(request, *args, **kwargs)
     
 class RedirectAuthenticatedUserMixin(object):

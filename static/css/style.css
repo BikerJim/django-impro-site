@@ -51,7 +51,7 @@ color:#500;
 .info {
 	border: 1px solid red;
 	border-radius:8px;
-	padding: 0px 10px 10px 20px;
+	padding: 0px 10px 0px 20px;
 	margin: 0px 0px 10px 0px;
 }
 
@@ -62,7 +62,9 @@ color:#500;
 #show_list li {
 	list-style-type:none;
 }
-
+#show_list a {
+	color:red;
+}
 #next_show {
 	border: 1px solid black;
 	border-radius:8px;
