@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title%}Your easylaughs profile{% endblock title %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
+{% endblock %}
+{% block content %}
+{% for actor in object_list %}
+<div class="bottom-border">
+<p>
+<img id="profile_mugshot" width="100px" src="/media/{{ actor.mugshot }}"/>
+
+</p>
+
+			<h1 class="top">{{ actor }}</h1>
+<p>
+			{{ actor.about_me|striptags|urlize|linebreaks }}
+</p>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title%}Workshop{% endblock title %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
+{% endblock %}
+{% block content %} 
+<div id="show_list">
+<h1>Coming workshops
+{% if perms.events.add_workshop %}
+<a href="{% url 'workshop_create' %}">(Add workshop)</a>
+{% endif %}
+</h1>
+<ul>
+
+<li>{{ perms.events }}</li>
+
+</ul>
+<div class='info'>
+<h2>Drop-in Improv Workshops</h2>
+<ul>
+	<li>When: every Sunday afternoon 12:00-14:00</li>
+	<li>Cost: €10 (pay at the workshop, no need to reserve) or see below for strippenkaart prices.</li>
+	<li>Where: the CREA (ask at reception which room if not shown below).</li>
+</ul>
+</div>
+<p>
+If you have always wanted to try improv, if you have taken a class and 
+would like to continue growing your skills or if you simply want to enjoy 
+a couple of hours of fun and laughter with like-minded people, easylaughs
+ offers drop-in improv workshops in English every Sunday afternoon where
+  everyone is welcome and no experience is required.
+</p>
+<p>
+Each workshop is run by a different member of easylaughs 
+(or occasionally a guest) who gives it a new theme from learning the basics
+ and playing games to getting into a particular aspect of improv performance.
+</p>
+<p>
+See other pages for our courses and special workshops.
+</p>
+
+<table>
+	{% for workshop in workshop_list %}
+	<tr>
+		<td>
+			<h2><img width='75px' id='profile_mugshot' src="/media/{{ workshop.actor.profile.mugshot }}"/>{{ workshop.title }}</h2>
+			<p>{% if 'events.change_show' in perms %}<em><a href="{% url 'workshop_edit' pk=workshop.id %}">Edit workshop</a></em>{% endif %}
+			   {% if 'events.delete_show' in perms %} | <em><a href="{% url 'workshop_delete' pk=workshop.id %}">Cancel workshop</a></em>{% endif %}
+			</p>
+			<p><em>{{ workshop.date }}</em></p>
+			<p>{{ workshop.desc }}, with {{ workshop.actor.first_name }} {{ workshop.actor.last_name }} </p>
+		</td>
+	</tr>
+	{% empty %}
+	<tr>
+		<td>There aint none.</td>
+	</tr>
+	{% endfor %}
+</table>
+</div>
+{% endblock content %}

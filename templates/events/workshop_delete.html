@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title%}Delete Workshop{% endblock title %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
+{% endblock %}
+{% block content %} 
+<div id="show_list">
+<h1>Delete Workshop</h1>
+
+<p>Are you sure you want to cancel the {{ workshop.date }} ({{ workshop.title }})?</p>
+
+<form action="{% url 'workshop_delete' pk=workshop.id %}" method="POST">{% csrf_token %}
+
+<input type='submit' value="Yes, get it outta here"/>
+<a href="{% url 'workshop_list' %}">Ooops, no, not this one.</a>
+
+</form>
+
+</div>
+{% endblock content %}
