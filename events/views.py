@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils import timezone
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Show
 from .models import Workshop
@@ -61,7 +61,7 @@ class DeleteShow(DeleteView):
 		return response
 	
 	def get_success_url(self):
-		return reverse('show_list')
+		return reverse_lazy('show_list')
 
 class WorkshopListView(ListView):
 	model = Workshop

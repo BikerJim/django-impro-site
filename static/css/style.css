@@ -54,7 +54,29 @@ color:#500;
 	padding: 0px 10px 0px 20px;
 	margin: 0px 0px 10px 0px;
 }
+.btn {
+    color: #fff;
+    font-size: 13px;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+    background-color: rgb(255, 0, 0);
+    background-image: -moz-linear-gradient(top, rgb(158, 194, 142), rgb(104, 143, 96));
+    background-image: -webkit-gradient(linear,0 0,0 100%,from(#f00),to(#f00));
+    background-image: -webkit-linear-gradient(top, #f00, #f00);
+    background-image: -o-linear-gradient(top, #f00, #f00);
+    background-image: linear-gradient(to bottom, #f00, #a00);
+    background-repeat: repeat-x;
+    border-color: #f00;
+    border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+    border-width: 2px;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 3px 18px 5px 18px;
+}
 
+.btn:hover,
+.btn.active {
+    box-shadow: 1px 1px 9px rgba(0,0,0,.7);
+}
 .bottom-border {
 	border-bottom: 1px solid grey;
 }
@@ -64,6 +86,10 @@ color:#500;
 }
 #show_list a {
 	color:red;
+}
+
+#show_list .btn {
+	color: white;
 }
 #next_show {
 	border: 1px solid black;
@@ -168,29 +194,7 @@ input[type='email'] {
 .pull-right {
     float:right;
 }
-.btn {
-    color: #fff;
-    font-size: 13px;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
-    background-color: rgb(255, 0, 0);
-    background-image: -moz-linear-gradient(top, rgb(158, 194, 142), rgb(104, 143, 96));
-    background-image: -webkit-gradient(linear,0 0,0 100%,from(#f00),to(#f00));
-    background-image: -webkit-linear-gradient(top, #f00, #f00);
-    background-image: -o-linear-gradient(top, #f00, #f00);
-    background-image: linear-gradient(to bottom, #f00, #a00);
-    background-repeat: repeat-x;
-    border-color: #f00;
-    border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
-    border-width: 2px;
-    border-radius: 5px;
-    margin-top: 5px;
-    padding: 3px 18px 5px 18px;
-}
 
-.btn:hover,
-.btn.active {
-    box-shadow: 1px 1px 9px rgba(0,0,0,.7);
-}
 
 ul.errorlist {
     margin: 0;

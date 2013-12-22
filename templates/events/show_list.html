@@ -9,12 +9,10 @@
 {% endblock %}
 {% block content %} 
 
-{% if 'events.add_show' in perms %}
-<a class='btn' href="{% url 'show_create' %}">Add show</a>
-{% endif %}
-
-
 <div class='info'>
+{% if 'events.add_show' in perms %}
+<a class='btn' href="{% url 'show_create' %}"><em>Add show</em></a>
+{% endif %}
 <p>easylaughs improvised comedy shows are on every Friday night at the CREA Cafe.</p>
 <p>Prices:</p>
 <ul id='show_list'>
@@ -23,6 +21,7 @@
 	<li>&euro;4 for students for both shows.</li>
 </ul>
 </div>
+{% if show_list %}
 <h1>Coming shows</h1>
 {% regroup show_list by date.date as grouped_show_list %}
 <ul id='show_list'>
@@ -32,12 +31,11 @@
 		<li><img id='profile_mugshot' width='60px' src="/media/{{ item.show.icon }}"/> 
 		<h2>{{ item.show.title }}</h2>
 		<p><em>{% if item.date.event_type == 2 %}9 o'clock show{% else %}8 o'clock show{% endif %}</em></em></p>
-		{% if 'events.change_show' in perms %}
-		<p>
-			<em><a class='btn' href="{% url 'show_edit' pk=item.show.id %}">Edit Show</a></em>
+		<p>{% if 'events.change_show' in perms %}
+		<em><a class='btn' href="{% url 'show_edit' pk=item.id %}">Edit Show</a></em>
 		{% endif %}
 		{% if 'events.delete_show' in perms %}
-			<em><a class='btn' href="{% url 'show_delete' pk=item.show.id %}">Cancel Show</a></em>
+		<em><a class='btn' href="{% url 'show_delete' pk=item.id %}">Cancel Show</a></em>
 		</p>
 		{% endif %}
 
@@ -49,4 +47,7 @@
 	</li>
 	{% endfor %}
 </ul>
+{% else %}
+<h2>No Shows Planned</h2>
+{% endif %}
 {% endblock content %}
