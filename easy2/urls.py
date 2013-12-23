@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     (r'^accounts/logout/$','django.contrib.auth.views.logout', {'next_page': '/'}),
     url(r'^accounts/',include('allauth.urls')),
     url(r'^events/', include('events.urls')),
+    url(r'^booking/', include('booking.urls')),
 )
 
 if settings.DEBUG:

@@ -41,31 +41,12 @@ class Index(ListView):
 		queryset = chain(self.next_early_show, self.next_late_show, self.next_workshop)
 		
 		return queryset
-		
-#	try:
-#		next_early_show = Show.objects.filter(date__date__gte=now).filter(date__event_type=1)[:1].get()
-#	except Show.DoesNotExist:
-#		next_early_show = {}
-#	try:
-#		next_late_show = Show.objects.filter(date__date__gte=now).filter(date__event_type=2)[:1].get()
-#	except Show.DoesNotExist:
-#		next_late_show = {}
-#	if next_early_show.date.date > next_late_show.date.date:
-#		next_early_show = {}
-#		
-#	workshop_list = Workshop.objects.filter(date__date__gte=now).filter(date__event_type=3).order_by('date')
-#	print workshop_list
-#	if len(workshop_list) > 0:
-#		next_workshop = workshop_list[0]
-#	else:
-#		next_workshop = {}
 				
 	def get_context_data(self,**kwargs):
 		context = super(Index, self).get_context_data(**kwargs)
 		context['early'] = self.next_early_show
 		context['late'] = self.next_late_show
 		context['workshop'] = self.next_workshop
-#		context['workshop_list'] = self.workshop_list
 		return context
 	
 class AboutUs(ListView):

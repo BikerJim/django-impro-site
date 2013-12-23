@@ -11,7 +11,7 @@
 <div id="show_list">
 <h1>Coming workshops
 {% if perms.events.add_workshop %}
-<a href="{% url 'workshop_create' %}">(Add workshop)</a>
+<a class='btn' href="{% url 'workshop_create' %}">Add workshop</a>
 {% endif %}
 </h1>
 <div class='info'>
@@ -37,24 +37,25 @@ Each workshop is run by a different member of easylaughs
 <p>
 See other pages for our courses and special workshops.
 </p>
-
-<table>
+{% if workshop_list %}
+<ul id='show_list'>
 	{% for workshop in workshop_list %}
-	<tr>
-		<td>
-			<h2><img width='75px' id='profile_mugshot' src="/media/{{ workshop.actor.profile.mugshot }}"/>{{ workshop.title }}</h2>
-			<p>{% if 'events.change_show' in perms %}<em><a href="{% url 'workshop_edit' pk=workshop.id %}">Edit workshop</a></em>{% endif %}
-			   {% if 'events.delete_show' in perms %} | <em><a href="{% url 'workshop_delete' pk=workshop.id %}">Cancel workshop</a></em>{% endif %}
-			</p>
-			<p><em>{{ workshop.date }}</em></p>
-			<p>{{ workshop.desc }}, with {{ workshop.actor.first_name }} {{ workshop.actor.last_name }} </p>
-		</td>
-	</tr>
-	{% empty %}
-	<tr>
-		<td>There aint none.</td>
-	</tr>
-	{% endfor %}
-</table>
-</div>
+	<li><h2>{{ workshop.title }}</h2>
+		<ul class='bottom-border'>
+			<li>
+				<img width='75px' id='profile_mugshot' src="/media/{{ workshop.actor.profile.mugshot }}"/>
+				<p><em>{{ workshop.date }}</em></p>
+				<p>{{ workshop.desc|striptags|urlize|linebreaks }}<p>
+				<p>This workshop will be led by {{ workshop.actor.first_name }} {{ workshop.actor.last_name }}</p>
+				<p>
+					{% if 'events.change_show' in perms %}<em><a class='btn' href="{% url 'workshop_edit' pk=workshop.id %}">Edit workshop</a></em>{% endif %}
+					{% if 'events.delete_show' in perms %}<em><a class='btn' href="{% url 'workshop_delete' pk=workshop.id %}">Cancel workshop</a></em>{% endif %}
+				</p>
+			</li>
+		</ul>
+	</li>
+	{% endfor %}</ul>
+{% else %}
+	<p>There aint none.</p>
+{% endif %}
 {% endblock content %}

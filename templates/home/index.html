@@ -30,13 +30,16 @@ We're looking forward to seeing you at a show or a workshop soon. Look at what's
 {% if early %}
 <img id="profile_mugshot" width="60px" src="/media/{{ early.show.icon }}"/>
 <h3 class="top">{{ early.show }}</h3>
-<p><em>{{ early.date }}, 8pm</em></p>
-<p>&nbsp;</p>
+<p><em>{{ early.date }}</em></p>
+<p>{{ early.show.short_desc }}</p>
+<p>{{ early.long_desc }}</p>
 {% endif %}
 {% if late %}
 <img id="profile_mugshot" width="60px" src="/media/{{ late.show.icon }}"/>
 <h2 class="top">{{ late.show }}</h2>
-<p><em>{{ late.date }}, 9pm</em></p>
+<p><em>{{ late.date }}</em></p>
+<p>{{ late.show.short_desc }}</p>
+<p>{{ late.long_desc }}</p>
 </div>
 {% endif %}
 

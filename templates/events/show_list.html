@@ -40,7 +40,12 @@
 		{% endif %}
 
 		<p>{{ item.show.short_desc }}</p>
-		<p>{{ item.show.long_desc }}</p>
+		<p>{{ item.long_desc|striptags|urlize|linebreaks }}</p>
+		<p>
+			{% if user.is_authenticated %}
+				<em><a class='btn' href="{% url 'reserve_ticket' pk=item.date.id %}">Reserve tickets</a></em>
+			{% endif %}
+		</p>
 		</li>
 		{% endfor %}
 	</ul>

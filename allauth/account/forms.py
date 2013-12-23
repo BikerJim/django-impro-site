@@ -30,6 +30,7 @@ class UserProfileEditForm(ModelForm):
     first_name = forms.CharField(max_length=30)
     last_name = forms.CharField(required=False,max_length=30)
     about_me = forms.CharField(required=False,max_length=500, widget = forms.Textarea)
+    mailing_list = forms.BooleanField(required=False,initial=True)
 
     def __init__(self, *args, **kwargs):
         super(UserProfileEditForm, self).__init__(*args, **kwargs)
@@ -41,6 +42,7 @@ class UserProfileEditForm(ModelForm):
             'last_name',
             'about_me',
             'mugshot',
+            'mailing_list',
             ]
 
     def save(self, *args, **kwargs):
@@ -53,7 +55,7 @@ class UserProfileEditForm(ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ('mugshot','about_me','first_name','last_name')
+        fields = ('mugshot','about_me','first_name','last_name', 'mailing_list')
 
 class PasswordField(forms.CharField):
 

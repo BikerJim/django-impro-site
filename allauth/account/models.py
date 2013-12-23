@@ -40,6 +40,7 @@ class UserProfile(models.Model):
     about_me = models.TextField(max_length="500", null=False)
     image_folder = "profiles"
     mugshot = models.ImageField(max_length=1024,storage=OverwriteStorage(), upload_to=image_file_name, default = "images/profiles/anon.user.png")
+    mailing_list = models.BooleanField(default=True)
     
     def get_absolute_url(self):
             return u'/accounts/profile/%d' % self.id

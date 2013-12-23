@@ -74,6 +74,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.facebook',
     'south',
     'events',
+    'booking',
     'home',
 #    'allauth.socialaccount.providers.google',
 #    'allauth.socialaccount.providers.twitter',
