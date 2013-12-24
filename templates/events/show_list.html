@@ -26,7 +26,10 @@
 {% regroup show_list by date.date as grouped_show_list %}
 <ul id='show_list'>
 	{% for show in grouped_show_list %}
-	<li><h2>{{ show.grouper|date:"l d F" }}</h2>
+	<li><h2>{{ show.grouper|date:"l d F" }}<div style='float:right;'>
+	<em><a class='btn' href="{% url 'reserve_ticket' pk=show.list.0.date.id %}?next={{request.path}}">Reserve tickets</a></em>
+	</div></h2>
+	
 	<ul class='bottom-border'>{% for item in show.list %}
 		<li><img id='profile_mugshot' width='60px' src="/media/{{ item.show.icon }}"/> 
 		<h2>{{ item.show.title }}</h2>
@@ -41,11 +44,6 @@
 
 		<p>{{ item.show.short_desc }}</p>
 		<p>{{ item.long_desc|striptags|urlize|linebreaks }}</p>
-		<p>
-			{% if user.is_authenticated %}
-				<em><a class='btn' href="{% url 'reserve_ticket' pk=item.date.id %}">Reserve tickets</a></em>
-			{% endif %}
-		</p>
 		</li>
 		{% endfor %}
 	</ul>

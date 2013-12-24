@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title%}Your easylaughs profile{% endblock title %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
+{% endblock %}
+{% block content %}
+<h1>Thanks!</h1>
+<p>You have successfully reserved your tickets, see you at the show!</p>
+<h3>Your reservation:</h3>
+<p>{{ tickets }} ticket{% if tickets > 1 %}s{% endif %}, for 
+{{ shows }} on {{ date.date|date:"l d F" }}</p>
+<h3>Information</h3>
+<p>
+Please note: We do not have a PIN machine, so please bring cash with you.
+</p>
+<h3>Price</h3>
+
+<ul>
+	<li>Early show: &euro;5</li>
+	<li>Late show: &euro;10</li>
+	<li>Both shows: &euro;10 (students &euro;4)</li>
+</ul>
+<p><strong>Amount:</strong> &euro;{{ cash }} (if you're {% if tickets > 1 %}all students{% else %}a student{% endif %} &euro;{{ student_cash }}) </p>
+
+
+{% endblock %}

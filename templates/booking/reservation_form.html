@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title%}Reserve Tickets{% endblock title %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
+{% endblock %}
+{% block content %}
+<h1>Ticket reservation</h1>
+{% if not user.first_name %}
+<p><strong>Note:</strong> Before you reserve! If you haven't already, it would be really helpful if you could update your profile, 
+and at least give us your first name, so that we know who to hold the tickets for; otherwise we will hold them against your
+username ({{ user }})
+</p>
+{% endif %}
+<p>You are reserving tickets for the show(s) on {{ show_date.date|date:"l d F" }}.</p>
+<form action="" method="post">{% csrf_token %}
+{{ form.reserved_by.as_hidden }}
+{{ form.event_date.as_hidden }} 
+<p>How many tickets? {{ form.number_of_tickets }}</p>
+<p>Do you want to reserve for the early (8pm) show? {{ form.early_show }}</p>
+<p>Do you want to reserve for the early (9pm) show? {{ form.late_show }}</p>
+<p>Do you have a promo code? {{ form.promo_code }}</p>
+<p>How did you hear about us? {{ form.heard_about }}</p>
+<input type="submit" value="Reserve Tickets" />
+</form>
+{% if form.errors %}
+<h3>Oops:</h3>
+{% for field in form.visible_fields %}
+
+
+    {% for err in field.errors %}
+        <p>{{ field.label_tag }} : {{ err }}</p>
+    {% endfor %}
+
+{% endfor %}
+{% endif %}
+{% endblock content %}
