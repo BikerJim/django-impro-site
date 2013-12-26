@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Show
 from .models import Workshop
+from .models import Event_date
 
 from datetime import date, time, datetime
 from .forms import AddShowForm, EditShowForm

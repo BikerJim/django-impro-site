@@ -16,7 +16,8 @@ class Event_date(models.Model):
 		(4, "Corporate"),
 		(5, "Promotion"))
 	event_type = models.IntegerField(choices=EVENT_TYPES)
-	date = models.DateField() 
+	date = models.DateField()
+	taken = models.BooleanField(default=False)
 	
 	def __unicode__(self):
 		return str(self.date.strftime("%B %d, %Y"))+", "+str(self.EVENT_TYPES[self.event_type-1][1])
@@ -66,7 +67,7 @@ class Workshop(models.Model):
 	and an event_date
 	"""
 	title = models.CharField(max_length=50)
-	date = models.OneToOneField(Event_date, related_name='workshopdate')
+	date = models.OneToOneField(Event_date, limit_choices_to={'event_type':3, 'taken':False},related_name='workshopdate')
 	desc = models.TextField(max_length=500, blank=True)
 	actor = models.ForeignKey(User, limit_choices_to={'groups__name':'actor'})
 			

@@ -21,24 +21,28 @@ class Index(ListView):
 		self.next_early_show = Show.objects.filter(date__event_type=1).filter(date__date__gte=self.now).order_by('date')
 		self.next_late_show = Show.objects.filter(date__event_type=2).filter(date__date__gte=self.now).order_by('date')
 		self.next_workshop = Workshop.objects.filter(date__event_type=3).filter(date__date__gte=self.now).order_by('date')
-				
+		
 		if len(self.next_late_show) > 0:
 			self.next_late_show = self.next_late_show[0]
-		else:
-			self.next_late_show = {}
 		
 		if len(self.next_early_show) > 0:
 			self.next_early_show = self.next_early_show[0]
+			print "Early: %s" % self.next_early_show.date.date
+			print "Late: %s" % self.next_late_show.date.date
 			if self.next_early_show.date.date > self.next_late_show.date.date:
 				self.next_early_show = {}
+			elif self.next_early_show.date.date < self.next_late_show.date.date:
+				self.next_late_show = {}
 				
-		
 		if len(self.next_workshop) > 0:
 			self.next_workshop = self.next_workshop[0]
-		else:
-			self.next_workshop = {}
 		
-		queryset = chain(self.next_early_show, self.next_late_show, self.next_workshop)
+		if self.next_early_show:	
+			self.show_id = self.next_early_show.date.id
+		elif self.next_late_show:
+			self.show_id = self.next_late_show.date.id
+		
+		queryset = chain(self.next_early_show, self.next_late_show, self.next_workshop, self.show_id)
 		
 		return queryset
 				
@@ -47,6 +51,7 @@ class Index(ListView):
 		context['early'] = self.next_early_show
 		context['late'] = self.next_late_show
 		context['workshop'] = self.next_workshop
+		context['show_id'] = self.show_id
 		return context
 	
 class AboutUs(ListView):

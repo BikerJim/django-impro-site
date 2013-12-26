@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Event_date, Format, Show, Workshop
 
 class Event_dateAdmin(admin.ModelAdmin):
-	list_display = ('pk', '__unicode__', 'event_type')
+	list_display = ('pk', '__unicode__', 'event_type', 'taken')
 
 class FormatAdmin(admin.ModelAdmin):
 	pass

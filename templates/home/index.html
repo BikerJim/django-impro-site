@@ -9,29 +9,29 @@
 {% endblock %}
 {% block content %}
 
-{% if early or late %}
+{% if late or early %}
 <div id="next_show">
 <h3>Next Show!
+
 <div style='float:right; margin-right:20px;'>
-	<em><a class='btn' href="{% url 'reserve_ticket' pk=early.date.id %}?next={{request.path}}">Reserve tickets</a></em>
+	<em><a class='btn' href="{% url 'reserve_ticket' pk=show_id %}?next={{request.path}}">Reserve tickets</a></em>
 </div></h3>
-{% endif %}
 {% if early %}
 <img id="profile_mugshot" width="60px" src="/media/{{ early.show.icon }}"/>
-<h3 class="top">{{ early.show }}</h3>
+<h3 class="top">{{ early }}</h3>
 <p><em>{{ early.date }}</em></p>
 <p>{{ early.show.short_desc }}</p>
 <p>{{ early.long_desc }}</p>
 {% endif %}
 {% if late %}
 <img id="profile_mugshot" width="60px" src="/media/{{ late.show.icon }}"/>
-<h2 class="top">{{ late.show }}</h2>
+<h2 class="top">{{ late }}</h2>
 <p><em>{{ late.date }}</em></p>
 <p>{{ late.show.short_desc }}</p>
 <p>{{ late.long_desc }}</p>
+{% endif %}
 </div>
 {% endif %}
-
 {% if workshop %}
 <div id="next_workshop">
 <h3>Next Workshop!</h3>
