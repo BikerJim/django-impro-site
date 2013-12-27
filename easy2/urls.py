@@ -17,7 +17,9 @@ urlpatterns = patterns('',
     url(r'^booking/', include('booking.urls')),
 )
 
-if settings.local.DEBUG:
+if not settings.local.DEBUG==False:
+	pass
+else:
     # static files (images, css, javascript, etc.)
     import debug_toolbar
     urlpatterns += patterns('',
