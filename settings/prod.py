@@ -20,6 +20,11 @@ TEMPLATE_DEBUG = False
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+ADMINS = (
+	('Jim Buddin', 'jimbuddin@hotmail.com'),
+)
+
+#EMAIL_HOST = 
 
 DATABASES = {
     'default': {

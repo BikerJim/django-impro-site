@@ -39,6 +39,7 @@ class Index(ListView):
 			self.show_id = self.next_early_show.date.id
 		elif self.next_late_show:
 			self.show_id = self.next_late_show.date.id
+		else self.show_id = 0
 		
 		queryset = chain(self.next_early_show, self.next_late_show, self.next_workshop, self.show_id)
 		

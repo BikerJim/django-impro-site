@@ -15,6 +15,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
+ADMINS = (
+	('Jim Buddin', 'jimbuddin@hotmail.com'),
+)
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
