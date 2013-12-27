@@ -17,12 +17,14 @@ urlpatterns = patterns('',
     url(r'^booking/', include('booking.urls')),
 )
 
-if settings.local.DEBUG:
+#if not settings.local.DEBUG:
+#    pass
+#else:
     # static files (images, css, javascript, etc.)
-    import debug_toolbar
-    urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$',
-        'django.views.static.serve', {
-        'document_root': settings.local.MEDIA_ROOT}),
-        url(r'^__debug__/', include(debug_toolbar.urls)),
-    )
+#    import debug_toolbar
+#    urlpatterns += patterns('',
+#        (r'^media/(?P<path>.*)$',
+#        'django.views.static.serve', {
+#        'document_root': settings.local.MEDIA_ROOT}),
+#        url(r'^__debug__/', include(debug_toolbar.urls)),
+#    )
