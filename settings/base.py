@@ -26,7 +26,7 @@ STATICFILES_DIRS = (
 		PROJECT_DIR.child("assets"),
 		)
 TEMPLATE_DIRS = (PROJECT_DIR.child("templates"),)
-ALLOWED_HOSTS = []
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 MEDIA_URL = '/media/'
