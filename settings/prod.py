@@ -31,3 +31,4 @@ DATABASES = {
         'PORT': '',
     }
 }
+ALLOWED_HOSTS = ['localhost']
