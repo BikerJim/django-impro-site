@@ -19,7 +19,10 @@ urlpatterns = patterns('',
 
 if settings.local.DEBUG:
     # static files (images, css, javascript, etc.)
+    import debug_toolbar
     urlpatterns += patterns('',
         (r'^media/(?P<path>.*)$',
         'django.views.static.serve', {
-        'document_root': settings.local.	MEDIA_ROOT}))
+        'document_root': settings.local.MEDIA_ROOT}),
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    )
