@@ -5,8 +5,7 @@ Django local settings for easy2 project.
 import os
 from .base import *
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'x+tz=$x$n^hgo@22l)&gsz_ym&w8vmrp6p%c%+-d=gb&vx*+p9'
+SECRET_KEY = get_env_variable("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

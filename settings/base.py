@@ -7,28 +7,30 @@ https://docs.djangoproject.com/en/1.6/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+from unipath import Path
+from django.core.exceptions import ImproperlyConfigured
+
+def get_env_variable(var_name):
+	""" Get the env variable or return exception """
+	try:
+		return os.environ[var_name]
+	except KeyError:
+		error_msg = "Set the %s environment variable" % var_name
+		raise ImproperlyConfigured(error_msg)
+
+PROJECT_DIR = Path(__file__).ancestor(2)
+MEDIA_ROOT = PROJECT_DIR.child("media")
+STATICFILES_DIRS = (
+		PROJECT_DIR.child("static"),
+		)
+TEMPLATE_DIRS = (PROJECT_DIR.child("templates"),)
 ALLOWED_HOSTS = []
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.6/howto/static-files/
+MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-##SECRET_KEY = 'x+tz=$x$n^hgo@22l)&gsz_ym&w8vmrp6p%c%+-d=gb&vx*+p9'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-##DEBUG = True
-
-##TEMPLATE_DEBUG = True
-
-# Application definition
-TEMPLATE_DIRS = (
-	TEMPLATE_PATH,
-)
 # Additions for all_auth
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
@@ -46,16 +48,12 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-#AUTH_PROFILE_MODULE = 'account.UserProfile'
-
 AUTHENTICATION_BACKENDS = (
 #    # Needed to login by username in Django Admin
     "django.contrib.auth.backends.ModelBackend",
 #    # Allauth specific auth methods, like login by email
     "allauth.account.auth_backends.AuthenticationBackend",
 )
-
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
 
@@ -90,23 +88,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'easy2.urls'
-
 WSGI_APPLICATION = 'easy2.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': 'easylaughs',
-#        'USER': 'django',
-#        'PASSWORD': 'ww2cx9k',
-#        'HOST': '',
-#        'PORT': '',
-#    }
-#}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -116,15 +98,3 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-MEDIA_URL = '/media/'
-MEDIA_ROOT = (
-	os.path.join(BASE_DIR,"media")
-)
-
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-	os.path.join(BASE_DIR,"static"),
-)

@@ -27,8 +27,6 @@ class Index(ListView):
 		
 		if len(self.next_early_show) > 0:
 			self.next_early_show = self.next_early_show[0]
-			print "Early: %s" % self.next_early_show.date.date
-			print "Late: %s" % self.next_late_show.date.date
 			if self.next_early_show.date.date > self.next_late_show.date.date:
 				self.next_early_show = {}
 			elif self.next_early_show.date.date < self.next_late_show.date.date:

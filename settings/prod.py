@@ -1,5 +1,5 @@
 """
-Django production settings for easy2 project.
+Django production settings for easylaughs project.
 """
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
@@ -8,8 +8,10 @@ from .base import *
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'x+tz=$x$n^hgo@22l)&gsz_ym&w8vmrp6p%c%+-d=gb&vx*+p9'
+SECRET_KEY = get_env_variable("DJANGO_SECRET_KEY")
+DB_PASSWORD = get_env_variable("DB_PASSWORD")
+DB_NAME = get_env_variable("DB_NAME")
+DB_USER = get_env_variable("DB_USER")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -22,9 +24,9 @@ TEMPLATE_DEBUG = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'easylaughs',
-        'USER': 'django',
-        'PASSWORD': 'ww2cx9k',
+        'NAME': 'DB_NAME',
+        'USER': 'DB_USER',
+        'PASSWORD': 'DB_PASSWORD',
         'HOST': '',
         'PORT': '',
     }

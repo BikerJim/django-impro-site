@@ -1,0 +1,3 @@
+-r base.text
+
+django-debug-toolbar==0.11.0
