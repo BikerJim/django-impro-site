@@ -17,16 +17,16 @@ urlpatterns = patterns('',
     url(r'^booking/', include('booking.urls')),
 )
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
 #<<<<<<< HEAD
 #if not settings.local.DEBUG:
 #    pass
 #else:
 #=======
-if not settings.local.DEBUG==False:
-=======
+#if not settings.local.DEBUG==False:
+#=======
 if not settings.local.DEBUG==True:
->>>>>>> 60b488eb7b6fe6ce8d1982054bb467393908977a
+#>>>>>>> 60b488eb7b6fe6ce8d1982054bb467393908977a
 	pass
 else:
 #>>>>>>> be2877c1f769818eeedda4cff2a5dbe9f4ba1037

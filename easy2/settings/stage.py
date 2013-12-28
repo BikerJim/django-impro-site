@@ -6,7 +6,7 @@ from unipath import Path
 from .base import *
 
 SECRET_KEY = get_env_variable("DJANGO_SECRET_KEY")
-
+#SECRET_KEY = "psst-this-is-my-secret-key-shhh"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 TEMPLATE_DEBUG = False
