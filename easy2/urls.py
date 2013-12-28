@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     url(r'^booking/', include('booking.urls')),
 )
 
-if not settings.local.DEBUG==False:
+if not settings.local.DEBUG==True:
 	pass
 else:
     # static files (images, css, javascript, etc.)
