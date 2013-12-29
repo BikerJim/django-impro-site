@@ -33,10 +33,3 @@ DATABASES = {
 }
 
 ALLOWED_HOSTS = ['*']
-#from django.conf.urls import patterns, include, url
-#from easy2.urls import urlpatterns
-#urlpatterns += patterns('',
-#    (r'^media/(?P<path>.*)$',
-#    'django.views.static.serve', {
-#    'document_root': MEDIA_ROOT}),
-#)
