@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
-import settings.local
+from settings.base import MEDIA_ROOT
 
 from home.views import Index, AboutUs
 
@@ -15,7 +15,10 @@ urlpatterns = patterns('',
     url(r'^accounts/',include('allauth.urls')),
     url(r'^events/', include('events.urls')),
     url(r'^booking/', include('booking.urls')),
+    url(r'^media/(?P<path>.*)$','django.views.static.serve', {'document_root': MEDIA_ROOT}),
 )
+
+#        (r'^media/(?P<path>.*)$','django.views.static.serve', {'document_root': settings.local.MEDIA_ROOT}),
 
 #<<<<<<< HEAD
 #<<<<<<< HEAD
@@ -25,16 +28,13 @@ urlpatterns = patterns('',
 #=======
 #if not settings.local.DEBUG==False:
 #=======
-if not settings.local.DEBUG==True:
+#if not DEBUG==True:
 #>>>>>>> 60b488eb7b6fe6ce8d1982054bb467393908977a
-	pass
-else:
+#	pass
+#else:
 #>>>>>>> be2877c1f769818eeedda4cff2a5dbe9f4ba1037
     # static files (images, css, javascript, etc.)
-    import debug_toolbar
-    urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$',
-        'django.views.static.serve', {
-        'document_root': settings.local.MEDIA_ROOT}),
-        url(r'^__debug__/', include(debug_toolbar.urls)),
-    )
+#    import debug_toolbar
+#    urlpatterns += patterns('',
+#        url(r'^__debug__/', include(debug_toolbar.urls)),
+#    )
