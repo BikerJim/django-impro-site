@@ -28,3 +28,14 @@ INSTALLED_APPS += ("debug_toolbar", )
 INTERNAL_IPS = ("127.0.0.1",)
 MIDDLEWARE_CLASSES += ("debug_toolbar.middleware.DebugToolbarMiddleware", )
 ALLOWED_HOSTS = []
+
+import debug_toolbar
+from django.conf.urls import patterns, include, url
+from easy2.urls import urlpatterns
+urlpatterns += patterns('',
+    (r'^media/(?P<path>.*)$',
+    'django.views.static.serve', {
+    'document_root': MEDIA_ROOT}),
+    (r'^__debug__/', include(debug_toolbar.urls)),
+)
+
