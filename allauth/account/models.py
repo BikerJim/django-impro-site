@@ -1,6 +1,6 @@
 import datetime
 from PIL import Image
-
+_imaging = Image.core
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.db import transaction

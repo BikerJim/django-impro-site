@@ -8,10 +8,11 @@ from .base import *
 #SECRET_KEY = get_env_variable("DJANGO_SECRET_KEY")
 SECRET_KEY = "psst-this-is-my-secret-key-shhh"
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = False
 
 STATIC_ROOT = '/var/www/easylaughs.nl/static/'
+MEDIA_ROOT = '/var/www/easylaughs.nl/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Database
