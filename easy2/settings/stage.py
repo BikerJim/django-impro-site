@@ -8,7 +8,7 @@ from .base import *
 #SECRET_KEY = get_env_variable("DJANGO_SECRET_KEY")
 SECRET_KEY = "psst-this-is-my-secret-key-shhh"
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = False
 
 STATIC_ROOT = '/var/www/easylaughs.nl/static/'
