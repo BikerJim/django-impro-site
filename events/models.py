@@ -2,6 +2,9 @@ from django.db import models
 import os
 from events.storage import OverwriteStorage
 from django.contrib.auth.models import User
+from django.db.models import Q
+
+from datetime import date, time, datetime
 
 class Event_date(models.Model):
 	"""
@@ -18,7 +21,8 @@ class Event_date(models.Model):
 	event_type = models.IntegerField(choices=EVENT_TYPES)
 	date = models.DateField()
 	taken = models.BooleanField(default=False)
-	
+	class Meta:
+		ordering = ['date']
 	def __unicode__(self):
 		return str(self.date.strftime("%B %d, %Y"))+", "+str(self.EVENT_TYPES[self.event_type-1][1])
 
@@ -55,9 +59,11 @@ class Show(models.Model):
 	A model to hold the shows, taking a format on an event_date
 	"""
 	show = models.ForeignKey(Format, related_name='showtitle')
-	date = models.OneToOneField(Event_date, related_name='showdate')
+	date = models.OneToOneField(Event_date, 
+				limit_choices_to=Q(date__gte=datetime.today()) & (Q(event_type=1) | Q(event_type=2)) & Q(taken=False),
+				related_name='showdate')
 	long_desc = models.TextField(max_length=500, blank=True)
-			
+
 	def __unicode__(self):
 		return self.show.title
 		
@@ -67,7 +73,9 @@ class Workshop(models.Model):
 	and an event_date
 	"""
 	title = models.CharField(max_length=50)
-	date = models.OneToOneField(Event_date, limit_choices_to={'event_type':3, 'taken':False},related_name='workshopdate')
+	date = models.OneToOneField(Event_date,
+				limit_choices_to=Q(date__gte=datetime.today()) & Q(event_type=3) & Q(taken=False),
+				related_name='workshopdate')
 	desc = models.TextField(max_length=500, blank=True)
 	actor = models.ForeignKey(User, limit_choices_to={'groups__name':'actor'})
 			

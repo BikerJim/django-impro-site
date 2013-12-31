@@ -12,6 +12,7 @@ class EditShowForm(forms.ModelForm):
 
 	class Meta:
 		model = Show
+		fields = ['show', 'long_desc']
 		
 class AddWorkshopForm(forms.ModelForm):
 
@@ -22,3 +23,4 @@ class EditWorkshopForm(forms.ModelForm):
 
 	class Meta:
 		model = Workshop
+		fields = ['title', 'desc', 'actor']
