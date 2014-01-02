@@ -18,7 +18,9 @@
 			{{ user.profile.about_me|striptags|urlize|linebreaks }}
 </p>
 <p>
-<a class="btn" href="{% url 'update_profile' %}">edit profile</a> <a class="btn" href="{% url 'account_email' %}">Change, add, or verify email</a>
+<a class="btn" href="{% url 'update_profile' %}">edit profile</a> 
+<a class="btn" href="{% url 'account_email' %}">Change, add, or verify email</a>
+<a class="btn" href="{% url 'availability_list' %}">Update availability</a>
 </p>
 
 {% endblock %}

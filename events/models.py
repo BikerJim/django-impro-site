@@ -6,26 +6,6 @@ from django.db.models import Q
 
 from datetime import date, time, datetime
 
-class Event_date(models.Model):
-	"""
-	A model to hold all the dates which will be related to Shows,
-	Workshops, Corporates and Promos etc, basically to populate
-	a drop down for the other models
-	"""
-	EVENT_TYPES = (
-		(1, "8 o'clock show"),
-		(2, "9 o'clock show"),
-		(3, "Workshop"),
-		(4, "Corporate"),
-		(5, "Promotion"))
-	event_type = models.IntegerField(choices=EVENT_TYPES)
-	date = models.DateField()
-	taken = models.BooleanField(default=False)
-	class Meta:
-		ordering = ['date']
-	def __unicode__(self):
-		return str(self.date.strftime("%B %d, %Y"))+", "+str(self.EVENT_TYPES[self.event_type-1][1])
-
 def image_file_name(instance, filename):
 	"""
 	This function takes an uploaded filename, takes the extension.
@@ -37,6 +17,28 @@ def image_file_name(instance, filename):
 	ext = filename[-4:]
 	new_filename = os.path.join('images',str(instance.image_folder),str(instance.title).replace(" ","").lower()+ext)
 	return new_filename
+
+class Event_date(models.Model):
+	"""
+	A model to hold all the dates which will be related to Shows,
+	Workshops, Corporates and Promos etc, basically to populate
+	a drop down for the other models
+	"""
+	EVENT_TYPES = (
+		(1, "8 o'clock show"),
+		(2, "9 o'clock show"),
+		(3, "Workshop"),
+		(4, "Rehearsal"),
+		(5, "Corporate"),
+		(6, "Promotion"))
+	event_type = models.IntegerField(choices=EVENT_TYPES)
+	date = models.DateField()
+	taken = models.BooleanField(default=False)
+	class Meta:
+		ordering = ['date']
+		unique_together = ("date", "event_type")
+	def __unicode__(self):
+		return "{0}, {1}".format(str(self.date.strftime("%B %d, %Y")),str(self.EVENT_TYPES[self.event_type-1][1]))
 
 class Format(models.Model):
 	"""
@@ -81,3 +83,21 @@ class Workshop(models.Model):
 			
 	def __unicode__(self):
 		return self.title
+
+class Availability(models.Model):
+	"""
+	A model to hold the availability of the Crew 
+	(actors, tech, door, musician)
+	It will have different lists of users (by group 'crew'), 
+	list of dates (after today, relevant to group)
+	Availability boolean (yes,no,maybe?)
+	"""
+	date = models.ForeignKey(Event_date)
+	person = models.ForeignKey(User, limit_choices_to={'groups__name':'crew'})
+	available = models.NullBooleanField(default=False)
+	def __unicode__(self):
+		return self.person.first_name
+		
+	class Meta:
+		verbose_name_plural = "Availability"
+	

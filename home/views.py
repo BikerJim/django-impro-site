@@ -21,8 +21,9 @@ class Index(ListView):
 		self.model = model
 		self.event_type = event_type
 		try:
-			return model.objects.filter(date__event_type=event_type).filter(date__date__gte=self.now).order_by('date')[0]
-		except IndexError:
+			return model.objects.filter(date__event_type=event_type).\
+			filter(date__date__gte=datetime.today()).earliest('date')
+		except model.DoesNotExist:
 			return 0
 	
 	def get_queryset(self):
@@ -62,5 +63,5 @@ class Index(ListView):
 class AboutUs(ListView):
 	model = UserProfile
 	template_name = 'home/about_us.html'
-	queryset = UserProfile.objects.filter(user__groups=2)
+	queryset = UserProfile.objects.filter(user__groups=2).order_by('user__first_name')
 	

@@ -104,6 +104,13 @@ color:#500;
 	padding: 0px 0px 10px 20px;
 }
 
+.pagination {
+	color: #4d4d4d;
+    font-family: 'Arial',Sans-serif;
+    font-size:  14px;
+    float: right;
+}
+
 input[type='password'],
 input[type='text'],
 input[type='email'] {
