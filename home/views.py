@@ -24,32 +24,32 @@ class Index(ListView):
 			return model.objects.filter(date__event_type=event_type).\
 			filter(date__date__gte=datetime.today()).earliest('date')
 		except model.DoesNotExist:
-			return 0
+			return []
 	
 	def get_queryset(self):
 		self.next_early_show = self.get_next_event(Show,1)
 		self.next_late_show = self.get_next_event(Show,2)
 		self.next_workshop = self.get_next_event(Workshop,3)
 		
-		if self.next_early_show != 0 and self.next_late_show != 0:
+		if self.next_early_show != [] and self.next_late_show != []:
 			early_show_date = self.next_early_show.date.date
 			late_show_date = self.next_late_show.date.date
 			if early_show_date > late_show_date:
 				self.show_id = self.next_late_show.date.id
-				self.next_early_show = {}
+				self.next_early_show = []
 			elif early_show_date < late_show_date:
 				self.show_id = self.next_early_show.date.id
-				self.next_late_show = {}
+				self.next_late_show = []
 			else:
 				self.show_id = self.next_early_show.date.id
-		elif self.next_early_show != 0:
+		elif self.next_early_show != []:
 			self.show_id = self.next_early_show.date.id
-		elif self.next_late_show != 0:
+		elif self.next_late_show != []:
 			self.show_id = self.next_late_show.date.id
 		else:
 			self.show_id = 0
 		
-		queryset = chain(self.next_early_show, self.next_late_show, self.next_workshop, self.show_id)
+		queryset = [self.next_early_show, self.next_late_show, self.next_workshop, self.show_id]
 		return queryset
 				
 	def get_context_data(self,**kwargs):
