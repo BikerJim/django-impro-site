@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
-import settings.local
+#import settings.local
 
 from home.views import Index, AboutUs
 
@@ -17,14 +17,14 @@ urlpatterns = patterns('',
     url(r'^booking/', include('booking.urls')),
 )
 
-if not settings.local.DEBUG==True:
-	pass
-else:
+#if not settings.local.DEBUG==True:
+#	pass
+#else:
     # static files (images, css, javascript, etc.)
-    import debug_toolbar
-    urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$',
-        'django.views.static.serve', {
-        'document_root': settings.local.MEDIA_ROOT}),
-        url(r'^__debug__/', include(debug_toolbar.urls)),
-    )
+#    import debug_toolbar
+#    urlpatterns += patterns('',
+#        (r'^media/(?P<path>.*)$',
+#        'django.views.static.serve', {
+#        'document_root': settings.local.MEDIA_ROOT}),
+#        url(r'^__debug__/', include(debug_toolbar.urls)),
+#    )
