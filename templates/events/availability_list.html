@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title%}Availability{% endblock title %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
+{% endblock %}
+{% block content %}
+<div id="show_list">
+<h1>Your availability</h1>
+<div class='info'>
+<form action="{% url 'availability_list' %}" method="POST">{% csrf_token %}
+{% if availability_list %}
+<table id='availability_list'>
+	<tr>
+		<th width='5%'>&nbsp;</th>
+		<th width='85%'>Date</th>
+		<th width='5%'>N</th>
+		<th width='5%'>Y</th>
+	</tr>
+{% for availability in availability_list %}
+	<tr>
+		<td>{% if availability.available == True %}<img src="{% static 'gfx/av.png' %}">
+		{% else %}
+		<img src="{% static 'gfx/not_av.png' %}">
+		{% endif %}</td>
+		<td>{{ availability.date }}</td>
+		<td><input name="notavailable" type="checkbox" value="{{ availability.id }}" /></td>
+		<td><input name="available" type="checkbox" value="{{ availability.id }}" /> </td>
+	</tr>
+{% endfor %}
+	<tr>
+		<td colspan='4'>
+		{% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/events/availability/?page={{ page_obj.previous_page_number }}"><<</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/events/availability/?page={{ page_obj.next_page_number }}">>></a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+		</td>
+	</tr>
+</table>
+</div>
+<p>Select the dates you can and can't make then hit the update button.</p>
+<input type="submit" value="Update availability" />
+</form>
+{% else %}
+	<p>There aint none.</p>
+	</div>
+{% endif %}
+
+{% endblock content %}
+
+
+
