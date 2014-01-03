@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
 	<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
 {% endblock %}
-{% block content %} 
+{% block content %}
 <div id="show_list">
-<h1>Availability</h1>
+<h1>Your availability</h1>
 <div class='info'>
 <form action="{% url 'availability_list' %}" method="POST">{% csrf_token %}
 {% if availability_list %}
