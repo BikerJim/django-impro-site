@@ -95,6 +95,9 @@ class Availability(models.Model):
 	date = models.ForeignKey(Event_date)
 	person = models.ForeignKey(User, limit_choices_to={'groups__name':'crew'})
 	available = models.NullBooleanField(default=False)
+	cast = models.BooleanField(default=False)
+	host = models.BooleanField(default=False)
+	
 	def __unicode__(self):
 		return self.person.first_name
 		

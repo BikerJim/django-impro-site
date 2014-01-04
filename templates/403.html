@@ -2,11 +2,8 @@
 <html>
 
   <head>
-{% block header %}
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{% block header %}{{ block.super }}
     <title>{% block title%}easylaughs: Forbidden{% endblock title %}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
 {% endblock header %}
   </head>
   <body>

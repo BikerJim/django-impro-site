@@ -73,6 +73,7 @@ INSTALLED_APPS = (
     'events',
     'booking',
     'home',
+    'casting',
 #    'allauth.socialaccount.providers.google',
 #    'allauth.socialaccount.providers.twitter',
 )

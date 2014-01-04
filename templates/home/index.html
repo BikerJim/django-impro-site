@@ -1,11 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block header %}
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>{% block title %}This is my index page{% endblock %}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
-	<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
+{% block header %}{{ block.super }}
+    <title>{% block title %}easylaughs home page{% endblock %}</title>
 {% endblock %}
 {% block content %}
 

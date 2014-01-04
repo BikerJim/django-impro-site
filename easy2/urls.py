@@ -14,4 +14,5 @@ urlpatterns = patterns('',
     url(r'^accounts/',include('allauth.urls')),
     url(r'^events/', include('events.urls')),
     url(r'^booking/', include('booking.urls')),
+    url(r'^casting/', include('casting.urls')),
 )

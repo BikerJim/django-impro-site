@@ -1,0 +1,101 @@
+[
+{
+  "pk": 1, 
+  "model": "auth.group", 
+  "fields": {
+    "name": "easyAdmin", 
+    "permissions": [
+      25, 
+      26, 
+      27, 
+      53, 
+      46, 
+      47, 
+      48, 
+      49, 
+      50, 
+      51, 
+      55, 
+      56, 
+      57, 
+      34, 
+      35, 
+      36
+    ]
+  }
+},
+{
+  "pk": 2, 
+  "model": "auth.group", 
+  "fields": {
+    "name": "actor", 
+    "permissions": [
+      25, 
+      26, 
+      27, 
+      53, 
+      67, 
+      68, 
+      56, 
+      58, 
+      59
+    ]
+  }
+},
+{
+  "pk": 3, 
+  "model": "auth.group", 
+  "fields": {
+    "name": "crew", 
+    "permissions": []
+  }
+},
+{
+  "pk": 4, 
+  "model": "auth.group", 
+  "fields": {
+    "name": "casting", 
+    "permissions": [
+      67, 
+      68, 
+      69
+    ]
+  }
+},
+{
+  "pk": 5, 
+  "model": "auth.group", 
+  "fields": {
+    "name": "music", 
+    "permissions": [
+      67, 
+      68, 
+      69
+    ]
+  }
+},
+{
+  "pk": 6, 
+  "model": "auth.group", 
+  "fields": {
+    "name": "door", 
+    "permissions": [
+      67, 
+      68, 
+      69
+    ]
+  }
+},
+{
+  "pk": 7, 
+  "model": "auth.group", 
+  "fields": {
+    "name": "tech", 
+    "permissions": [
+      67, 
+      68, 
+      69
+    ]
+  }
+}
+]

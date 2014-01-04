@@ -1,11 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
-{% block header %}
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{% block header %}{{ block.super }}
     <title>{% block title%}Edit Workshop{% endblock title %}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
-	<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
 {% endblock %}
 {% block content %} 
 <h1>Update workshop info</h1>

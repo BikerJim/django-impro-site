@@ -1,11 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
-{% block header %}
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>{% block title%}Shows{% endblock title %}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
-	<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
+{% block header %}{{ block.super }}
+    <title>{% block title%}easylaughs Shows{% endblock title %}</title>
 {% endblock %}
 {% block content %} 
 
@@ -26,8 +22,16 @@
 {% regroup show_list by date.date as grouped_show_list %}
 <ul id='show_list'>
 	{% for show in grouped_show_list %}
-	<li><h2>{{ show.grouper|date:"l d F" }}<div style='float:right;'>
+	<li><h2>{{ show.grouper|date:"l d F" }}
+	<div style='float:right;'>
+	{% if is_casting %}
+	{% if show.list.0.date.event_type = 2 %}
+	<em><a class='btn' href="{% url 'cast_show' pk=show.list.0.id %}">Casting</a></em>
+	{% elif show.list.1.date.event_type = 2 %}
+	<em><a class='btn' href="{% url 'cast_show' pk=show.list.1.id %}">Casting</a></em>
+	{% endif %}{% endif %}
 	<em><a class='btn' href="{% url 'reserve_ticket' pk=show.list.0.date.id %}?next={{request.path}}">Reserve tickets</a></em>
+
 	</div></h2>
 	
 	<ul class='bottom-border'>{% for item in show.list %}

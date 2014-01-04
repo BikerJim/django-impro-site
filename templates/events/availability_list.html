@@ -1,11 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
-{% block header %}
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{% block header %}{{ block.super }}
     <title>{% block title%}Availability{% endblock title %}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
-	<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
 {% endblock %}
 {% block content %}
 <div id="show_list">
@@ -23,9 +19,8 @@
 {% for availability in availability_list %}
 	<tr>
 		<td>{% if availability.available == True %}<img src="{% static 'gfx/av.png' %}">
-		{% else %}
-		<img src="{% static 'gfx/not_av.png' %}">
-		{% endif %}</td>
+		{% else %}<img src="{% static 'gfx/not_av.png' %}">{% endif %}
+		</td>
 		<td>{{ availability.date }}</td>
 		<td><input name="notavailable" type="checkbox" value="{{ availability.id }}" /></td>
 		<td><input name="available" type="checkbox" value="{{ availability.id }}" /> </td>

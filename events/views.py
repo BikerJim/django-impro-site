@@ -22,6 +22,13 @@ from django.contrib.auth.models import User
 
 class ShowListView(ListView):
 	model = Show
+	
+	def get_context_data(self, **kwargs):
+		context = super(ShowListView, self).get_context_data(**kwargs)
+		self.is_casting = self.request.user.groups.filter(name='casting')
+		context['is_casting'] = self.is_casting
+		return context
+	
 	try:
 		queryset = Show.objects.all()\
 		.filter(date__date__gte=datetime.today())\
