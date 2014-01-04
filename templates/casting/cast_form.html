@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+	{{ block.super }}
+	<title>{% block title%}easylaughs Casting{% endblock title %}</title>
+    {% endblock %}
+{% block content %}
+<h1>Casting for {{ show.date.date|date:"l d F" }}</h1>
+<form action="" method="POST">{% csrf_token %}
+
+{{ form.show.as_hidden }}
+{% if actor_count != 0 %}
+<h3>Available Actors</h3>
+	<table>
+		<tr>
+			<th>Actor</th>
+			<th>Cast?</th>
+			<th>Host?</th>
+		</tr>
+		{% for actor in available_actors %}
+		<tr>
+			<td width='80%'>{{ actor.person.first_name }} {{ actor.person.last_name }}</td>
+			<td width='25%'><input name="cast" type="checkbox" value="{{ actor.id }}" {% if actor.cast %}checked="True"{% endif %}/></td>
+			<td width='25%'><input name="host" type="radio" value="{{ actor.id }}" {% if actor.host %}checked="True"{% endif %}/></td>
+		</tr>
+
+		{% endfor %}
+	</table>
+
+	{% if actor_count < min_actors %}
+	<p>Uh oh, not enough actors available. Give em a nudge.</p>
+	{% endif %}
+{% else %}
+<p>Uh oh, nobody's available. Give em a nudge.</p>
+{% endif %}
+<h3>Show details: {{ show }}</h3>
+<p>
+Min actors: {{ min_actors }}<br />
+Max actors: {{ max_actors }}
+</p>
+<input type="submit" value="Book em!" />
+
+</form>
+{% endblock %}
