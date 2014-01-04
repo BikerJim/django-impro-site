@@ -61,7 +61,7 @@ class Show(models.Model):
 	A model to hold the shows, taking a format on an event_date
 	"""
 	date = models.OneToOneField(Event_date, 
-				limit_choices_to=Q(date__gte=datetime.today()) & (Q(event_type=1) | Q(event_type=2)) & Q(taken=False),
+				limit_choices_to=Q(date__gte=datetime.today()) & Q(event_type=1) & Q(taken=False),
 				related_name='showdate')
 	early_show = models.ForeignKey(Format, related_name='early_show', null=True, blank=True)
 	early_extra_inf = models.TextField(max_length=500, blank=True)
