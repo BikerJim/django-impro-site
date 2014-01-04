@@ -4,37 +4,40 @@
     <title>{% block title %}easylaughs home page{% endblock %}</title>
 {% endblock %}
 {% block content %}
-
-{% if late or early %}
+{% if show or workshop %}
+{% if show %}
 	<div id="next_show">
 	<h3>Next Show!
 
-	<div style='float:right; margin-right:20px;'>
-		<em><a class='btn' href="{% url 'reserve_ticket' pk=show_id %}?next={{request.path}}">Reserve tickets</a></em>
+	<div style='float:right;'>
+		<em><a class='btn' href="{% url 'reserve_ticket' pk=show.date.id %}?next={{request.path}}">Reserve tickets</a></em>
 	</div></h3>
-	{% if early %}
-		<img id="profile_mugshot" width="60px" src="/media/{{ early.show.icon }}"/>
-		<h3 class="top">Early show: {{ early }}</h3>
-		<p><em>{{ early.date }}</em></p>
-		<p>{{ early.show.short_desc }}</p>
-		<p>{{ early.long_desc }}</p>
+	<h1><em>{{ show.date.date|date:"l jS F " }}</em></h1>
+	{% if show.early_show %}
+		<img id="profile_mugshot" width="50px" src="/media/{{ show.early_show.icon }}"/>
+		<h3 class="top">8PM, Early show: {{ show.early_show }}</h3>
+		<p>{{ show.early_show.short_desc }}</p>
+		<p>{{ show.early_extra_inf }}</p>
 	{% endif %}
-	{% if late %}
-		<img id="profile_mugshot" width="60px" src="/media/{{ late.show.icon }}"/>
-		<h2 class="top">Main show: {{ late }}</h2>
-		<p><em>{{ late.date }}</em></p>
-		<p>{{ late.show.short_desc }}</p>
-		<p>{{ late.long_desc }}</p>
+	
+	{% if show.late_show %}
+		<img id="profile_mugshot" width="70px" src="/media/{{ show.late_show.icon }}"/>
+		<h2 class="top">9PM, Main show: {{ show.late_show }}</h2>
+		<p>{{ show.late_show.short_desc }}</p>
+		<p>{{ show.late_extra_inf }}</p>
 	{% endif %}
 	</div>
-	{% if workshop %}
-		<div id="next_workshop">
+{% endif %}
+	
+{% if workshop %}
+	<div id="next_workshop">
 		<h3>Next Workshop!</h3>
-		<h3>{{ workshop.title }}</h3>
+		<h2><img id="profile_mugshot" width="60px" src="/media/{{ workshop.actor.profile.mugshot }}"/>{{ workshop.title }}</h2>
 		<p><em>{{ workshop.date }} with {{workshop.actor.first_name}}</em></p>
 		<p>{{ workshop.desc }}</p>
-		</div>
-	{% endif %}
+		<p>Cost: &euro;10 (pay at the workshop, no need to reserve, no experience necessary)</p>
+	</div>
+{% endif %}
 {% else %}
 <p>Nothing to see here.</p>
 {% endif %}

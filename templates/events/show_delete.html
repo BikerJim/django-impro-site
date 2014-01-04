@@ -7,7 +7,7 @@
 <div id="show_list">
 <h1>Delete Show</h1>
 
-<p>Are you sure you want to cancel the {{ show.date }} ({{ show.show.title }})?</p>
+<p>Are you sure you want to cancel the {{ show.date }} ({% if show.early_show %}{{ show.early_show }} &amp; {% endif %}{{ show.late_show }})?</p>
 
 <form action="{% url 'show_delete' pk=show.id %}" method="POST">{% csrf_token %}
 

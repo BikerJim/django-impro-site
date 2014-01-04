@@ -25,12 +25,12 @@ class Event_date(models.Model):
 	a drop down for the other models
 	"""
 	EVENT_TYPES = (
-		(1, "8 o'clock show"),
-		(2, "9 o'clock show"),
-		(3, "Workshop"),
-		(4, "Rehearsal"),
-		(5, "Corporate"),
-		(6, "Promotion"))
+		(1, "Show"),
+		(2, "Workshop"),
+		(3, "Rehearsal"),
+		(4, "Corporate"),
+		(5, "Promotion"),
+		)
 	event_type = models.IntegerField(choices=EVENT_TYPES)
 	date = models.DateField()
 	taken = models.BooleanField(default=False)
@@ -60,15 +60,17 @@ class Show(models.Model):
 	"""
 	A model to hold the shows, taking a format on an event_date
 	"""
-	show = models.ForeignKey(Format, related_name='showtitle')
 	date = models.OneToOneField(Event_date, 
 				limit_choices_to=Q(date__gte=datetime.today()) & (Q(event_type=1) | Q(event_type=2)) & Q(taken=False),
 				related_name='showdate')
-	long_desc = models.TextField(max_length=500, blank=True)
+	early_show = models.ForeignKey(Format, related_name='early_show', null=True, blank=True)
+	early_extra_inf = models.TextField(max_length=500, blank=True)
+	late_show = models.ForeignKey(Format, related_name='late_show')
+	late_extra_inf = models.TextField(max_length=500, blank=True)
 
 	def __unicode__(self):
-		return self.show.title
-		
+		return self.late_show.title
+
 class Workshop(models.Model):
 	"""
 	A model to hold the workshops, taking a title, description
@@ -76,7 +78,7 @@ class Workshop(models.Model):
 	"""
 	title = models.CharField(max_length=50)
 	date = models.OneToOneField(Event_date,
-				limit_choices_to=Q(date__gte=datetime.today()) & Q(event_type=3) & Q(taken=False),
+				limit_choices_to=Q(date__gte=datetime.today()) & Q(event_type=2) & Q(taken=False),
 				related_name='workshopdate')
 	desc = models.TextField(max_length=500, blank=True)
 	actor = models.ForeignKey(User, limit_choices_to={'groups__name':'actor'})

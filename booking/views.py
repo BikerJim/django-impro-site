@@ -56,7 +56,7 @@ class ReserveThanks(TemplateView):
 	def get_context_data(self, *args, **kwargs):
 		self.reservation = Reservation.objects.filter(reserved_by=self.request.user).latest('created_date')
 		context = super(ReserveThanks, self).get_context_data(*args, **kwargs)
-		context['date'] = Event_date.objects.get(event_type=2,date=self.reservation.event_date)
+		context['date'] = Event_date.objects.get(event_type=1,date=self.reservation.event_date)
 		context['tickets'] = self.reservation.number_of_tickets
 		context['student_cash'] = 4*self.reservation.number_of_tickets
 		if self.reservation.early_show and self.reservation.late_show:

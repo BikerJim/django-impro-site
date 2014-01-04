@@ -8,13 +8,22 @@ class AddShowForm(forms.ModelForm):
 
 	class Meta:
 		model = Show
-		fields = ['show', 'date', 'long_desc',]
+		fields = [
+			'date',
+			'early_show',
+			'early_extra_inf',
+			'late_show',
+			'late_extra_inf',]
 
 class EditShowForm(forms.ModelForm):
 
 	class Meta:
 		model = Show
-		fields = ['show', 'long_desc']
+		fields = [
+			'early_show',
+			'early_extra_inf',
+			'late_show',
+			'late_extra_inf',]
 		
 class AddWorkshopForm(forms.ModelForm):
 
