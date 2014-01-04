@@ -18,7 +18,7 @@ class WorkshopAdmin(admin.ModelAdmin):
 class AvailabilityAdmin(admin.ModelAdmin):
 	list_display = ('date', 'person','available', 'cast', 'host')
 	list_filter = ('person','date')
-	list_editable = ('cast','host')
+	list_editable = ('available','cast','host')
 
 admin.site.register(Event_date, Event_dateAdmin)
 admin.site.register(Format, FormatAdmin)
