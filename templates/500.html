@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+  <head>
+{% block header %}{{ block.super }}
+    <title>{% block title%}easylaughs: Server Error{% endblock title %}</title>
+{% endblock header %}
+  </head>
+  <body>
+
+<div id="sidebar">
+{% block sidebar %}
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/events/shows/">Shows</a></li>
+			<li>Courses</li>
+			<li>Workshops</li>
+			<li>Corporate</li>
+			<li>Press</li>
+			<li>Resources</li>
+			<li>About Us</li>
+		</ul>
+		<ul>
+<div class="lesser">
+	{% if user.is_authenticated %}
+	<li><a href="{% url 'profile_detail' %}">My profile</a></li>
+	<li><img width="110px" src="{{ user.socialaccount_set.all.0.get_avatar_url }}"/></li>
+	    <li>
+    {% if request.user.first_name or request.user.last_name %}
+        {{ request.user.first_name }} {{ request.user.last_name }}
+    {% else %}
+        {{ request.user.username }}
+    {% endif %}
+		<br/>
+		{% if request.user.profile.account_verified %} (verified) {% else %} (<a href="{% url 'account_email' %}">unverified</a>) {% endif %}
+	</li>
+	<li>&nbsp;</li>
+	<li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+	{% else %}
+	<li><a href="{% url 'account_login' %}">Sign In</a></li>
+	<li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+	{% endif %}
+</div>
+	</ul>
+{% endblock sidebar %}
+</div>  <!-- end sidebar div -->
+<img id="logo" src="{% static 'gfx/el-logo.png' %}"/>
+
+    {% if messages %}
+<div id="footnote">
+      <strong>Messages:</strong>
+      <ul>
+	{% for message in messages %}
+	<li>{{message}}</li>
+	{% endfor %}
+      </ul>
+</div> <!-- end messages div -->
+    {% endif %}
+
+<div id="content">
+		{% block content %}
+		<h1>Oops</h1>
+		<p>Something went wrong, try a different link.</p>
+		{% endblock content %}
+</div>  <!-- end content div -->
+
+  </body>
+</html>
