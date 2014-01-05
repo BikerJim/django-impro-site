@@ -52,7 +52,7 @@
 	</tr>
 	{% for reservation in reservations %}
 	<tr>
-		<td>{{ reservation.reserved_by.first_name }} {{ reservation.reserved_by.last_name }}</td>
+		<td>{% if reservation.reserved_by.first_name %}{{ reservation.reserved_by.first_name }} {{ reservation.reserved_by.last_name }} {% else %}{{ reservation.reserved_by }}{% endif %}</td>
 		<td>{{ reservation.number_of_tickets }}</td>
 		<td>{% if reservation.early_show %}<img src="{% static 'gfx/tick.png' %}"/>{% else %}<img src="{% static 'gfx/cross.png' %}"/>{% endif %}</td>
 		<td>{% if reservation.late_show %}<img src="{% static 'gfx/tick.png' %}"/>{% else %}<img src="{% static 'gfx/cross.png' %}"/>{% endif %}</td>
