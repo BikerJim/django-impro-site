@@ -41,4 +41,29 @@
 </li>{% endif %}
 </ul>
 {% endif %}
+{% if reservations %}
+<h3>Reservations</h3>
+<table>
+	<tr>
+		<th width="60%">Name</th>
+		<th width="20%">Tickets</th>
+		<th>8pm</th>
+		<th>9pm</th>
+	</tr>
+	{% for reservation in reservations %}
+	<tr>
+		<td>{{ reservation.reserved_by.first_name }} {{ reservation.reserved_by.last_name }}</td>
+		<td>{{ reservation.number_of_tickets }}</td>
+		<td>{% if reservation.early_show %}<img src="{% static 'gfx/tick.png' %}"/>{% else %}<img src="{% static 'gfx/cross.png' %}"/>{% endif %}</td>
+		<td>{% if reservation.late_show %}<img src="{% static 'gfx/tick.png' %}"/>{% else %}<img src="{% static 'gfx/cross.png' %}"/>{% endif %}</td>
+	</tr>
+	{% endfor %}
+	<tr>
+		<td><strong>Total</strong></td>
+		<td><strong>{{ total_tickets }}</strong></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+{% endif %}
 {% endblock content %}

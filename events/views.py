@@ -7,6 +7,7 @@ from .models import Show
 from .models import Workshop
 from .models import Event_date
 from .models import Availability
+from booking.models import Reservation
 from allauth.utils import get_user_model
 
 from datetime import date, time, datetime
@@ -91,6 +92,13 @@ class DeleteShow(DeleteView):
 class ShowDetail(DetailView):
 	model = Show
 	
+	def get_queryset(self, *args, **kwargs):
+		queryset = super(ShowDetail, self).get_queryset(*args, **kwargs)
+		self.show = Show.objects.get(pk=self.kwargs["pk"])
+		self.reservations = Reservation.objects.filter(event_date=self.show.date.date)
+		self.total_tickets = sum(x.number_of_tickets for x in self.reservations)
+		return queryset
+	
 	def get_context_data(self, **kwargs):
 		context = super(ShowDetail, self).get_context_data(**kwargs)
 		is_casting = self.request.user.groups.filter(name='casting')
@@ -104,6 +112,8 @@ class ShowDetail(DetailView):
 		context['is_casting'] = is_casting
 		context['cast'] = cast
 		context['host'] = host
+		context['reservations'] = self.reservations
+		context['total_tickets'] = self.total_tickets
 		return context
 
 class WorkshopListView(ListView):
