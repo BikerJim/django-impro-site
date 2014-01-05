@@ -2,7 +2,7 @@ from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
 from django.utils import timezone
 from django.core.urlresolvers import reverse, reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from .models import Show
 from .models import Workshop
 from .models import Event_date
@@ -87,6 +87,24 @@ class DeleteShow(DeleteView):
 	
 	def get_success_url(self):
 		return reverse_lazy('show_list')
+
+class ShowDetail(DetailView):
+	model = Show
+	
+	def get_context_data(self, **kwargs):
+		context = super(ShowDetail, self).get_context_data(**kwargs)
+		is_casting = self.request.user.groups.filter(name='casting')
+		cast = Availability.objects\
+				.filter(date__showdate__pk=self.kwargs["pk"])\
+				.filter(cast=True)
+		try:
+			host = cast.get(host=True)
+		except Availability.DoesNotExist:
+			host = False
+		context['is_casting'] = is_casting
+		context['cast'] = cast
+		context['host'] = host
+		return context
 
 class WorkshopListView(ListView):
 	model = Workshop

@@ -81,6 +81,10 @@ color:#500;
 	border-bottom: 1px solid grey;
 }
 
+#detail_link {
+	color: black;
+}
+
 #show_list li {
 	list-style-type:none;
 }

@@ -73,8 +73,8 @@ class CastShowListForm(FormMixin, ListView):
 		context['show'] = self.show
 		context['available_actors'] = self.get_queryset
 		context['actor_count'] = self.actor_count
-		context['min_actors'] = self.show.early_show.min_actors
-		context['max_actors'] = self.show.early_show.max_actors
+		context['min_actors'] = self.show.late_show.min_actors
+		context['max_actors'] = self.show.late_show.max_actors
 		return context
 		
 class CastShow(CastShowListForm):

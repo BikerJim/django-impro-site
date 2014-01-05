@@ -17,7 +17,9 @@
 <p>
 <a class="btn" href="{% url 'update_profile' %}">edit profile</a> 
 <a class="btn" href="{% url 'account_email' %}">Change, add, or verify email</a>
+{% if 'events.change_availability' in perms %}
 <a class="btn" href="{% url 'availability_list' %}">Update availability</a>
+{% endif %}
 </p>
 
 {% endblock %}

@@ -22,7 +22,7 @@
 <ul id='show_list'>
 {% for show in show_list %}
 	<li>
-		<h2>{{ show.date.date|date:"l d F" }}
+		<h2><a href="{% url 'show_detail' pk=show.id %}">{{ show.date.date|date:"l d F" }}</a>
 		<div style='float:right;'>
 		{% if is_casting %}
 		<em><a class='btn' href="{% url 'cast_show' pk=show.id %}">Casting</a></em>
@@ -37,8 +37,7 @@
 		<p><em>8 o'clock</em></p>
 	</li>
 	<li>
-		<p>{{ show.early_show.short_desc }}</p>
-		<p>{{ show.early_extra_inf|striptags|urlize|linebreaks }}</p>
+		<p>{{ show.early_show.short_desc|striptags|urlize|linebreaks }}</p>
 	</li>
 	{% endif %}
 	{% if show.late_show %}
@@ -48,8 +47,7 @@
 		<p><em>9 o'clock</em></p>
 	</li>
 	<li>
-		<p>{{ show.late_show.short_desc }}</p>
-		<p>{{ show.late_extra_inf|striptags|urlize|linebreaks }}</p>
+		<p>{{ show.late_show.short_desc|striptags|urlize|linebreaks }}</p>
 	</li>
 	{% endif %}		
 		
@@ -61,7 +59,6 @@
 		<em><a class='btn' href="{% url 'show_delete' pk=show.id %}">Cancel Show</a></em>
 		{% endif %}
 	</li>
-
 {% endfor %}
 </ul>
 {% else %}

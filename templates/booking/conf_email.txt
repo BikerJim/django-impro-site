@@ -10,3 +10,7 @@ Please note: We do not have a PIN machine, so please bring cash with you.
 Prices: Early show: 5 euro, Late show: 10 euro, Both shows: 10 euro (students 4 euro)
 
 Amount: {{ cash }} euro (but if you're {% if tickets > 1 %}all students{% else %}a student{% endif %} {{ student_cash }} euro!)
+
+Thanks again,
+
+easylaughs box office

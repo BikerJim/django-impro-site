@@ -4,9 +4,12 @@
 Hi {{ user_display }}, 
 
 We're excited to have you as part of the easylaughs family, and 
-thanks for joining the you to {{ site_name }}, but to make sure you are
+thanks for joining {{ site_name }}, but to make sure you are
 really human and not a one eyed mutant cyborg, we need you to verify that
 the email we have for you is a real one.
 
 To activate your account, go here: {{ activate_url }}
+
+All the best,
+easylaughs.nl Admin
 {% endblocktrans %}{% endautoescape %}
