@@ -33,8 +33,9 @@ class Reservation(models.Model):
 	)
 	
 	created_date = models.DateTimeField(auto_now_add=True)
-	event_date = models.CharField(max_length=50)
-	reserved_by = models.ForeignKey(User)
+	event_date = models.ForeignKey(Event_date)
+	reserved_by = models.CharField(max_length=20)
+	email_address = models.EmailField(max_length=254)
 	number_of_tickets = models.IntegerField(choices=TICKET_NUMBERS)
 	early_show = models.BooleanField(default=True)
 	late_show = models.BooleanField(default=True)

@@ -95,13 +95,14 @@ class ShowDetail(DetailView):
 	def get_queryset(self, *args, **kwargs):
 		queryset = super(ShowDetail, self).get_queryset(*args, **kwargs)
 		self.show = Show.objects.get(pk=self.kwargs["pk"])
-		self.reservations = Reservation.objects.filter(event_date=self.show.date.date)
+		self.reservations = Reservation.objects.filter(event_date=self.show.date)
 		self.total_tickets = sum(x.number_of_tickets for x in self.reservations)
 		return queryset
 	
 	def get_context_data(self, **kwargs):
 		context = super(ShowDetail, self).get_context_data(**kwargs)
 		is_casting = self.request.user.groups.filter(name='casting')
+		is_crew = self.request.user.groups.filter(name='crew')
 		cast = Availability.objects\
 				.filter(date__showdate__pk=self.kwargs["pk"])\
 				.filter(cast=True)
@@ -110,6 +111,7 @@ class ShowDetail(DetailView):
 		except Availability.DoesNotExist:
 			host = False
 		context['is_casting'] = is_casting
+		context['is_crew'] = is_crew
 		context['cast'] = cast
 		context['host'] = host
 		context['reservations'] = self.reservations

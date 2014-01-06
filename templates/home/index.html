@@ -19,7 +19,7 @@
 	<br/>
 	{% if show.late_show %}
 	<h2 class="top"><img id="profile_mugshot" width="50px" src="/media/{{ show.late_show.icon }}"/>9pm, Main show: {{ show.late_show }}</h2>
-	<div style='float:right;'><em><a id='detail_link' href="{% url 'show_detail' pk=show.id %}">Details >></a></em></div>
+	<div style='float:right;'><em><a id='black_link' href="{% url 'show_detail' pk=show.id %}">Details >></a></em></div>
 	{% endif %}
 	<p>&nbsp;<br/></p>
 	</div>

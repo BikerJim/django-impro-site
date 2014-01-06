@@ -81,8 +81,9 @@ color:#500;
 	border-bottom: 1px solid grey;
 }
 
-#detail_link {
+#black_link {
 	color: black;
+	font-weight: bold;
 }
 
 #show_list li {
