@@ -20,7 +20,10 @@ class ReserveTicket(CreateView):
 		self.event_date = get_object_or_404(Event_date, pk=self.kwargs['pk'])
 		form.fields['event_date'].initial = self.event_date.id
 		if self.request.user.is_authenticated():
-			form.fields['reserved_by'].initial = self.request.user
+			if self.request.user.first_name:
+				form.fields['reserved_by'].initial = self.request.user.first_name
+			else:
+				form.fields['reserved_by'].initial = self.request.user
 			form.fields['email_address'].initial = self.request.user.email
 		return form
 	

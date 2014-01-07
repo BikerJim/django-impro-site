@@ -186,6 +186,7 @@ class FormListView(FormMixin, ListView):
 	def get_queryset(self):
 		event_type_list = range(5)
 		datelist = Event_date.objects\
+		.select_related()\
 		.filter(date__gte=datetime.today())\
 		.filter(event_type__in=event_type_list)\
 		.order_by('date','event_type')
@@ -195,7 +196,9 @@ class FormListView(FormMixin, ListView):
 			date = date,
 			person = person,
 			defaults = {'available': False})
-		queryset = Availability.objects.filter(person=person)\
+		queryset = Availability.objects\
+			.select_related()\
+			.filter(person=person)\
 			.filter(date__date__gte=datetime.today())\
 			.order_by('date', 'date__event_type')
 		return queryset
