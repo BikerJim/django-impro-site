@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import permission_required
 import django_tables2 as tables
 from .models import Availability
 from .models import Show
@@ -76,6 +77,7 @@ class ShoverviewTable(tables.Table):
 		# add class="paleblue" to <table> tag
 		attrs = {"class": "paleblue"}
 
+@permission_required('events.change_availability', login_url='/accounts/login/', raise_exception=True)
 def shoverview(request):
 	table = ShoverviewTable(get_table_data())
 	RequestConfig(request).configure(table)
