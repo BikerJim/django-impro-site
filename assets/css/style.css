@@ -245,6 +245,15 @@ padding-left:20px;
 margin-left:180px;
 }
 
+#content-min
+{
+font-family:Sans-serif;
+text-align:left;
+color:black;
+padding-left:0px;
+margin-left:0px;
+}
+
 a.small_link {
 	font-size:0.6em;
 	color:black;
