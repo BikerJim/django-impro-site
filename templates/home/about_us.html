@@ -8,7 +8,9 @@
 <div class="bottom-border">
 <p>
 <img id="profile_mugshot" width="100px" src="/media/{{ actor.mugshot }}"/>
-
+{% if user == actor.user %}
+<a class="btn" style="float:right;" href="{% url 'update_profile' %}"><strong>edit profile</strong></a> 
+{% endif %}
 </p>
 
 			<h1 class="top">{{ actor }}</h1>

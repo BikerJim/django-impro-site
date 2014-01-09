@@ -2,6 +2,7 @@ body {
     width: 800px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 0;
     background-color: #fff;
     
 }
@@ -10,6 +11,7 @@ a {
 }
 
 h1 {
+	font-size: 1.5em;
 	margin: 0,0,0,0;
 }
 #sidebar
@@ -21,7 +23,7 @@ background:#e00;
 float:left;
 padding-right:30px;
 padding-top:50px;
-padding-bottom:250px;
+padding-bottom:2550px;
 }
 
 #sidebar ul

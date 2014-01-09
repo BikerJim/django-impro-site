@@ -33,7 +33,7 @@ class ShowListView(ListView):
 	try:
 		queryset = Show.objects.all()\
 		.filter(date__date__gte=datetime.today())\
-		.order_by('date')
+		.order_by('date')[:4]
 	except IndexError:
 		queryset = {}
 
