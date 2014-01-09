@@ -2,9 +2,6 @@
 {% load static %}
 {% block header %}{{ block.super }}
 <title>{% block title%}{{ flatpage.title }}{% endblock title %}</title>
-    {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
-    <link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
 {% endblock %}
 {% block content %}
 
