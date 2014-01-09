@@ -50,6 +50,38 @@ text-decoration:none;
 color:#500;
 }
 
+.client {
+	height:50px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#press_pick {
+	margin : auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 185px;
+	border-radius: 7px;
+}
+
+.call_out {
+	float: right;
+	width: 200px;
+	box-shadow: 2px 2px 8px rgba(0,0,0,.7);
+	border: 1px solid red;
+	background-color: #FFCCCC;
+	border-radius:8px;
+	padding: 10px 10px 10px 20px;
+	margin: 10px 0px 0px 20px;
+}
+
+.call_out em {
+	float: right;
+	color: red;
+}
+
 .info {
 	border: 1px solid red;
 	border-radius:8px;

@@ -5,6 +5,7 @@
 {% endblock %}
 {% block content %} 
 
+<img src="{% static 'gfx/shows.gif' %}"/>
 <div class='info'>
 {% if 'events.add_show' in perms %}
 <a class='btn' href="{% url 'show_create' %}"><em>Add show</em></a>

@@ -1,0 +1,77 @@
+[
+{
+  "pk": 1, 
+  "model": "flatpages.flatpage", 
+  "fields": {
+    "registration_required": false, 
+    "title": "easylaughs courses", 
+    "url": "/courses/", 
+    "template_name": "flatpages/courses.html", 
+    "sites": [
+      1
+    ], 
+    "content": "<h2>Improvisation and Stand-up Comedy Courses</h2>\r\n<div class=\"info\">\r\n<p>\r\n<strong>*** NEW courses for 2014 now scheduled, sign up now! ***</strong>\r\n</p>\r\n<p>\r\nIf you always wanted to try out improvision or stand-up, learn more about it, or just build some public speaking skills and self-confidence, easylaughs offers comedy improvisation and stand-up courses in English for all levels of experience.\r\n</p>\r\n</div>\r\n<p>\r\nAll students are entitled to FREE entry to easylaughs shows for the duration of their course.\r\n</p>\r\n<p>\r\nFeel free to check out our <a id=\"black_link\" href=\"/courses/FAQ/\">FAQ page</a>. If you have any specific questions please contact us at <a href=\"mailto:courses@easylaughs.nl?subject=More Info Please!\">courses@easylaughs.nl</a>.\r\n</p>\r\n<p>\r\nTo reserve your slot simply click the 'reserve now' link in the course details panels below.\r\n</p>\r\n<p>\r\n<a href=\"/static/doc/easylaughs_courses-leaflet.pdf\">Course Brochure</a>\r\n</p>\r\n\r\n<h3>Course Start Dates</h3>\r\n<ul>\r\n<li>Improvisation Level 1 - Basics January 18th Saturday</li>\r\n<li>Improvisation Level 1 - Basics February 5th Wednesday</li>\r\n<li>Improvisation Level 2 - Beyond the Basics January 11 Saturday</li>\r\n<li>Improvisation Level 3 - Getting in Deeper January 6th Monday</li>\r\n</ul>\r\n\r\n<h3>Registration and Payment</h3>\r\n<p>\r\nTo register for any of the above courses simply click here - that's it! click here for full terms and payment details.\r\n</p>\r\n\r\n<h3>New Courses in the Pipeline!</h3>\r\n<p>\r\nWe have a couple of other courses and workshops in development: Start Writing Through Improv and Start Writing Comedy. If you have interest, please let us know by contacting <a href=\"mailto:courses@easylaughs.nl?subject=Writing course\">courses@easylaughs.nl</a>. \r\n</p>\r\n\r\n<h3>Make Your Own Course!</h3>\r\n<p>Want a course that happens when you want it to happen? If you have your own group of people and a consistent time they are all available for 8 weeks, easylaughs can arrange the teacher and location for you. All levels of courses are available. For information on Making Your Own Course for your own group, <a href=\"mailto:courses@easylaughs.nl?subject=Make my own course\">contact courses@easylaughs.nl<a/>. </p>", 
+    "enable_comments": false
+  }
+},
+{
+  "pk": 2, 
+  "model": "flatpages.flatpage", 
+  "fields": {
+    "registration_required": false, 
+    "title": "hire easylaughs", 
+    "url": "/hireus/", 
+    "template_name": "flatpages/hireus.html", 
+    "sites": [
+      1
+    ], 
+    "content": "<h2>Corporate Training, Teambuilding and Events</h2>\r\n<p>\r\nWhy not join the growing list of companies who are benefiting from easylaughs improv training in their workplace? Whether it's for a fun team-building workshop or part of a more focussed training programme you'll not fail to be impressed by the way that improvisation, theatre-skills and role-playing can improve the effectiveness of your staff. </p>\r\n\r\n<h3>Some of our satisfied corporate clients</h3>\r\n\r\n<div class=\"info\">\r\n<img class=\"client\" src=\"/static/gfx/TERENA_logo.png\" alt=\"TERENA\"/>\r\n<img class=\"client\" src=\"/static/gfx/warner_bros_logo.jpg\" alt=\"Warner Bros\"/>\r\n<img class=\"client\" src=\"/static/gfx/upc_logo.png\" alt=\"UPC\"/>\r\n<img class=\"client\" src=\"/static/gfx/rabobanklogo.gif\" alt=\"Rabobank\"/>\r\n<img class=\"client\" src=\"/static/gfx/INGLogo.gif\" alt=\"ING\"/>\r\n<img class=\"client\" src=\"/static/gfx/diageologo.jpg\" alt=\"Diageo\"/>\r\n<img class=\"client\" src=\"/static/gfx/logo_l_oreal.jpg\" alt=\"L'Oreal\"/>\r\n<img class=\"client\" src=\"/static/gfx/webster-university-logo.gif\" alt=\"Websters University\"/>\r\n<img class=\"client\" src=\"/static/gfx/expatica.jpg\" alt=\"expatica\"/>\r\n<img class=\"client\" src=\"/static/gfx/expatfairlogo.gif\" alt=\"expatica expat fair\"/>\r\n<img class=\"client\" src=\"/static/gfx/Hard-Rock-Cafe-Logo.gif\" alt=\"Hard Rock Cafe\"/>\r\n<img class=\"client\" src=\"/static/gfx/aabc.jpg\" alt=\"Amsterdam American Business Club\"/>\r\n<img class=\"client\" src=\"/static/gfx/pcvs.gif\" alt=\"Publicis Consultants van Sluis\"/>\r\n<img class=\"client\" src=\"/static/gfx/otherwise.jpg\" alt=\"Otherwise\"/>\r\n</div>\r\n\r\n<p class='call_out'>\r\n\"Lively, kept us focussed ... Good bonding time ... well worthwhile doing for the fun we had and seeing each other outside our usual 'boxes'.\"\r\n<em>ING Real Estate</em>\r\n<p>\r\n\r\n<h3>1. Training and Teambuilding</h3>\r\n<p>\r\nWe can give workshops that foster teambuilding and enhance communication and presentation skills. What's more they're fun and can easily be part of your company's day out or themed event. The workshop could end in the staff showing off what they have learnt by putting on a show of their own. There's no better ice-breaker. </p>\r\n<p class='call_out'>\r\n\"It was a really nice opening event for our tourney and everybody was very enthusiastic and talked about it all weekend.\"\r\n<em>A*DAM Hat</em></p>\r\n<h3>2. Corporate Events</h3>\r\n<p>\r\nWe provide entertainment for a company event or conference. Ideal for helping delegates or staff relax before or after heavy informative sessions. The entertainment can be tailored to suit the needs or themes of the events. At its simplest, we offer group discounts for our regular Friday night comedy shows. \r\n</p>\r\n<p class='call_out'>\r\n\"Thank you for a great performance! I have heard only good things and thoroughly enjoyed it myself.\"\r\n<em>Webster University</em></p>\r\n<h3>3. Packages</h3>\r\n<p>\r\nWe offer several packages that include teambuilding workshops and/or performances depending on your requirements. Contact us to find out how we can help you with your event. \r\n</p>\r\n<p>\r\n<a href=\"/static/doc/easyLaughs_corporate_leaflet.pdf\">Download Corporate Brochure</a>\r\n</p>\r\n<p>\r\nWij kunnen het ook in het Nederlands - email voor meer informatie.\r\n</p>", 
+    "enable_comments": false
+  }
+},
+{
+  "pk": 3, 
+  "model": "flatpages.flatpage", 
+  "fields": {
+    "registration_required": false, 
+    "title": "easylaughs presspack", 
+    "url": "/press/", 
+    "template_name": "flatpages/press.html", 
+    "sites": [
+      1
+    ], 
+    "content": "<p>\r\neasylaughs: comedy improvisation in English. A cast of 5 actors takes suggestions from the audience and performs comedy scenes based on those suggestions. High energy and highly interactive, easylaughs performs every Friday night at the Crea Cafe. easylaughs also offers a full range of courses and every Sunday a walk-in improv workshop for all levels of experience. \r\n</p>\r\n<p>\r\neasylaughs is an international improvised comedy group based in Amsterdam. Many of the players are full-time actors and theater teachers and several of the cast have been playing together for more than 10 years. The cast includes: Peter More, Jochem Meijer, Ben Silburn, Sarah Grimmer, Trista Mrema, Luke Davies, Ashley Moore, Jim Buddin, Anne de Graaf, Jake Goshert and Janette Warburton. The cast is international with 2 Dutch, 4 British, 2 Americans, 1 Australian, and a New Zealander. \r\n</p>\r\n\r\n<p>The cast includes voice actors, television presenters and writers. </p>\r\n\r\n<p>The cozy and welcoming atmosphere of the Crea cafe works hand in hand with the community based structure of easylaughs. For over 7 years easylaughs has provided Amsterdam with an affordable and intimate improv comedy experience as well as doing more to foster a community than any other group. </p>\r\n\r\n<h3>History</h3>\r\n<p>\r\neasylaughs formed in the spring of 2005 from the highly successful group, Problem Solved which formed out of the keen followers of an improv course in 2000. Joined by other performers trained in other parts of the world, they started performing at the Cameleon Theater in Amsterdam. The show became more frequent until they established a regular show once a month at the Cameleon. Here they also taught courses and ran weekly open workshops.</p>\r\n\r\n<p>The easylaughs group formed to make the shows weekly and this needed a change of venue, so they moved to the old Crea. When the Crea moved in 2012, easylaughs moved with them. Now they perform a show every Friday night at the Crea, as well as continuing to run courses and workshops.</p>\r\n\r\n<h3>Press Pack</h3>\r\n<p><a href=\"/static/doc/easylaughs_press_pack.pdf\">Download the Press Pack Text (English) PDF</a> here and click on the photos below. For a full press pack including Press Releases in English and Dutch and print-quality pictures, please email us. </p>\r\n\r\n<div class=\"info\">\r\n<a href=\"/static/gfx/press/el-press-pic-1.jpg\"><img id=\"press_pick\" src=\"/static/gfx/press/el-press-pic-tmb-1.jpg\"/></a>\r\n<a href=\"/static/gfx/press/el-press-pic-2.jpg\"><img id=\"press_pick\" src=\"/static/gfx/press/el-press-pic-tmb-2.jpg\"/></a>\r\n\r\n<a href=\"/static/gfx/press/el-press-pic-3.jpg\"><img id=\"press_pick\" src=\"/static/gfx/press/el-press-pic-tmb-3.jpg\"/></a>\r\n\r\n<a href=\"/static/gfx/press/el-press-pic-4.jpg\"><img id=\"press_pick\" src=\"/static/gfx/press/el-press-pic-tmb-4.jpg\"/></a>\r\n\r\n<a href=\"/static/gfx/press/el-press-pic-5.jpg\"><img id=\"press_pick\" src=\"/static/gfx/press/el-press-pic-tmb-5.jpg\"/></a>\r\n\r\n<a href=\"/static/gfx/press/el-press-pic-6.jpg\"><img id=\"press_pick\" src=\"/static/gfx/press/el-press-pic-tmb-6.jpg\"/></a>\r\n\r\n<a href=\"/static/gfx/press/el-press-pic-7.jpg\"><img id=\"press_pick\" src=\"/static/gfx/press/el-press-pic-tmb-7.jpg\"/></a>\r\n\r\n<a href=\"/static/gfx/press/el-press-pic-9.jpg\"><img id=\"press_pick\" src=\"/static/gfx/press/el-press-pic-tmb-9.jpg\"/></a>\r\n\r\n<a href=\"/static/gfx/press/el-press-pic-10.jpg\"><img id=\"press_pick\" src=\"/static/gfx/press/el-press-pic-tmb-10.jpg\"/></a>\r\n</div>", 
+    "enable_comments": false
+  }
+},
+{
+  "pk": 4, 
+  "model": "flatpages.flatpage", 
+  "fields": {
+    "registration_required": false, 
+    "title": "easylaughs resources", 
+    "url": "/resources/", 
+    "template_name": "flatpages/resources.html", 
+    "sites": [
+      1
+    ], 
+    "content": "<h2>Other stuff</h2>\r\n<p>\r\nIf you are like us, and can't get enough of improv, we've assembled a list of improv related stuff that you can check out.\r\n</p>\r\n<p>If you have something you think we might like to add to this collection, please get in touch.</p>\r\n\r\n<h3>Stuff we do</h3>\r\n<ul>\r\n<li>Games - a list of improv games we play</li>\r\n<li>Exercises - a list of improv exercises we use in workshops and rehearsals.</li> \r\n<li>Videos - see the gang in action</li>\r\n</ul>\r\n\r\n<h3>Stuff other people do that we think is cool</h3>\r\n<ul>\r\n<li>Books - books that our players and teachers recommend.</li>\r\n<li>Links - to other useful and interesting internet sites.</li>\r\n</ul>\r\n\r\n<h3>Where to Find Us</h3>\r\n<ul>\r\n<li>easylaughs facebook profile - become a fan</li>\r\n<li>easylaughs on twitter</li>\r\n</ul>\r\n<p>\r\ncheck out the easylaughs pages on www.expat-blog.com and partyearth.\r\n</p>", 
+    "enable_comments": false
+  }
+},
+{
+  "pk": 5, 
+  "model": "flatpages.flatpage", 
+  "fields": {
+    "registration_required": false, 
+    "title": "easylaughs FAQ (Courses)", 
+    "url": "/courses/FAQ/", 
+    "template_name": "", 
+    "sites": [
+      1
+    ], 
+    "content": "<h1>Easylaughs Courses FAQ</h1>\r\n<a href=\"/static/doc/easylaughs_courses-leaflet.pdf\">Download the course brochure</a>\r\n\r\n<h3>What is Improvised Comedy?</h3>\r\n<p>\r\nImprovised comedy (or impro or improv) is a form of comedy where people work together to create comedy scenes and sketches without any preparation following simple but powerful techniques of listening and agreement. You may have already seen it on \"Whose Line is it Anyway?\" or \"de Lamas.\"</p>\r\n<p>\r\nIt is a great way to explore your creativity, gain confidence and develop presentation, spontaneity and teamwork skills in a way that has benefits in all parts of life.</p>\r\n\r\n<h3>What is Stand-up Comedy?</h3>\r\n<p>\r\nIn Stand-up Comedy you perform alone, using material prepared and developed from your life experiences, unique points of view and personal observations.</p>\r\n<p>\r\nIt is a great way to explore your creativity, gain confidence, develop presentation skills and discover a lot about yourself.</p>\r\n\r\n<h3>How many people are there in a course?</h3>\r\n<p>\r\nTypically a course has a minimum of 6 up to a maximum of 12. Some specialised courses have a maximum of 8 or 10.</p>\r\n\r\n<h3>English is my second language; is that a problem?</h3>\r\n<p>\r\nNo. Many people who do our courses who are not native speakers of English. Whilst you should have a reasonable understanding of it, improv is not just a verbal medium but also involves physical movement and much non-verbal communication.</p>\r\n\r\n<h3>Can I pay by credit card or PIN?</h3>\r\n<p>\r\nNo, sorry. We are not set up to accept credit card or PIN payments.\r\n</p>\r\n<h3>I don't have a Dutch bank account yet, can I pay by cash?</h3>\r\n<p>\r\nIn certain circumstances, we do accept cash. Payable by the first day of the class. Contact us for more information.</p>\r\n\r\n<h3>How do I pay?</h3>\r\n<p>\r\nPlease see our terms and conditions page for payment instructions.</p>\r\n\r\n<h3>What sort of people take the courses?</h3>\r\n<p>\r\nAnyone. Participants are typically 20-45 years old, men or women, and from Earth.</p>\r\n\r\n<h3>Is the course active?</h3>\r\n<p>\r\nImprovised Comedy does involve a fair bit of movement, which doesn't mean you have to be fit, but does require a fair bit of mobility.</p>\r\n\r\n<p>Stand-up doesn't require that. In fact, despite the name, you don't have to stand up, even.</p>\r\n\r\n<h3>I'm very nervous about performing on stage, is this a problem?</h3>\r\n<p>This is quite normal. It's perfectly natural to be nervous when performing (or doing anything) in front of a crowd of people. We make sure that during the course you learn skills that will give you confidence to perform on stage. Plus we make sure the class and performing environment is as safe as possible. Most classes have an end-of-course performance. This is not compulsory, but even those people who started the course dreading it, look forward to it by the end of the course.</p>\r\n\r\n<h3>Can easylaughs organise a workshop for my company or event?</h3>\r\n<p>Yes we can. Improv is great for improving communications and teambuilding and we offer several types of workshops geared to specific needs. Check out our Corporate page or contact us for information on what we can do for you.</p>", 
+    "enable_comments": false
+  }
+}
+]

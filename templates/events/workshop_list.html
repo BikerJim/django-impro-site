@@ -5,6 +5,7 @@
 {% endblock %}
 {% block content %} 
 <div id="show_list">
+<img src="{% static 'gfx/workshops.gif' %}"/>
 <h1>Coming workshops
 {% if perms.events.add_workshop %}
 <a class='btn' href="{% url 'workshop_create' %}">Add workshop</a>

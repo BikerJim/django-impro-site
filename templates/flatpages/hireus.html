@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title%}{{ flatpage.title }}{% endblock title %}
+{% block content %}
+<img src="{% static 'gfx/hireus.gif' %}"/>
+        {{ flatpage.content }}
+
+{% endblock content %}
