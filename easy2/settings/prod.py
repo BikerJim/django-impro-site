@@ -12,7 +12,7 @@ DATABASES['default'] =  dj_database_url.config()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
-#SECRET_KEY = get_env_variable("DJANGO_SECRET_KEY")
+SECRET_KEY = get_env_variable("DJANGO_SECRET_KEY")
 #DB_PASSWORD = get_env_variable("DB_PASSWORD")
 #DB_NAME = get_env_variable("DB_NAME")
 #DB_USER = get_env_variable("DB_USER")
