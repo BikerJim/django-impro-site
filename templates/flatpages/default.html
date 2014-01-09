@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-
 {% block header %}{{ block.super }}
+	{% load staticfiles %}
     <title>{% block title%}{{ flatpage.title }}{% endblock title %}</title>
 {% endblock %}
 {% block content %}
