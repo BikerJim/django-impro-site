@@ -1,218 +1,90 @@
 [
 {
-  "pk": 34, 
-  "model": "events.event_date", 
+  "pk": 1, 
+  "model": "events.format", 
   "fields": {
-    "date": "2014-01-10", 
-    "taken": true, 
-    "event_type": 1
+    "max_actors": 5, 
+    "icon": "images/formats/rumble!.jpg", 
+    "short_desc": "GET READY TO RUMBLE! The monthly gloves-off fight to the death as two teams battle it out in a series of rounds to determine who is the funniest!", 
+    "min_actors": 4, 
+    "title": "Rumble!"
   }
 },
 {
-  "pk": 35, 
-  "model": "events.event_date", 
+  "pk": 2, 
+  "model": "events.format", 
   "fields": {
-    "date": "2014-01-17", 
-    "taken": true, 
-    "event_type": 1
+    "max_actors": 12, 
+    "icon": "images/formats/improvroyale.png", 
+    "short_desc": "A chance to see the players of tomorrow as easylaughs graduates and players from around Amsterdam form teams and compete for the audience approval. If you are an easylaughs graduate and want to get some more stage time then contact us at info@easylaughs.nl", 
+    "min_actors": 1, 
+    "title": "Improv Royale"
   }
 },
 {
-  "pk": 36, 
-  "model": "events.event_date", 
+  "pk": 3, 
+  "model": "events.format", 
   "fields": {
-    "date": "2014-01-24", 
-    "taken": true, 
-    "event_type": 1
+    "max_actors": 10, 
+    "icon": "images/formats/courtroomdrama.jpg", 
+    "short_desc": "Do you have a noisy neighbour? An irritating co-worker, a nagging partner? Bring your grievances to easylaughs and seek justice!\r\n\r\nAudience complaints are given a fair trial in this improvised courtroom battle, and once all the evidence has been heard, the audience decides the final verdict: innocent or guilty!", 
+    "min_actors": 7, 
+    "title": "Courtroom Drama"
   }
 },
 {
-  "pk": 37, 
-  "model": "events.event_date", 
+  "pk": 4, 
+  "model": "events.format", 
   "fields": {
-    "date": "2014-01-31", 
-    "taken": true, 
-    "event_type": 1
+    "max_actors": 12, 
+    "icon": "images/formats/easylaughsfamilychristmas.jpg", 
+    "short_desc": "Its the last Friday of the term and the easylaughs cast are celebrating a family Christmas together. Some games, some songs, some Christmas crackers, maybe even a mince pie or two... its the only place to be this Christmas so pull up a seat by the fire and get festive!", 
+    "min_actors": 6, 
+    "title": "easylaughs Family Christmas"
   }
 },
 {
-  "pk": 38, 
-  "model": "events.event_date", 
+  "pk": 5, 
+  "model": "events.format", 
   "fields": {
-    "date": "2014-02-07", 
-    "taken": true, 
-    "event_type": 1
+    "max_actors": 12, 
+    "icon": "images/formats/level1-graduationshow.jpg", 
+    "short_desc": "Its the turn of the students this week as the latest gang of improv newbies gets their chance in the spotlight.\r\n\r\nSo come along and show them some improv love!", 
+    "min_actors": 1, 
+    "title": "Level 1 - Graduation Show"
   }
 },
 {
-  "pk": 39, 
-  "model": "events.event_date", 
+  "pk": 6, 
+  "model": "events.format", 
   "fields": {
-    "date": "2014-02-14", 
-    "taken": false, 
-    "event_type": 1
+    "max_actors": 1, 
+    "icon": "images/formats/takeone-asoloshowbypetermore.jpg", 
+    "short_desc": "Peter likes a challenge. This one is to create a movie on the spot in a random genre chosen by a panel of top Hollywood producers (yes, that's you). This plus re-imagining some classic scenes should keep him occupied and give those tricky producers what they want.", 
+    "min_actors": 1, 
+    "title": "Take One - a solo show by Peter More"
   }
 },
 {
-  "pk": 40, 
-  "model": "events.event_date", 
+  "pk": 7, 
+  "model": "events.format", 
   "fields": {
-    "date": "2014-02-21", 
-    "taken": false, 
-    "event_type": 1
+    "max_actors": 2, 
+    "icon": "images/formats/mischlerandmore.jpg", 
+    "short_desc": "2 actors, 1 story, no script. easylaughs co-founders Mischler & More is a two-person improv team that specializes in improvised genres such as Shakespeare, Film Noir and Science Fiction.", 
+    "min_actors": 2, 
+    "title": "Mischler and More"
   }
 },
 {
-  "pk": 41, 
-  "model": "events.event_date", 
+  "pk": 8, 
+  "model": "events.format", 
   "fields": {
-    "date": "2014-02-28", 
-    "taken": false, 
-    "event_type": 1
-  }
-},
-{
-  "pk": 42, 
-  "model": "events.event_date", 
-  "fields": {
-    "date": "2014-01-05", 
-    "taken": true, 
-    "event_type": 2
-  }
-},
-{
-  "pk": 43, 
-  "model": "events.event_date", 
-  "fields": {
-    "date": "2014-01-12", 
-    "taken": true, 
-    "event_type": 2
-  }
-},
-{
-  "pk": 44, 
-  "model": "events.event_date", 
-  "fields": {
-    "date": "2014-01-19", 
-    "taken": true, 
-    "event_type": 2
-  }
-},
-{
-  "pk": 45, 
-  "model": "events.event_date", 
-  "fields": {
-    "date": "2014-01-26", 
-    "taken": false, 
-    "event_type": 2
-  }
-},
-{
-  "pk": 46, 
-  "model": "events.event_date", 
-  "fields": {
-    "date": "2014-02-02", 
-    "taken": false, 
-    "event_type": 2
-  }
-},
-{
-  "pk": 47, 
-  "model": "events.event_date", 
-  "fields": {
-    "date": "2014-02-09", 
-    "taken": false, 
-    "event_type": 2
-  }
-},
-{
-  "pk": 48, 
-  "model": "events.event_date", 
-  "fields": {
-    "date": "2014-02-16", 
-    "taken": false, 
-    "event_type": 2
-  }
-},
-{
-  "pk": 49, 
-  "model": "events.event_date", 
-  "fields": {
-    "date": "2014-02-23", 
-    "taken": false, 
-    "event_type": 2
-  }
-},
-{
-  "pk": 50, 
-  "model": "events.event_date", 
-  "fields": {
-    "date": "2014-01-05", 
-    "taken": false, 
-    "event_type": 3
-  }
-},
-{
-  "pk": 51, 
-  "model": "events.event_date", 
-  "fields": {
-    "date": "2014-01-12", 
-    "taken": false, 
-    "event_type": 3
-  }
-},
-{
-  "pk": 52, 
-  "model": "events.event_date", 
-  "fields": {
-    "date": "2014-01-19", 
-    "taken": false, 
-    "event_type": 3
-  }
-},
-{
-  "pk": 53, 
-  "model": "events.event_date", 
-  "fields": {
-    "date": "2014-01-26", 
-    "taken": false, 
-    "event_type": 3
-  }
-},
-{
-  "pk": 54, 
-  "model": "events.event_date", 
-  "fields": {
-    "date": "2014-02-02", 
-    "taken": false, 
-    "event_type": 3
-  }
-},
-{
-  "pk": 55, 
-  "model": "events.event_date", 
-  "fields": {
-    "date": "2014-02-09", 
-    "taken": false, 
-    "event_type": 3
-  }
-},
-{
-  "pk": 56, 
-  "model": "events.event_date", 
-  "fields": {
-    "date": "2014-02-16", 
-    "taken": false, 
-    "event_type": 3
-  }
-},
-{
-  "pk": 57, 
-  "model": "events.event_date", 
-  "fields": {
-    "date": "2014-02-23", 
-    "taken": false, 
-    "event_type": 3
+    "max_actors": 8, 
+    "icon": "images/formats/superscene.jpg", 
+    "short_desc": "Its movie time! Six directors compete to tell the ultimate story based on suggestions from the audience. Only one director will make it all the way through to complete the final SuperScene!", 
+    "min_actors": 6, 
+    "title": "Superscene"
   }
 }
 ]

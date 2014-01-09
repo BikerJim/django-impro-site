@@ -1,0 +1,218 @@
+[
+{
+  "pk": 34, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-01-10", 
+    "taken": true, 
+    "event_type": 1
+  }
+},
+{
+  "pk": 35, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-01-17", 
+    "taken": true, 
+    "event_type": 1
+  }
+},
+{
+  "pk": 36, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-01-24", 
+    "taken": true, 
+    "event_type": 1
+  }
+},
+{
+  "pk": 37, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-01-31", 
+    "taken": true, 
+    "event_type": 1
+  }
+},
+{
+  "pk": 38, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-02-07", 
+    "taken": true, 
+    "event_type": 1
+  }
+},
+{
+  "pk": 39, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-02-14", 
+    "taken": false, 
+    "event_type": 1
+  }
+},
+{
+  "pk": 40, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-02-21", 
+    "taken": false, 
+    "event_type": 1
+  }
+},
+{
+  "pk": 41, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-02-28", 
+    "taken": false, 
+    "event_type": 1
+  }
+},
+{
+  "pk": 42, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-01-05", 
+    "taken": true, 
+    "event_type": 2
+  }
+},
+{
+  "pk": 43, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-01-12", 
+    "taken": true, 
+    "event_type": 2
+  }
+},
+{
+  "pk": 44, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-01-19", 
+    "taken": true, 
+    "event_type": 2
+  }
+},
+{
+  "pk": 45, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-01-26", 
+    "taken": false, 
+    "event_type": 2
+  }
+},
+{
+  "pk": 46, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-02-02", 
+    "taken": false, 
+    "event_type": 2
+  }
+},
+{
+  "pk": 47, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-02-09", 
+    "taken": false, 
+    "event_type": 2
+  }
+},
+{
+  "pk": 48, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-02-16", 
+    "taken": false, 
+    "event_type": 2
+  }
+},
+{
+  "pk": 49, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-02-23", 
+    "taken": false, 
+    "event_type": 2
+  }
+},
+{
+  "pk": 50, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-01-05", 
+    "taken": false, 
+    "event_type": 3
+  }
+},
+{
+  "pk": 51, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-01-12", 
+    "taken": false, 
+    "event_type": 3
+  }
+},
+{
+  "pk": 52, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-01-19", 
+    "taken": false, 
+    "event_type": 3
+  }
+},
+{
+  "pk": 53, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-01-26", 
+    "taken": false, 
+    "event_type": 3
+  }
+},
+{
+  "pk": 54, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-02-02", 
+    "taken": false, 
+    "event_type": 3
+  }
+},
+{
+  "pk": 55, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-02-09", 
+    "taken": false, 
+    "event_type": 3
+  }
+},
+{
+  "pk": 56, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-02-16", 
+    "taken": false, 
+    "event_type": 3
+  }
+},
+{
+  "pk": 57, 
+  "model": "events.event_date", 
+  "fields": {
+    "date": "2014-02-23", 
+    "taken": false, 
+    "event_type": 3
+  }
+}
+]
