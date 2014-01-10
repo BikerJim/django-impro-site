@@ -1,8 +1,6 @@
 """
 Django production settings for easylaughs project.
 """
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
 from .base import *
 import dj_database_url
 DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
