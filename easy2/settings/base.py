@@ -21,7 +21,7 @@ def get_env_variable(var_name):
 
 PROJECT_DIR = Path(__file__).ancestor(3)
 MEDIA_ROOT = PROJECT_DIR.child("media")
-STATIC_ROOT = PROJECT_DIR.child("staticfiles")
+STATIC_ROOT = PROJECT_DIR.child("static")
 STATICFILES_DIRS = (PROJECT_DIR.child("assets"),)
 TEMPLATE_DIRS = (PROJECT_DIR.child("templates"),)
 
