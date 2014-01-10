@@ -13,9 +13,6 @@ DATABASES['default'] =  dj_database_url.config()
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 SECRET_KEY = get_env_variable("DJANGO_SECRET_KEY")
-#DB_PASSWORD = get_env_variable("DB_PASSWORD")
-#DB_NAME = get_env_variable("DB_NAME")
-#DB_USER = get_env_variable("DB_USER")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -27,17 +24,4 @@ TEMPLATE_DEBUG = False
 ADMINS = (
 	('Jim Buddin', 'jimbuddin@hotmail.com'),
 )
-
-#EMAIL_HOST = 
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': 'DB_NAME',
-#        'USER': 'DB_USER',
-#        'PASSWORD': 'DB_PASSWORD',
-#        'HOST': '',
-#        'PORT': '',
-#    }
-#}
 ALLOWED_HOSTS = ['*']
