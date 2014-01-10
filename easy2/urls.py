@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
+from django.conf import settings
 
 from home.views import Index, AboutUs
 
@@ -16,7 +17,7 @@ urlpatterns = patterns('',
     url(r'^booking/', include('booking.urls')),
     url(r'^casting/', include('casting.urls')),
 )
-if not settings.prod.DEBUG:
+if not settings.DEBUG:
     urlpatterns += patterns('',
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.base.STATIC_ROOT}),
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
     )
