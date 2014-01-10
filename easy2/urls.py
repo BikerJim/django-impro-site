@@ -16,7 +16,7 @@ urlpatterns = patterns('',
     url(r'^booking/', include('booking.urls')),
     url(r'^casting/', include('casting.urls')),
 )
-if not settings.DEBUG:
+if not settings.prod.DEBUG:
     urlpatterns += patterns('',
         (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.base.STATIC_ROOT}),
     )
