@@ -3,7 +3,7 @@
 {% block title%}Your easylaughs profile{% endblock title %}
 {% block content %}
 <p>
-<img id="profile_mugshot" width="100px" src="/media/{{ user.profile.mugshot }}"/>
+<img id="profile_mugshot" width="100px" src="{{ user.profile.mugshot.url }}"/>
 
 </p>
 
