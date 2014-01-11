@@ -1,9 +1,6 @@
 {% extends "base.html" %}
-{% load static %}
-{% block header %}
-	{{ block.super }}
-    <title>{% block title%}Your easylaughs profile{% endblock title %}</title>
-{% endblock %}
+{% load staticfiles %}
+{% block title%}Your easylaughs profile{% endblock title %}
 {% block content %}
 <p>
 <img id="profile_mugshot" width="100px" src="/media/{{ user.profile.mugshot }}"/>
