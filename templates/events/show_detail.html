@@ -14,14 +14,14 @@
 </h1>
 {% if object.early_show %}
 <ul id='show_list'>
-<li><img id='profile_mugshot' width='100px' src="/media/{{ object.early_show.icon }}"/><h2>{{ object.early_show }}</h2></li>
+<li><img id='profile_mugshot' width='100px' src="{{ object.early_show.icon.url }}"/><h2>{{ object.early_show }}</h2></li>
 <li><p>The 8 o'clock show, just &euro;5 or slightly less if you're a student.</p><p>{{ object.early_show.short_desc|striptags|urlize|linebreaks }}</p></li>
 <li><p>{{ object.early_extra_inf|striptags|urlize|linebreaks }}</p></li>
 </ul>
 {% endif %}
 {% if object.late_show %}
 <ul id='show_list'>
-<li><img id='profile_mugshot' width='100px' src="/media/{{ object.late_show.icon }}"/><h2>{{ object.late_show }}</h2></li>
+<li><img id='profile_mugshot' width='100px' src="{{ object.late_show.icon.url }}"/><h2>{{ object.late_show }}</h2></li>
 <li><p>The 9 o'clock show, just &euro;10 or &euro;5 to upgrade from the 8 o'clock show. Just &euro;4 for both shows if you're a student!</p>
 <p>{{ object.late_show.short_desc|striptags|urlize|linebreaks }}</p></li>
 <li><p>{{ object.late_extra_inf|striptags|urlize|linebreaks }}</p></li>

@@ -14,11 +14,11 @@
 	</div></h3>
 	<h1><em>{{ show.date.date|date:"l jS F" }}</em></h1>
 	{% if show.early_show %}
-	<h3 class="top"><img id="profile_mugshot" width="50px" src="/media/{{ show.early_show.icon }}"/>8pm, Early show: {{ show.early_show }}</h3>
+	<h3 class="top"><img id="profile_mugshot" width="50px" src="{{ show.early_show.icon.url }}"/>8pm, Early show: {{ show.early_show }}</h3>
 	{% endif %}
 	<br/>
 	{% if show.late_show %}
-	<h2 class="top"><img id="profile_mugshot" width="50px" src="/media/{{ show.late_show.icon }}"/>9pm, Main show: {{ show.late_show }}</h2>
+	<h2 class="top"><img id="profile_mugshot" width="50px" src="{{ show.late_show.icon.url }}"/>9pm, Main show: {{ show.late_show }}</h2>
 	<div style='float:right;'><em><a id='black_link' href="{% url 'show_detail' pk=show.id %}">Details >></a></em></div>
 	{% endif %}
 	<p>&nbsp;<br/></p>
@@ -29,7 +29,7 @@
 {% if workshop %}
 	<div id="next_workshop">
 		<h3>Next Workshop!</h3>
-		<h2><img id="profile_mugshot" width="60px" src="/media/{{ workshop.actor.profile.mugshot }}"/>{{ workshop.title }}</h2>
+		<h2><img id="profile_mugshot" width="60px" src="{{ workshop.actor.profile.mugshot.url }}"/>{{ workshop.title }}</h2>
 		<p><em>{{ workshop.date.date|date:"l jS F" }} with {{workshop.actor.first_name}}</em></p>
 		<p>Cost: &euro;10 (pay at the workshop, no need to reserve, no experience necessary)</p>
 	</div>
