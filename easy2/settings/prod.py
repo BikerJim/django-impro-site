@@ -11,10 +11,15 @@ DATABASES['default'] =  dj_database_url.config()
 SECRET_KEY = get_env_variable("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-TEMPLATE_DEBUG = False
+DEBUG = True
+TEMPLATE_DEBUG = True
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'jimbuddin'
+EMAIL_HOST_PASSWORD = 'easysocial1'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 ADMINS = (
