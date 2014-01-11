@@ -15,7 +15,7 @@ def get_env_variable(var_name):
 		raise ImproperlyConfigured(error_msg)
 
 PROJECT_DIR = Path(__file__).ancestor(3)
-#MEDIA_ROOT = PROJECT_DIR.child("media")
+MEDIA_ROOT = PROJECT_DIR.child("media")
 STATIC_ROOT = PROJECT_DIR.child("staticfiles")
 STATICFILES_DIRS = (PROJECT_DIR.child("assets"),)
 TEMPLATE_DIRS = (PROJECT_DIR.child("templates"),)
