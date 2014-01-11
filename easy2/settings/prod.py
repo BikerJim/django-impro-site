@@ -15,11 +15,11 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'jimbuddin'
-EMAIL_HOST_PASSWORD = 'easysocial1'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_HOST = os.environ['MAILTRAP_HOST']
+EMAIL_HOST_USER = os.environ['MAILTRAP_USER_NAME']
+EMAIL_HOST_PASSWORD = os.environ['MAILTRAP_PASSWORD']
+EMAIL_PORT = os.environ['MAILTRAP_PORT']
+EMAIL_USE_TLS = False
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 ADMINS = (
