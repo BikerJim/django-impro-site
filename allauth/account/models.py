@@ -2,6 +2,7 @@ import datetime
 from PIL import Image
 _imaging = Image.core
 from django.core.urlresolvers import reverse
+from django.core.files.storage import default_storage as storage
 from django.db import models
 from django.db import transaction
 from django.utils.translation import ugettext_lazy as _
@@ -20,7 +21,7 @@ from .adapter import get_adapter
 from django.contrib.auth.models import User
 #from allauth.account.models import EmailAddress
 #from events.models import image_file_name
-from events.storage import OverwriteStorage
+#from events.storage import OverwriteStorage
 
 import os
 def image_file_name(instance, filename):
@@ -39,7 +40,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
     about_me = models.TextField(max_length="500", null=False)
     image_folder = "profiles"
-    mugshot = models.ImageField(max_length=1024,storage=OverwriteStorage(), upload_to=image_file_name, default = "images/profiles/anon.user.png")
+    mugshot = models.ImageField(max_length=1024, upload_to=image_file_name, default = "images/profiles/anon.user.png")
     mailing_list = models.BooleanField(default=True)
     
     def get_absolute_url(self):
@@ -74,7 +75,10 @@ class UserProfile(models.Model):
 		
         size= (int(width*factor),int(height*factor))
         image = image.resize(size, Image.ANTIALIAS)
-        image.save(self.mugshot.path)
+        fh = storage.open(self.mugshot.name, "w")
+        format = 'png'
+        image.save(fh, format)
+        fh.close()
  
     class Meta:
         db_table = 'user_profile'

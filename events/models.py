@@ -1,8 +1,11 @@
 from django.db import models
 import os
-from events.storage import OverwriteStorage
+from django.core.files.storage import default_storage as storage
+#from events.storage import OverwriteStorage
 from django.contrib.auth.models import User
 from django.db.models import Q
+from PIL import Image
+_imaging = Image.core
 
 from datetime import date, time, datetime
 
@@ -49,10 +52,29 @@ class Format(models.Model):
 	image_folder = "formats"
 	title = models.CharField(max_length=50)
 	short_desc = models.TextField(max_length=150)
-	icon = models.ImageField(max_length=1024,storage=OverwriteStorage(), upload_to=image_file_name)
+	icon = models.ImageField(max_length=1024, upload_to=image_file_name)
 	min_actors = models.PositiveIntegerField()
 	max_actors = models.PositiveIntegerField()
-	
+
+	def save(self, *args, **kwargs):
+#		if not self.id and not self.icon:
+#			return
+		super(Format, self).save(*args, **kwargs)
+		image = Image.open(self.icon)
+		(width,height) = image.size
+
+		if (150 / width < 150 / height):
+			factor = 150.00/height
+		else:
+			factor = 150.00/width
+			
+		size= (int(width*factor),int(height*factor))
+		image = image.resize(size, Image.ANTIALIAS)
+		fh = storage.open(self.icon.name, "w")
+		format = 'png'
+		image.save(fh, format)
+		fh.close()
+
 	def __unicode__(self):
 		return self.title
 

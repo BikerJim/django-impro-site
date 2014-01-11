@@ -1,6 +1,5 @@
 """
 Django settings for easy2 project.
-
 """
 import os
 from unipath import Path
