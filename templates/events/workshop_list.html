@@ -40,7 +40,7 @@ See other pages for our courses and special workshops.
 	<li><h2>{{ workshop.title }}</h2>
 		<ul class='bottom-border'>
 			<li>
-				<img width='75px' id='profile_mugshot' src="/media/{{ workshop.actor.profile.mugshot }}"/>
+				<img width='75px' id='profile_mugshot' src="{{ workshop.actor.profile.mugshot.url }}"/>
 				<p><em>{{ workshop.date }}</em></p>
 				<p>{{ workshop.desc|striptags|urlize|linebreaks }}<p>
 				<p>This workshop will be led by {{ workshop.actor.first_name }} {{ workshop.actor.last_name }}</p>
