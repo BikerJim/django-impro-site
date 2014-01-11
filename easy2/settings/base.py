@@ -1,11 +1,6 @@
 """
 Django settings for easy2 project.
 
-For more information on this file, see
-https://docs.djangoproject.com/en/1.6/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 import os
 from unipath import Path
@@ -27,8 +22,8 @@ TEMPLATE_DIRS = (PROJECT_DIR.child("templates"),)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-MEDIA_URL = '/media/'
-STATIC_URL = '/static/'
+#MEDIA_URL = '/media/'
+#STATIC_URL = '/static/'
 
 # Additions for all_auth
 TEMPLATE_CONTEXT_PROCESSORS = (
