@@ -35,12 +35,12 @@ Each workshop is run by a different member of easylaughs
 See other pages for our courses and special workshops.
 </p>
 {% if workshop_list %}
+<h3>Upcoming workshops</h3>
 <ul id='show_list'>
 	{% for workshop in workshop_list %}
-	<li><h2>{{ workshop.title }}</h2>
+	<li><img width='50px' id='profile_mugshot' src="{{ workshop.actor.profile.mugshot.url }}"/><h3>{{ workshop.title }}</h3>
 		<ul class='bottom-border'>
 			<li>
-				<img width='75px' id='profile_mugshot' src="{{ workshop.actor.profile.mugshot.url }}"/>
 				<p><em>{{ workshop.date }}</em></p>
 				<p>{{ workshop.desc|striptags|urlize|linebreaks }}<p>
 				<p>This workshop will be led by {{ workshop.actor.first_name }} {{ workshop.actor.last_name }}</p>
@@ -52,7 +52,19 @@ See other pages for our courses and special workshops.
 		</ul>
 	</li>
 	{% endfor %}</ul>
-{% else %}
-	<p>There aint none.</p>
 {% endif %}
+<h3>Strippenkaart</h3>
+<img style='float:right' src="{% static 'gfx/strippenkaart.png' %}"/>
+<p>
+You can also buy a season pass to get your workshops on the cheap. Email us or just ask the instructor at the workshop for more details. The strippenkaart is also valid as entry into any of our shows.
+</p>
+
+<ul>
+    <li>&euro;75 for 12 workshops/shows</li>
+    <li>&euro;50 for 8 workshops/shows</li>
+    <li>&euro;30 for 4 workshops/shows</li>
+</ul>
+<p>
+You can buy your strippenkaart from the teacher at the workshop.
+</p>
 {% endblock content %}

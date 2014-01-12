@@ -121,7 +121,7 @@ class ShowDetail(DetailView):
 class WorkshopListView(ListView):
 	model = Workshop
 	try:
-		queryset = Workshop.objects.all().filter(date__date__gte=datetime.today()).order_by('date')
+		queryset = Workshop.objects.filter(date__date__gte=datetime.today()).order_by('date')[:3]
 	except IndexError:
 		queryset = {}
 	
