@@ -6,11 +6,11 @@
 {% block content %} 
 <div id="show_list">
 <img src="{% static 'gfx/workshops.gif' %}"/>
-<h1>Coming workshops
+
 {% if perms.events.add_workshop %}
 <a class='btn' href="{% url 'workshop_create' %}">Add workshop</a>
 {% endif %}
-</h1>
+
 <div class='info'>
 <h2>Drop-in Improv Workshops</h2>
 <ul>
@@ -38,7 +38,7 @@ See other pages for our courses and special workshops.
 <h3>Upcoming workshops</h3>
 <ul id='show_list'>
 	{% for workshop in workshop_list %}
-	<li><img width='50px' id='profile_mugshot' src="{{ workshop.actor.profile.mugshot.url }}"/><h3>{{ workshop.title }}</h3>
+	<li><h3>{{ workshop.title }}<img width='50px' id='profile_mugshot' src="{{ workshop.actor.profile.mugshot.url }}"/></h3>
 		<ul class='bottom-border'>
 			<li>
 				<p><em>{{ workshop.date }}</em></p>
