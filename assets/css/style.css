@@ -111,7 +111,8 @@ color:#500;
 .btn.active {
     box-shadow: 1px 1px 9px rgba(0,0,0,.7);
 }
-.bottom-border {
+.bottom-border, a {
+    color: black;
 	border-bottom: 1px solid grey;
 }
 
@@ -141,6 +142,10 @@ color:#500;
 	border: 1px solid black;
 	border-radius:8px;
 	padding: 0px 20px 10px 20px;
+}
+
+#about_me p a {
+	color: black;
 }
 
 .pagination {
