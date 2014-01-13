@@ -143,7 +143,16 @@ color:#500;
 	padding: 0px 20px 10px 20px;
 }
 
-#about_me p a {
+a:link {color:#FF0000;}      /* unvisited link */
+a:visited {color:#00FF00;}  /* visited link */
+a:hover {color:#FF00FF;}  /* mouse over link */
+a:active {color:#0000FF;}  /* selected link */
+
+#about_me a:link,
+			a:visited,
+			a:hover,
+			a:active
+			{
 	color: black;
 }
 
