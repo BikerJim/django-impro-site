@@ -111,8 +111,7 @@ color:#500;
 .btn.active {
     box-shadow: 1px 1px 9px rgba(0,0,0,.7);
 }
-.bottom-border, a {
-    color: black;
+.bottom-border {
 	border-bottom: 1px solid grey;
 }
 
