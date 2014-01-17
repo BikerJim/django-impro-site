@@ -2,7 +2,7 @@
 Django production settings for easylaughs project.
 """
 from .base import *
-
+import os
 import dj_database_url
 
 DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
@@ -11,8 +11,8 @@ DATABASES['default'] =  dj_database_url.config()
 SECRET_KEY = get_env_variable("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = get_env_variable("DEBUG")
-TEMPLATE_DEBUG = get_env_variable("TEMPLATE_DEBUG")
+DEBUG = os.environ.get("DEBUG", False)
+TEMPLATE_DEBUG = os.environ.get("TEMPLATE_DEBUG", False)
 
 EMAIL_HOST = os.environ['MAILTRAP_HOST']
 EMAIL_HOST_USER = os.environ['MAILTRAP_USER_NAME']
