@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load static_url %}
 {% block title%}{{ flatpage.title }}{% endblock title %}
 {% block content %}
 <img src="{% static 'gfx/courses.gif' %}"/>
-        {{ flatpage.content }}
+        {{ flatpage.content|static_url }}
 
 {% endblock content %}

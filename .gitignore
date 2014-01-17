@@ -1,4 +1,5 @@
 heroku-easylaughs
 venv
 *.pyc
+.env
 staticfiles

@@ -11,6 +11,9 @@ SECRET_KEY = get_env_variable("DJANGO_SECRET_KEY")
 DEBUG = True
 TEMPLATE_DEBUG = True
 
+MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DATABASES = {
