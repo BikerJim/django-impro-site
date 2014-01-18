@@ -19,11 +19,6 @@ STATIC_ROOT = PROJECT_DIR.child("static")
 STATICFILES_DIRS = (PROJECT_DIR.child("assets"),)
 TEMPLATE_DIRS = (PROJECT_DIR.child("templates"),)
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-#MEDIA_URL = '/media/'
-#STATIC_URL = '/static/'
-
 # Additions for all_auth
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',

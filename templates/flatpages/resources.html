@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% load static_url %}
-{% block title%}{{ flatpage.title }}{% endblock title %}
+{% block title %}{{ flatpage.title }}{% endblock title %}
 {% block content %}
 <img src="{% static 'gfx/resources.gif' %}"/>
         {{ flatpage.content|static_url }}

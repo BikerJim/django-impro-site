@@ -4,10 +4,9 @@
 {% block content %}
 <p>
 <img id="profile_mugshot" width="100px" src="{{ user.profile.mugshot.url }}"/>
-
 </p>
 
-			<h1 class="top">{{ user.profile }}</h1>
+<h1 class="top">{{ user.profile }}</h1>
 <p>
 			{{ user.profile.about_me|striptags|urlize|linebreaks }}
 </p>
