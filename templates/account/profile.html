@@ -7,9 +7,9 @@
 </p>
 
 <h1 class="top">{{ user.profile }}</h1>
-<p>
+<span class="about_me">
 			{{ user.profile.about_me|striptags|urlize|linebreaks }}
-</p>
+</span>
 <p>
 <a class="btn" href="{% url 'update_profile' %}">edit profile</a> 
 <a class="btn" href="{% url 'account_email' %}">Change, add, or verify email</a>

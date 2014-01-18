@@ -11,7 +11,7 @@ a {
 }
 
 h1 {
-	font-size: 1.5em;
+	font-size: 1.4em;
 }
 #sidebar
 {
@@ -143,13 +143,20 @@ color:#500;
 }
 
 #about_me a:link {
-	color: red;
-}
-
-#about_me a:visited, a:hover, a:active {
 	color: black;
 }
-			
+
+#about_me a:visited {
+	color: black;
+}
+
+#about_me a:hover {
+	color: black;
+}			
+
+#about_me a:active {
+	color: black;
+}
 
 .pagination {
 	color: #4d4d4d;
