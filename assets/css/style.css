@@ -150,13 +150,9 @@ color:#500;
 	color: black;
 }
 
-#about_me a:hover {
+#about_me a:hover, a:active {
 	color: black;
 }			
-
-#about_me a:active {
-	color: black;
-}
 
 .pagination {
 	color: #4d4d4d;
