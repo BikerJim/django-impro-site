@@ -15,9 +15,9 @@
 </p>
 
 			<h1 class="top">{{ actor }}</h1>
-<p id="about_me">
+<span class="about_me">
 			{{ actor.about_me|striptags|urlize|linebreaks }}
-</p>
+</span>
 </div>
 {% endfor %}
 {% endblock %}

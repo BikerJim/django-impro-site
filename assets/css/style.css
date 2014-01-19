@@ -142,17 +142,9 @@ color:#500;
 	padding: 0px 20px 10px 20px;
 }
 
-#about_me a:link {
+span.about_me a {
 	color: black;
 }
-
-#about_me a:visited {
-	color: black;
-}
-
-#about_me a:hover, a:active {
-	color: black;
-}			
 
 .pagination {
 	color: #4d4d4d;
