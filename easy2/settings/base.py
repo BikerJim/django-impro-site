@@ -65,6 +65,7 @@ INSTALLED_APPS = (
     'booking',
     'home',
     'casting',
+    'courses',
 #    'allauth.socialaccount.providers.google',
 #    'allauth.socialaccount.providers.twitter',
 )

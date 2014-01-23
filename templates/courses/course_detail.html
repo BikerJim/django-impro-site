@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block header %}{{ block.super }}
+    <title>{% block title%}easylaughs Courses{% endblock title %}</title>
+{% endblock %}
+{% block content %} 
+
+<img src="{% static 'gfx/courses.gif' %}"/>
+
+<p>
+Feel free to check out our <a id="black_link" href="/courses/FAQ/">FAQ page</a>. If you have any specific questions please contact us at <a href="mailto:courses@easylaughs.nl?subject=More Info Please!">courses@easylaughs.nl</a>.
+</p>
+<p>
+To reserve your slot simply click the 'reserve now' link in the course details panel below.
+</p>
+
+<div class="info">
+<table width="100%">
+	<tr>
+		<th>Course</th>
+		<th>Day</th>
+		<th>Start date</th>
+	</tr>
+	<tr>
+		<td>{{ course.title }}</td>
+		<td>{{ course.start_date|date:"l" }}</td>
+		<td>{{ course.start_date|date:"jS F" }}</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<p>
+			{{ course.description|linebreaks }}
+			</p>
+			
+			<table id="course_detail">
+				<tr>
+					<td align='right'>Class :</td>
+					<td><strong>{{ course.title }} ({{ course.start_date|date:"l" }})</strong></td>
+				</tr>
+				<tr>
+					<td align='right'>Day and time :</td>
+					<td>{{ course.start_date|date:"l" }}s from {{ course.start_time|date:"f" }} 'til {{ course.end_time|date:"f" }}</td>
+				</tr>
+				<tr>
+					<td align='right'>Dates :</td>
+					<td>{{ course.start_date|date:"N jS" }} - {{ course.end_date|date:"N jS" }} ({{ course.duration }} weeks)</td>
+				</tr>
+				<tr>
+					<td align='right'>Student performance :</td>
+					<td>{{ course.show_date.date|date:"l N jS" }}</td>
+				</tr>
+				<tr>
+					<td align='right'>Teacher :</td>
+					<td>{{ course.teacher.first_name }}</td>
+				</tr>
+				<tr>
+					<td align='right'>Location :</td>
+					<td><a href="{% url 'location_detail' pk=course.location.id %}">{{ course.location }}</a></td>
+				</tr>
+				<tr>
+					<td align='right'>Price :</td>
+					<td>&euro; {{ course.cost }}</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>{{ course.places_left }} places left!</td>
+		<td>&nbsp;</td>
+		<td><a class='btn' href="">Reserve now</a></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+</div>
+
+<p>
+<a href="{% static 'doc/easylaughs_courses-leaflet.pdf' %}">Course Brochure</a>
+</p>
+
+<h3>Registration and Payment</h3>
+<p>
+To register for any of the above courses simply click the Reserve Now button - that's it!<br/> 
+Payment <a id="black_link" href="/terms/">terms and conditions</a>.
+</p>
+{% endblock content %}

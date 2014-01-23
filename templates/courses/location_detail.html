@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block header %}{{ block.super }}
+    <title>{% block title%}easylaughs Courses{% endblock title %}</title>
+{% endblock %}
+{% block content %} 
+
+<h1>Location: {{ location.title }}</h1>
+{% if location.title == "CREA" %}
+<div class="info">
+<p>
+<strong>NOTE</strong>: 
+This is the location of the NEW Crea building. It is a long way from the old Crea location!
+</p>
+</div>
+<p>
+Most easylaughs courses and workshops are taught in the rehearsal rooms at the <a id="black_link" href="http://www.crea.uva.nl/">Crea Studios</a>, 
+part of <a id="black_link" href="http://www.uva.nl/">UVA</a> (University of Amsterdam).
+</p>
+{% endif %}
+<p>
+Address: {{ location.address }}<br/>
+{% if location.telephone %}
+Telephone: {{ location.telephone }}
+{% endif %}
+</p>
+<p>
+{{ location.map_url|safe }}
+</p>
+{% if location.public_transport %}
+<h3>Public Transport</h3>
+<p>
+{{ location.public_transport|safe }}
+</p>
+{% endif %}
+
+{% if location.by_car %}
+<h3>By Car</h3>
+<p>{{ location.by_car|safe }}</p>
+{% endif %}
+
+{% endblock content %}

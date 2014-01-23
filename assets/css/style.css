@@ -13,6 +13,27 @@ a {
 h1 {
 	font-size: 1.4em;
 }
+
+h2 {
+	font-size: 1.2em;
+}
+
+h3 {
+	font-size: 1em;
+}
+#course_detail {
+	font-size: 0.8em;
+	background-color: #eee;
+	width: 90%;
+	margin: auto;
+	padding: 15px;
+	border-radius: 7px;
+}
+
+#course_detail a {
+	color: black;
+}
+
 #sidebar
 {
 box-shadow: 2px 2px 8px rgba(0,0,0,.7);

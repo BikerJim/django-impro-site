@@ -16,4 +16,5 @@ urlpatterns = patterns('',
     url(r'^events/', include('events.urls')),
     url(r'^booking/', include('booking.urls')),
     url(r'^casting/', include('casting.urls')),
+    url(r'^courses/', include('courses.urls')),
 )

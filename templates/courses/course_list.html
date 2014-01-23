@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block header %}{{ block.super }}
+    <title>{% block title%}easylaughs Courses{% endblock title %}</title>
+{% endblock %}
+{% block content %} 
+
+<img src="{% static 'gfx/courses.gif' %}"/>
+
+<h2>Improvisation and Stand-up Comedy Courses</h2>
+<div class="info">
+<p>
+<strong>*** NEW courses for 2014 now scheduled, sign up now! ***</strong>
+</p>
+<p>
+If you always wanted to try out improvision or stand-up, learn more about it, or just build some public speaking skills and self-confidence, easylaughs offers comedy improvisation and stand-up courses in English for all levels of experience.
+</p>
+</div>
+<p>
+All students are entitled to FREE entry to easylaughs shows for the duration of their course.
+</p>
+<p>
+Feel free to check out our <a id="black_link" href="/courses/FAQ/">FAQ page</a>. If you have any specific questions please contact us at <a href="mailto:courses@easylaughs.nl?subject=More Info Please!">courses@easylaughs.nl</a>.
+</p>
+<p>
+To reserve your slot simply click the 'reserve now' link in the course details panels below.
+</p>
+<p>
+<a href="{% static 'doc/easylaughs_courses-leaflet.pdf' %}">Course Brochure</a>
+</p>
+
+<h3>Course Start Dates</h3>
+
+<div class="info">
+{% if course_list %}
+<table width="100%">
+	<tr>
+		<th width="60%">Course</th>
+		<th width="20%">Day</th>
+		<th width="20%">Start date</th>
+		<th>&nbsp;</th>
+	</tr>
+	{% for course in course_list %}
+	<tr>
+		<td>{{ course.title }}</td>
+		<td>{{ course.start_date|date:"l" }}</td>
+		<td>{{ course.start_date|date:"j F" }}</td>
+		<td><a id="black_link" href="{% url 'course_detail' pk=course.id %}">details</a></td>
+	</tr>
+	{% endfor %}
+</table>
+{% else %}
+<p>There are no courses planned</p>
+{% endif %}
+</div>
+
+
+
+<h3>Registration and Payment</h3>
+<p>
+Register for any of the above courses on the details page - that's it! 
+Read all about our full <a id="black_link" href="/terms/">terms</a> and payment details.
+</p>
+
+<h3>New Courses in the Pipeline!</h3>
+<p>
+We have a couple of other courses and workshops in development: Start Writing Through Improv and Start Writing Comedy. If you have interest, please let us know by contacting <a href="mailto:courses@easylaughs.nl?subject=Writing course">courses@easylaughs.nl</a>. 
+</p>
+
+<h3>Make Your Own Course!</h3>
+<p>Want a course that happens when you want it to happen? If you have your own group of people and a consistent time they are all available for 8 weeks, easylaughs can arrange the teacher and location for you. All levels of courses are available. For information on Making Your Own Course for your own group, <a href="mailto:courses@easylaughs.nl?subject=Make my own course">contact courses@easylaughs.nl<a/>. </p>
+
+{% endblock content %}
