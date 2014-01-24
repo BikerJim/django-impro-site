@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}{{ block.super }}
+    <title>{% block title%}easylaughs thanks{% endblock title %}</title>
+{% endblock %}
+{% block content %}
+<h1>Thanks!</h1>
+<p>{{ student }}, not only are you awesome, you have also successfully reserved your place on
+the following course:</p>
+<h3>Course Details</h3>
+<ul>
+	<li>Course: {{ course }}</li>
+	<li>Start date: {{ course.start_date|date:"l d F" }}</li>
+	<li>Time: {{ course.start_time }}</li>
+	<li>Location: <a id="black_link" href="{% url 'location_detail' pk=course.location.id %}">{{ course.location.title }}</a></li>
+</ul>
+
+<h3>Information</h3>
+<p>
+You have successfully <em>reserved</em> your place, we cannot guarantee
+your place until we receive the payment.
+</p>
+
+<p>
+Please make your payment of <strong>&euro;{{ course.cost }}</strong> to:<br />
+ING account 2433930 (IBAN: NL87 INGB 0002 4339 30; BIC: INGBNL2A)
+</p>
+<p> 
+Please do this within one week, or your reservation will be cancelled.
+Make sure you put "<em>{{ student }}</em>" and "{{ course.start_date }}" on the payment
+description so that we can tell that it came from you. 
+Your registration cannot be held without payment.
+</p>
+
+<p>
+Once you have done that, {{ course.teacher.first_name }} will be waiting for you at {{ course.start_time }} 
+on {{ course.start_date|date:"l d F" }} at the <a id="black_link" href="{% url 'location_detail' pk=course.location.id %}">{{ course.location.title }}</a></p>
+
+<p>see you there!</p>
+{% endblock %}

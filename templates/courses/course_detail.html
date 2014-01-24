@@ -64,11 +64,19 @@ To reserve your slot simply click the 'reserve now' link in the course details p
 			</table>
 		</td>
 	</tr>
+	{% if course.places_left > 0 %}
 	<tr>
-		<td>{{ course.places_left }} places left!</td>
+		<td>{{ course.places_left }} place{% if course.places_left > 1 %}s{% endif %} left!</td>
 		<td>&nbsp;</td>
-		<td><a class='btn' href="">Reserve now</a></td>
+		<td><a class='btn' href="{% url 'reserve_course' pk=course.id %}">Reserve now</a></td>
 	</tr>
+	{% else %}
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td><strong>Fully booked!</strong></td>
+	</tr>
+	{% endif %}
 	<tr>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}{{ block.super }}
+    <title>{% block title%}Reserve Place on Course{% endblock title %}</title>
+{% endblock %}
+{% block content %}
+<h1>Course reservation</h1>
+{% if not user.first_name and user.is_authenticated %}
+<div class='info'>
+<p><strong>Note:</strong> Before you reserve! If you haven't already,
+ it would be really helpful if you could update your profile and at least
+ give us your first name, so that we know who to hold the tickets for; otherwise we will hold them against your
+username ({{ user }})
+</p>
+</div>
+{% endif %}
+{% if not user.is_authenticated %}
+<div class='info'>
+<h3>Did you know?</h3>
+<p>If you would like to speed up
+this process, you could <a id="black_link" href="{% url 'account_signup' %}">create an easylaughs account</a>. Its really easy, and
+you can log-in with your Facebook account so you don't even have to remember yet
+another password! We take this whole easy thing seriously.
+</p>
+</div>
+{% endif %}
+<p>You are reserving a place on the "<em>{{ course }}</em>" course which starts on {{ course.start_date|date:"l d F" }}.</p>
+<form action="" method="post">{% csrf_token %}
+{{ form.course.as_hidden }}
+{{ form.paid_as_hidden }}
+{% if user.is_authenticated %}
+	{{ form.name.as_hidden }}
+	{{ form.email_address.as_hidden }}
+	{{ form.heard_about.as_hidden }}
+{% else %}
+<p>Your Name: {{ form.name }}</p>
+<p>Your email: {{ form.email_address }}</p>
+<p>How did you hear about us? {{ form.heard_about }}<br/>{{ form.heard_about.help_text }}</p>
+{% endif %} 
+<p>Your telephone number (optional) {{ form.telephone }}<br/>{{ form.telephone.help_text }}</p>
+<input type="submit" value="Reserve Your Place" />
+</form>
+{% if form.errors %}
+<h3>Oops:</h3>
+{% for field in form.visible_fields %}
+
+
+    {% for err in field.errors %}
+        <p>{{ field.label_tag }} : {{ err }}</p>
+    {% endfor %}
+
+{% endfor %}
+{% endif %}
+{% endblock content %}

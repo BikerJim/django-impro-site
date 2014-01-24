@@ -6,6 +6,7 @@ from .views import EditCourse
 from .views import DeleteCourse
 from .views import CourseDetail
 from .views import LocationDetailView
+from .views import ReserveCourse, ReserveCourseThanks
 
 urlpatterns = patterns('',
 	url(r'^$',CourseListView.as_view(),name='course_list'),
@@ -14,4 +15,6 @@ urlpatterns = patterns('',
 	url(r'^edit/(?P<pk>\d+)/$',EditCourse.as_view(),name='course_edit'),
 	url(r'^delete/(?P<pk>\d+)/$',DeleteCourse.as_view(),name='course_delete'),
 	url(r'^location/(?P<pk>\d+)/$', LocationDetailView.as_view(),name='location_detail'),
+	url(r'^reserve/(?P<pk>\d+)/$', ReserveCourse.as_view(),name='reserve_course'),
+	url(r'^thanks/$', ReserveCourseThanks.as_view(),name='course_reservation_thanks'),
 	)

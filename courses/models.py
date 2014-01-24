@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.urlresolvers import reverse
+
 from datetime import timedelta
 from datetime import date
 
@@ -29,11 +31,6 @@ class Course(models.Model):
 	location 	= models.ForeignKey(Location)
 	cost 		= models.IntegerField()
 	places_left	= models.IntegerField()
-
-#	@property
-#	def end_date(self):
-#		result = self.start_date + timedelta(weeks=self.duration-1)
-#		return result
 	
 	def __unicode__(self):
 		return self.title
@@ -52,3 +49,15 @@ class Student(models.Model):
 						max_length=250,
 						verbose_name=u'How Did You Hear About Us',
 						help_text=u"We'd really like to know how you heard about easylaughs!")
+	
+	def get_absolute_url(self):
+		return reverse('course_reservation_thanks')
+	
+	def save(self, *args, **kwargs):
+		if self.paid == True:
+			course = Course.objects.get(pk=self.course.id)
+			if course.places_left > 0:
+				course.places_left -= 1
+				course.save()
+		super(Student, self).save(*args, **kwargs)
+				
