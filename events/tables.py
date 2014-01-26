@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import permission_required
 import django_tables2 as tables
+from django.contrib.auth.models import User
 from .models import Availability
 from .models import Show
 from .models import Event_date
@@ -40,7 +41,6 @@ def get_table_data():
 class ShoverviewTable(tables.Table):		
 	Date = tables.Column()
 	Description = tables.Column()
-	Peter = tables.BooleanColumn()
 	Sarah = tables.BooleanColumn()
 	Ben = tables.BooleanColumn()
 	Jim = tables.BooleanColumn()
@@ -51,6 +51,7 @@ class ShoverviewTable(tables.Table):
 	Jochem = tables.BooleanColumn()
 	Anne = tables.BooleanColumn()
 	Jake = tables.BooleanColumn()
+	Paula =  tables.BooleanColumn()
 	
 	def render_Description(self, value, record):
 		if value != 'Add show' and record['Date'].event_type == 1:
