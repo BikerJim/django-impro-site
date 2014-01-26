@@ -19,7 +19,7 @@ username ({{ user }})
 <h3>Did you know?</h3>
 <p>If you would like to speed up
 this process, you could <a id="black_link" href="{% url 'account_signup' %}">create an easylaughs account</a>. Its really easy, and
-you can log-in with your Facebook account so you don't even have to remember yet
+you can even log-in with your <a id='black_link' href="/accounts/facebook/login/">Facebook account</a> so you don't even have to remember yet
 another password! We take this whole easy thing seriously.
 </p>
 </div>
@@ -27,7 +27,7 @@ another password! We take this whole easy thing seriously.
 <p>You are reserving a place on the "<em>{{ course }}</em>" course which starts on {{ course.start_date|date:"l d F" }}.</p>
 <form action="" method="post">{% csrf_token %}
 {{ form.course.as_hidden }}
-{{ form.paid_as_hidden }}
+{{ form.status.as_hidden }}
 {% if user.is_authenticated %}
 	{{ form.name.as_hidden }}
 	{{ form.email_address.as_hidden }}

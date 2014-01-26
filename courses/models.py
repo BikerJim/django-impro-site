@@ -36,6 +36,12 @@ class Course(models.Model):
 		return self.title
 		
 class Student(models.Model):
+	STATUS_CHOICES	= (
+					(1, 'Reserved'),
+					(2, 'Paid'),
+					(3, 'Waiting list'),
+					)
+	date_registered = models.DateTimeField(auto_now_add=True, null=True)
 	name 			= models.CharField(max_length=30)
 	email_address 	= models.EmailField(verbose_name=u'email address')
 	telephone 		= models.CharField(
@@ -44,17 +50,18 @@ class Student(models.Model):
 						help_text=u'in emergencies its useful to be able to contact people quickly',
 						blank=True)
 	course  		= models.ForeignKey(Course, verbose_name=u'Course')
-	paid			= models.BooleanField(verbose_name=u'Payment Status')
+	status			= models.IntegerField(choices=STATUS_CHOICES, default=1)
+#	paid			= models.BooleanField(verbose_name=u'Payment Status')
 	heard_about 	= models.CharField(
 						max_length=250,
 						verbose_name=u'How Did You Hear About Us',
 						help_text=u"We'd really like to know how you heard about easylaughs!")
 	
-	def get_absolute_url(self):
-		return reverse('course_reservation_thanks')
+#	def get_absolute_url(self):
+#		return reverse('course_reservation_thanks')
 	
 	def save(self, *args, **kwargs):
-		if self.paid == True:
+		if self.status == 1:
 			course = Course.objects.get(pk=self.course.id)
 			if course.places_left > 0:
 				course.places_left -= 1

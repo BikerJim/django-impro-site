@@ -72,9 +72,9 @@ To reserve your slot simply click the 'reserve now' link in the course details p
 	</tr>
 	{% else %}
 	<tr>
+		<td>Fully booked!</td>
 		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td><strong>Fully booked!</strong></td>
+		<td><a class='btn' href="{% url 'course_waitinglist' pk=course.id %}">Waiting List</a></td>
 	</tr>
 	{% endif %}
 	<tr>

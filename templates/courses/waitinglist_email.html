@@ -1,0 +1,20 @@
+<h1>Thanks!</h1>
+<p>{{ student }}, spaces on our courses are limited, but in case someone
+drops out, or changes their mind, we will contact you immediately</p>
+<h3>Course Details</h3>
+<p>You are on the waiting list for:</p>
+<ul>
+	<li>Course: {{ course }}</li>
+	<li>Start date: {{ course.start_date|date:"l d F" }}</li>
+	<li>Time: {{ course.start_time }}</li>
+	<li>Location: <a href="http://easylaughs.herokuapp.com/courses/location/{{course.location.id}}/">{{ course.location.title }}</a></li>
+</ul>
+
+<h3>Information</h3>
+<p>
+If a place becomes available we will contact you to let you know the payment 
+details etc so that you can sign up.
+</p>
+
+<p>All the best,<br/>
+easylaughs</p>

@@ -8,7 +8,7 @@ class CourseSignupForm(forms.ModelForm):
 	class Meta:
 		model = Student
 		fields = [
-			'paid',
+			'status',
 			'course',
 			'name',
 			'email_address',
