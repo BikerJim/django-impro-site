@@ -84,7 +84,21 @@ To reserve your slot simply click the 'reserve now' link in the course details p
 	</tr>
 </table>
 </div>
-
+{% if is_teacher %}
+<h2>Student List</h2>
+<ul>{% for student in student_list %}
+			<li>{{ student.name }} (<a id="black_link" href="mailto:{{ student.email_address }}">{{ student.email_address }}</a>) | {% if student.status == 1 %}Registered{% else %}Paid{% endif %}</li>
+	{% endfor %}
+</ul>
+{% endif %}
+{% if waiting_list %}
+<h2>Waiting list</h2>
+<ul>
+	{% for student in waiting_list %}
+	<li>{{ student.name }} (<a id="black_link" href="mailto:{{ student.email_address }}">{{ student.email_address }}</a>)</li>
+	{% endfor %}
+</ul>
+{% else %}
 <p>
 <a href="{% static 'doc/easylaughs_courses-leaflet.pdf' %}">Course Brochure</a>
 </p>
@@ -94,4 +108,5 @@ To reserve your slot simply click the 'reserve now' link in the course details p
 To register for any of the above courses simply click the Reserve Now button - that's it!<br/> 
 Payment <a id="black_link" href="/terms/">terms and conditions</a>.
 </p>
+{% endif %}
 {% endblock content %}

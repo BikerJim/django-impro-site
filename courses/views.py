@@ -1,5 +1,7 @@
 from django.core.mail import EmailMultiAlternatives
 
+from django.db.models import Q
+
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.template import Context, loader
@@ -37,6 +39,16 @@ class DeleteCourse(DeleteView):
 	
 class CourseDetail(DetailView):
 	model = Course
+	def get_context_data(self, **kwargs):
+		context = super(CourseDetail, self).get_context_data(**kwargs)
+		student_list = Student.objects.filter(course=self.kwargs['pk'])
+		registered_list = student_list.filter(Q(status=1) | Q(status=2))
+		waiting_list = student_list.filter(status=3)
+		is_teacher = self.request.user.groups.filter(name='teacher')
+		context['student_list'] = registered_list
+		context['waiting_list'] = waiting_list
+		context['is_teacher'] = is_teacher
+		return context
 	
 class ReserveCourse(CreateView):
 	model = Student
