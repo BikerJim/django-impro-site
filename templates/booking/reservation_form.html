@@ -5,6 +5,16 @@
 {% endblock %}
 {% block content %}
 <h1>Ticket reservation</h1>
+{% if too_late %}
+<p>Its a bit late to reserve tickets now, we don't always get a chance
+to read our emails and get the information to the person on the door,
+but please do come along anyway, there'll be plenty of room, 
+we'll fit you in!
+</p>
+<p>
+<strong>See you there!</strong>
+</p>
+{% else %}
 {% if not user.first_name and user.is_authenticated %}
 <div class='info'>
 <p><strong>Note:</strong> Before you reserve! If you haven't already,
@@ -51,5 +61,6 @@ another password! We take this whole easy thing seriously.
     {% endfor %}
 
 {% endfor %}
+{% endif %}
 {% endif %}
 {% endblock content %}

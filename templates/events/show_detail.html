@@ -44,7 +44,7 @@
 </ul>
 {% endif %}
 {% if is_crew and reservations %}
-<h3>Reservations</h3>
+<h3>Reservations {{ object.date.date|date:"l jS F" }}</h3>
 <table>
 	<tr>
 		<th width="60%">Name</th>

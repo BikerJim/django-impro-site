@@ -7,7 +7,7 @@ from django.template import loader
 from django.template import Context
 from .models import Reservation
 from .forms import ReserveTicketForm
-from datetime import date, time, datetime
+from datetime import date, time, datetime, timedelta
 from events.models import Event_date
 
 class ReserveTicket(CreateView):
@@ -20,7 +20,9 @@ class ReserveTicket(CreateView):
 		self.event_date = get_object_or_404(Event_date, pk=self.kwargs['pk'])
 		form.fields['event_date'].initial = self.event_date.id
 		if self.request.user.is_authenticated():
-			if self.request.user.first_name:
+			if self.request.user.first_name and self.request.user.last_name:
+				form.fields['reserved_by'].initial = self.request.user.first_name+" "+self.request.user.last_name
+			elif self.request.user.first_name:
 				form.fields['reserved_by'].initial = self.request.user.first_name
 			else:
 				form.fields['reserved_by'].initial = self.request.user
@@ -34,7 +36,12 @@ class ReserveTicket(CreateView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ReserveTicket, self).get_context_data(*args, **kwargs)
+		if (date.today() - self.event_date.date) == timedelta(-1):
+			too_late = True
+		else:
+			too_late = False
 		context['show_date'] = self.event_date
+		context['too_late'] = too_late
 		return context
 
 class ReserveThanks(TemplateView):
