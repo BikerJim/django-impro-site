@@ -54,7 +54,7 @@ class Student(models.Model):
 						help_text=u'in emergencies its useful to be able to contact people quickly',
 						blank=True)
 	course  		= models.ForeignKey(Course, verbose_name=u'Course')
-	status			= models.IntegerField(choices=STATUS_CHOICES, default=1)
+	status			= models.IntegerField(choices=STATUS_CHOICES, default=1, help_text=u"In most cases, this will be updated automagically")
 	total_paid		= models.DecimalField(max_digits=6, decimal_places=2, default=0)
 	heard_about 	= models.CharField(
 						max_length=250,

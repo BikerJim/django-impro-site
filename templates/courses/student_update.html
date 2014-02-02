@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}{{ block.super }}
+    <title>{% block title%}Update Student{% endblock title %}</title>
+{% endblock %}
+{% block content %}
+<h1>Student admin</h1>
+<p>You are updating the details for the following student:</p>
+<table id="course_detail">
+	<tr>
+		<td align='right'>Name:</td>
+		<td>{{ object }}</td>
+	</tr>
+	<tr>
+		<td align='right'>email:</td>
+		<td><a id="black_link" href="mailto:{{ object.email_address }}">{{ object.email_address }}</a></td>
+	</tr>
+	<tr>
+		<td align='right'>Phone:</td>
+		<td>{% if object.telephone %}{{ object.telephone }}{% else %} Unknown {% endif %}</td>
+	</tr>
+	<tr>
+		<td align='right'>Course:</td>
+		<td>{{ object.course }}</td>
+	</tr>
+	<tr>
+		<td align='right'>Status:</td>
+		<td>{{ object.get_status_display }}</td>
+	</tr>
+	<tr>
+		<td align='right'>Paid to date:</td>
+		<td>&euro;{{ object.total_paid }} (&euro;{{ object.to_pay }} to pay)</td>
+	</tr>
+</table>
+
+<h3>Update these details below</h3>
+<form action="" method="post">{% csrf_token %}
+
+{{ form.as_p }}
+<input type="submit" value="Update" />
+</form>
+
+{% if form.errors %}
+<h3>Oops:</h3>
+{% for field in form.visible_fields %}
+
+
+    {% for err in field.errors %}
+        <p>{{ field.label_tag }} : {{ err }}</p>
+    {% endfor %}
+
+{% endfor %}
+{% endif %}
+{% endblock content %}

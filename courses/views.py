@@ -1,5 +1,5 @@
 from django.core.mail import EmailMultiAlternatives
-
+from django.core.urlresolvers import reverse
 from django.db.models import Q
 
 from django.shortcuts import render
@@ -20,6 +20,7 @@ from .models import Location
 from .models import Student
 
 from .forms import CourseSignupForm
+from .forms import UpdateStudentForm
 
 class CourseListView(ListView):
 	model = Course
@@ -183,3 +184,19 @@ class WaitingListCourseThanks(TemplateView):
 
 class LocationDetailView(DetailView):
 	model = Location
+	
+class UpdateStudent(UpdateView):
+	model = Student
+	template_name = 'courses/student_update.html'
+	form_class = UpdateStudentForm
+	fields = (
+			'status',
+			'course',
+			'email_address',
+			'telephone',
+			'heard_about',
+			'total_paid',
+			)
+	def get_success_url(self):
+		pk = Student.objects.get(pk=self.kwargs['pk'])
+		return reverse('course_detail', kwargs={ 'pk' : pk.course.id })

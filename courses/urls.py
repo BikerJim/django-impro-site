@@ -8,6 +8,7 @@ from .views import CourseDetail
 from .views import LocationDetailView
 from .views import ReserveCourse, ReserveCourseThanks
 from .views import WaitingListCourse, WaitingListCourseThanks
+from .views import UpdateStudent
 
 urlpatterns = patterns('',
 	url(r'^$',CourseListView.as_view(),name='course_list'),
@@ -19,5 +20,6 @@ urlpatterns = patterns('',
 	url(r'^reserve/(?P<pk>\d+)/$', ReserveCourse.as_view(),name='reserve_course'),
 	url(r'^thanks/$', ReserveCourseThanks.as_view(),name='course_reservation_thanks'),
 	url(r'^waitinglist/(?P<pk>\d+)/$', WaitingListCourse.as_view(),name='course_waitinglist'),
-	url(r'^waitinglist_thanks/$', WaitingListCourseThanks.as_view(),name='course_waitinglist_thanks'),	
+	url(r'^waitinglist_thanks/$', WaitingListCourseThanks.as_view(),name='course_waitinglist_thanks'),
+	url(r'^updatestudent/(?P<pk>\d+)/$', UpdateStudent.as_view(),name='update_student'),	
 	)

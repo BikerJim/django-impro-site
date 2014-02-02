@@ -15,3 +15,12 @@ class CourseSignupForm(forms.ModelForm):
 			'telephone',
 			'heard_about',
 			]
+
+class UpdateStudentForm(forms.ModelForm):
+	class Meta:
+		model = Student
+		fields = [
+			'status',
+			'telephone',
+			'total_paid',
+			]
