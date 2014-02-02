@@ -41,12 +41,14 @@ To reserve your slot simply click the 'reserve now' link in the course details p
 		<th>&nbsp;</th>
 	</tr>
 	{% for course in course_list %}
+	{% if course.display %}
 	<tr>
 		<td>{{ course.title }}</td>
 		<td>{{ course.start_date|date:"l" }}</td>
 		<td>{{ course.start_date|date:"j F" }}</td>
 		<td><a id="black_link" href="{% url 'course_detail' pk=course.id %}">details</a></td>
 	</tr>
+	{% endif %}
 	{% endfor %}
 </table>
 {% else %}

@@ -42,7 +42,7 @@ class CourseDetail(DetailView):
 	def get_context_data(self, **kwargs):
 		context = super(CourseDetail, self).get_context_data(**kwargs)
 		student_list = Student.objects.filter(course=self.kwargs['pk'])
-		registered_list = student_list.filter(Q(status=1) | Q(status=2))
+		registered_list = student_list.filter(Q(status=6) | Q(status=2) | Q(status=4))
 		waiting_list = student_list.filter(status=3)
 		is_teacher = self.request.user.groups.filter(name='teacher')
 		context['student_list'] = registered_list

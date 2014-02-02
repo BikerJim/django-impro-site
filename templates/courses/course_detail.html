@@ -88,7 +88,11 @@ To reserve your slot simply click the 'reserve now' link in the course details p
 <h2>Student List</h2>
 <ul>
 	{% for student in student_list %}
-			<li>{{ student.name }} (<a id="black_link" href="mailto:{{ student.email_address }}">{{ student.email_address }}</a>) | {% if student.status == 1 %}Registered{% else %}Paid{% endif %}</li>
+			<li>{{ student.name }} (<a id="black_link" href="mailto:{{ student.email_address }}">{{ student.email_address }}</a>) | 
+			{% if student.status == 6 %}Registered
+			{% elif student.status == 2 %}Fully paid
+			{% elif student.status == 4 %}Paid &euro;{{ student.total_paid }} (&euro;{{ student.to_pay }} owed)
+			{% endif %}</li>
 	{% endfor %}
 </ul>
 
