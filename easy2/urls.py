@@ -8,6 +8,7 @@ from home.views import Index, AboutUs
 admin.autodiscover()
 
 urlpatterns = patterns('',
+	url(r'^api/', include('api.urls')),
     url(r'^$', Index.as_view(), name='index'),
     url(r'^easylaughsrearend/', include(admin.site.urls)),
     url(r'^about/', AboutUs.as_view(), name='about_us'),

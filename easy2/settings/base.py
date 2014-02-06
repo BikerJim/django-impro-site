@@ -66,6 +66,8 @@ INSTALLED_APPS = (
     'home',
     'casting',
     'courses',
+    'rest_framework',
+    'api',
 #    'allauth.socialaccount.providers.google',
 #    'allauth.socialaccount.providers.twitter',
 )
