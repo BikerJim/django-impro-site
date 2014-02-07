@@ -36,7 +36,7 @@ class ReserveTicket(CreateView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ReserveTicket, self).get_context_data(*args, **kwargs)
-		if (date.today() - self.event_date.date) == timedelta(-1):
+		if (date.today() - self.event_date.date) >= timedelta(-1):
 			too_late = True
 		else:
 			too_late = False
