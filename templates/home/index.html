@@ -16,12 +16,12 @@
 	{% if show.early_show %}
 	<h3 class="top"><img id="profile_mugshot" width="50px" src="{{ show.early_show.icon.url }}"/>8pm, Early show: {{ show.early_show }}</h3>
 	{% endif %}
-	<br/>
+	<p>&nbsp;<br/><br/></p>
 	{% if show.late_show %}
-	<h2 class="top"><img id="profile_mugshot" width="50px" src="{{ show.late_show.icon.url }}"/>9pm, Main show: {{ show.late_show }}</h2>
+	<h2 class="top"><img id="profile_mugshot" width="75px" src="{{ show.late_show.icon.url }}"/>9pm, Main show: {{ show.late_show }}</h2>
 	<div style='float:right;'><em><a id='black_link' href="{% url 'show_detail' pk=show.id %}">Details >></a></em></div>
 	{% endif %}
-	<p>&nbsp;<br/></p>
+	<p>&nbsp;<br/><br/></p>
 	</div>
 	
 {% endif %}
