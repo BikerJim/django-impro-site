@@ -74,9 +74,7 @@ class Student(models.Model):
 	def to_pay(self):
 		if self.ebird_disc:
 			amount = (self.course.cost - self.course.ebird_disc) - self.total_paid
-			#amount = self.course.ebird_disc
 		else:
-			#amount = 100
 			amount =  self.course.cost - self.total_paid
 		return amount
 	

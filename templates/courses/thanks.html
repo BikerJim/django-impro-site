@@ -33,8 +33,7 @@ Your registration cannot be held without payment.
 </p>
 
 <p>
-Once you have done that, {{ course.teacher.first_name }} will be waiting for you at {{ course.start_time }} 
-on {{ course.start_date|date:"l d F" }} at the <a id="black_link" href="{% url 'location_detail' pk=course.location.id %}">{{ course.location.title }}</a></p>
+Once you have done that, {{ course.teacher.first_name }} will be waiting for you at {{ course.start_time }} at the <a id="black_link" href="{% url 'location_detail' pk=course.location.id %}">{{ course.location.title }}</a></p>
 
 <p>see you there!</p>
 {% endblock %}

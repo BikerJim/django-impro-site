@@ -89,12 +89,12 @@ class ReserveCourse(CreateView):
 	def form_valid(self, *args, **kwargs):
 		form = super(ReserveCourse, self).form_valid(*args, **kwargs)
 		self.request.session['student_id'] = self.object.id
-		self.request.session['to_pay'] = self.object.to_pay
+		self.request.session['to_pay'] = str(self.object.to_pay)
 		return form
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ReserveCourse, self).get_context_data(*args, **kwargs)
-		context['to_pay'] = self.request.session['to_pay']
+		#context['to_pay'] = self.request.session['to_pay']
 		context['course'] = self.course
 		return context
 
@@ -161,6 +161,7 @@ class ReserveCourseThanks(TemplateView):
 		context = super(ReserveCourseThanks, self).get_context_data(*args, **kwargs)
 		context['course'] = self.student.course
 		context['student'] = self.student.name
+		context['to_pay'] = self.student.to_pay
 		self.send_confirmation_email(context)
 		return context
 
