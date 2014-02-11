@@ -8,7 +8,7 @@ class CourseAdmin(admin.ModelAdmin):
 	list_filter = ('start_date','teacher',)
 	
 class StudentAdmin(admin.ModelAdmin):
-	list_display = ('name','email_address','course','total_paid','status','date_registered',)
+	list_display = ('name','email_address','course','ebird_disc','to_pay','total_paid','status','date_registered',)
 	list_filter = ('course','status',)
 	list_editable = ('total_paid',)
 	

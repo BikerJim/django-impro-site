@@ -61,6 +61,12 @@ To reserve your slot simply click the 'reserve now' link in the course details p
 					<td align='right'>Price :</td>
 					<td>&euro; {{ course.cost }}</td>
 				</tr>
+				{% if earlybird %}
+				<tr>
+					<td>&nbsp;</td>
+					<td><strong>Reserve now and get &euro;{{ course.ebird_disc }} earlybird discount!</strong></td>
+				</tr>
+				{% endif %}
 			</table>
 		</td>
 	</tr>

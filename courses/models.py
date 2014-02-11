@@ -2,7 +2,7 @@ from django.db import models
 from django.core.urlresolvers import reverse
 
 from datetime import timedelta
-from datetime import date
+from datetime import date, datetime
 
 from django.contrib.auth.models import User
 from events.models import Event_date
@@ -24,12 +24,14 @@ class Course(models.Model):
 	start_date 	= models.DateField()
 	end_date	= models.DateField()
 	duration 	= models.IntegerField(verbose_name=u'Number of weeks')
+	ebird_date	= models.DateField(verbose_name=u'Early Bird discount ends on this date', help_text='Format yyyy-mm-dd: 2009-04-28', null=True)
+	ebird_disc	= models.DecimalField(max_digits=6, decimal_places=2, default=0)
 	start_time	= models.TimeField(verbose_name=u'Start Time')
 	end_time	= models.TimeField(verbose_name=u'End Time')
 	show_date 	= models.ForeignKey(Event_date, limit_choices_to={'event_type':1}, related_name='early_show')
 	teacher 	= models.ForeignKey(User, limit_choices_to={'groups__name':'crew'})
 	location 	= models.ForeignKey(Location)
-	cost 		= models.IntegerField()
+	cost 		= models.DecimalField(max_digits=6, decimal_places=2, default=0)
 	places_left	= models.IntegerField()
 	display		= models.BooleanField(verbose_name=u'Display course on courses page', default=True)
 	
@@ -45,7 +47,7 @@ class Student(models.Model):
 					(5, 'Dropped out'),
 					(6, 'Registered'),
 					)
-	date_registered = models.DateTimeField(auto_now_add=True, null=True)
+	date_registered = models.DateField(auto_now_add=True, null=True)
 	name 			= models.CharField(max_length=30)
 	email_address 	= models.EmailField(verbose_name=u'email address')
 	telephone 		= models.CharField(
@@ -62,8 +64,20 @@ class Student(models.Model):
 						help_text=u"We'd really like to know how you heard about easylaughs!")
 	
 	@property
+	def ebird_disc(self):
+		if self.course.ebird_date <= self.date_registered:
+			return False
+		else:
+			return True
+	
+	@property
 	def to_pay(self):
-		amount = self.course.cost - self.total_paid
+		if self.ebird_disc:
+			amount = (self.course.cost - self.course.ebird_disc) - self.total_paid
+			#amount = self.course.ebird_disc
+		else:
+			#amount = 100
+			amount =  self.course.cost - self.total_paid
 		return amount
 	
 	def save(self, *args, **kwargs):

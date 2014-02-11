@@ -46,9 +46,16 @@ class CourseDetail(DetailView):
 		registered_list = student_list.filter(Q(status=6) | Q(status=2) | Q(status=4))
 		waiting_list = student_list.filter(status=3)
 		is_teacher = self.request.user.groups.filter(name='teacher')
+		ebird_discount = self.object.ebird_disc
+		ebird_date = self.object.ebird_date
+		if ebird_date >= date.today():
+			earlybird = True
+		else:
+			earlybird = False
 		context['student_list'] = registered_list
 		context['waiting_list'] = waiting_list
 		context['is_teacher'] = is_teacher
+		context['earlybird'] = earlybird
 		return context
 	
 class ReserveCourse(CreateView):
@@ -65,6 +72,7 @@ class ReserveCourse(CreateView):
 	def get_form(self, form_class):
 		form = super(ReserveCourse, self).get_form(form_class)
 		self.course = get_object_or_404(Course, pk=self.kwargs['pk'])
+
 		form.fields['course'].initial = self.course.id
 		form.fields['status'].initial = 1
 		if self.request.user.is_authenticated():
@@ -81,10 +89,12 @@ class ReserveCourse(CreateView):
 	def form_valid(self, *args, **kwargs):
 		form = super(ReserveCourse, self).form_valid(*args, **kwargs)
 		self.request.session['student_id'] = self.object.id
+		self.request.session['to_pay'] = self.object.to_pay
 		return form
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ReserveCourse, self).get_context_data(*args, **kwargs)
+		context['to_pay'] = self.request.session['to_pay']
 		context['course'] = self.course
 		return context
 
