@@ -48,7 +48,7 @@ class CourseDetail(DetailView):
 		is_teacher = self.request.user.groups.filter(name='teacher')
 		ebird_discount = self.object.ebird_disc
 		ebird_date = self.object.ebird_date
-		if ebird_date >= date.today():
+		if ebird_date > date.today():
 			earlybird = True
 		else:
 			earlybird = False
