@@ -47,7 +47,7 @@ class Student(models.Model):
 					(5, 'Dropped out'),
 					(6, 'Registered'),
 					)
-	date_registered = models.DateField(auto_now_add=True, null=True)
+	date_registered = models.DateField(auto_now_add=True)
 	name 			= models.CharField(max_length=30)
 	email_address 	= models.EmailField(verbose_name=u'email address')
 	telephone 		= models.CharField(

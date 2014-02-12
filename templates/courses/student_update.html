@@ -28,6 +28,14 @@
 		<td>{{ object.get_status_display }}</td>
 	</tr>
 	<tr>
+		<td align='right'>Date Registered:</td>
+		<td>{{ object.date_registered }}</td>
+	</tr>
+	<tr>
+		<td align='right'>Early bird?:</td>
+		<td>{{ object.ebird_disc|yesno:"Yes,No" }}</td>
+	</tr>
+	<tr>
 		<td align='right'>Paid to date:</td>
 		<td>&euro;{{ object.total_paid }} (&euro;{{ object.to_pay }} to pay)</td>
 	</tr>
