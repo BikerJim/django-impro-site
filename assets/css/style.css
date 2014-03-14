@@ -103,6 +103,7 @@ color:#500;
 }
 
 .info {
+    width: 600px;
 	border: 1px solid red;
 	border-radius:8px;
 	padding: 0px 10px 0px 20px;

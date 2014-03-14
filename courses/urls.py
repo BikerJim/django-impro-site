@@ -11,7 +11,7 @@ from .views import WaitingListCourse, WaitingListCourseThanks
 from .views import UpdateStudent
 
 urlpatterns = patterns('',
-	url(r'^$',CourseListView.as_view(),name='course_list'),
+	url(r'^list/$',CourseListView.as_view(),name='course_list'),
 	url(r'^(?P<pk>\d+)/$',CourseDetail.as_view(),name='course_detail'),	
 	url(r'^add/$',AddCourse.as_view(),name='course_create'),
 	url(r'^edit/(?P<pk>\d+)/$',EditCourse.as_view(),name='course_edit'),
